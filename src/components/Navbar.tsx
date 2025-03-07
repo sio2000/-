@@ -2,10 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { TrendingUp } from 'lucide-react';
 
+const logo = new URL('../assets/images/logo.jpg', import.meta.url).href;
+
 const Navbar = () => {
   const navItems = [
     { path: '/', label: 'Home' },
-    { path: '/how-it-works', label: 'How It Works' },
     { path: '/backtests', label: 'Backtests' },
     { path: '/live-vs-backtest', label: 'Live vs Backtest' },
     { path: '/monthly-performance', label: 'Monthly Performance' },
@@ -18,11 +19,14 @@ const Navbar = () => {
   return (
     <nav className="bg-white shadow-lg fixed w-full z-50">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between h-20">
           <div className="flex">
             <NavLink to="/" className="flex items-center">
-              <TrendingUp className="h-8 w-8 text-blue-600" />
-              <span className="ml-2 text-xl font-bold text-gray-800">ForexBot Pro</span>
+              <img 
+                src={logo} 
+                alt="ForexBot Pro Logo" 
+                className="h-14 w-auto"
+              />
             </NavLink>
           </div>
 
