@@ -5,6 +5,7 @@ import Button from '../components/Button';
 const heroBackground = new URL('../assets/images/herobackground.jpg', import.meta.url).href;
 const codeImage = new URL('../assets/images/code.jpg', import.meta.url).href;
 const tradingImage = new URL('../assets/images/trading.jpg', import.meta.url).href;
+const forexVideo = new URL('../assets/video/fvid.mp4', import.meta.url).href;
 
 const Home = () => {
   const features = [
@@ -142,6 +143,40 @@ const Home = () => {
               </div>
             </div>
           </div>
+
+          {/* Video Showcase Section */}
+          <section className="py-20 bg-gray-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-3xl mx-auto text-center mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                  Trust us, we are ForexBot!
+                </h2>
+              </div>
+
+              {/* Reduced max-width container for smaller video */}
+              <div className="max-w-4xl mx-auto">
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300">
+                  {/* Video Container with 16:9 Aspect Ratio */}
+                  <div className="relative pb-[56.25%] h-0">
+                    <video
+                      className="absolute top-0 left-0 w-full h-full object-cover"
+                      controls
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    >
+                      <source src={forexVideo} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+
+                  {/* Optional Overlay for Better UI */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+                </div>
+              </div>
+            </div>
+          </section>
 
           {/* Key Features Grid */}
           <div>

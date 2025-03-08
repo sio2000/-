@@ -24,8 +24,10 @@ const Footer = () => {
             </p>
             <div className="flex gap-4">
               <a 
-                href="https://facebook.com" 
+                href="https://www.facebook.com/forexbotgr" 
                 className="bg-[#1877F2] p-2 rounded-lg text-white hover:bg-[#1864F2] transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Facebook className="w-5 h-5" />
               </a>

@@ -260,7 +260,7 @@ const Contact = () => {
                   <h3 className="text-lg font-semibold text-gray-900 mb-6">Follow Us</h3>
                   <div className="flex gap-6">
                     <a 
-                      href="https://facebook.com" 
+                      href="https://www.facebook.com/forexbotgr" 
                       className="bg-[#1877F2] p-3 rounded-lg text-white hover:bg-[#1864F2] transition-colors"
                       target="_blank"
                       rel="noopener noreferrer"
