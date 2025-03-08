@@ -11,6 +11,7 @@ import BusinessPlan from './pages/BusinessPlan';
 import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
+import TradingPairs from './pages/TradingPairs';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/business-plan" element={<BusinessPlan />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/trading-pairs" element={<TradingPairs />} />
           </Routes>
         </main>
         <Footer />

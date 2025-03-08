@@ -7,31 +7,32 @@ import * as TooltipUI from '@radix-ui/react-tooltip';
 const Backtests = () => {
   // Sample backtest data (2008-2023)
   const performanceData = [
-    { year: '2008', return: 32.5, drawdown: -12.3 },
-    { year: '2009', return: 28.7, drawdown: -8.5 },
-    { year: '2010', return: 35.2, drawdown: -10.1 },
-    { year: '2011', return: 31.8, drawdown: -9.7 },
-    { year: '2012', return: 29.5, drawdown: -7.8 },
-    { year: '2013', return: 33.6, drawdown: -11.2 },
-    { year: '2014', return: 30.9, drawdown: -8.9 },
-    { year: '2015', return: 34.7, drawdown: -10.5 },
-    { year: '2016', return: 36.1, drawdown: -12.8 },
-    { year: '2017', return: 38.4, drawdown: -9.3 },
-    { year: '2018', return: 32.8, drawdown: -11.7 },
-    { year: '2019', return: 35.9, drawdown: -10.2 },
-    { year: '2020', return: 42.3, drawdown: -13.5 },
-    { year: '2021', return: 39.6, drawdown: -11.8 },
-    { year: '2022', return: 36.7, drawdown: -12.1 },
-    { year: '2023', return: 37.8, drawdown: -10.9 }
+    { year: '2008', return: 358, drawdown: -72 },
+    { year: '2009', return: 170, drawdown: -28 },
+    { year: '2010', return: 105, drawdown: -28 },
+    { year: '2011', return: 272, drawdown: -22 },
+    { year: '2012', return: 5, drawdown: -10 },
+    { year: '2013', return: -12, drawdown: -23 },
+    { year: '2014', return: 99, drawdown: -19 },
+    { year: '2015', return: 155, drawdown: -60 },
+    { year: '2016', return: 148, drawdown: -40 },
+    { year: '2017', return: -25, drawdown: -26 },
+    { year: '2018', return: 2, drawdown: -33 },
+    { year: '2019', return: 68, drawdown: -26 },
+    { year: '2020', return: 200, drawdown: -39 },
+    { year: '2021', return: 0, drawdown: -15 },
+    { year: '2022', return: 67, drawdown: -14 },
+    { year: '2023', return: 27, drawdown: -20 },
+    { year: '2024', return: 138, drawdown: -28 }
   ];
 
   const statistics = [
-    { label: 'CAGR', value: '34.8%' },
-    { label: 'Win Rate', value: '68.5%' },
-    { label: 'Profit Factor', value: '2.87' },
-    { label: 'Max Drawdown', value: '13.5%' },
-    { label: 'Sharpe Ratio', value: '2.93' },
-    { label: 'Recovery Factor', value: '4.12' }
+    { label: 'CAGR', value: '79.98%' },
+    { label: 'Win Rate', value: '59.5%' },
+    { label: 'Profit Factor', value: '2.40' },
+    { label: 'Max Drawdown', value: '40% (2008 and 2015)' },
+    { label: 'Sharpe Ratio', value: '1.10' },
+    { label: 'Risk/Reward', value: '1/1.6' }
   ];
 
   return (
@@ -73,8 +74,8 @@ const Backtests = () => {
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
                 <div className="h-6 w-1 bg-blue-600 rounded-full"></div>
-                Historical Performance
-              </h2>
+              Historical Performance
+            </h2>
               <div className="flex items-center gap-4 text-sm">
                 <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-800">
                   98% Quality Score
@@ -205,7 +206,7 @@ const Backtests = () => {
                   The bot trades on the following timeframes, supporting 
                   <span className="font-semibold text-blue-600"> 28 currency pairs </span> 
                   and
-                  <span className="font-semibold text-green-600"> 15 timeframes</span>.
+                  <span className="font-semibold text-green-600"> 16 timeframes</span>.
                 </p>
               </div>
 
@@ -234,13 +235,23 @@ const Backtests = () => {
                       </div>
                     ))}
                   </div>
+                  <div className="mt-4">
+                    <Link
+                      to="/trading-pairs"
+                      className="inline-flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white 
+                               font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 gap-2"
+                    >
+                      Major & Minor Pairs
+                      <ArrowRight className="w-5 h-5" />
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Timeframes */}
                 <div className="bg-gray-50 p-6 rounded-xl">
                   <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                    Timeframes (15)
+                    Timeframes (16)
                   </h3>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                     {[
@@ -415,9 +426,11 @@ const Backtests = () => {
             {/* Download Button */}
             <div className="flex justify-center mt-12 pt-8 border-t border-gray-100">
               <a
-                href="/forexrobot.zip"
+                href="/backtest.7z"
                 download
-                className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg gap-2 transform hover:translate-y-[-2px]"
+                className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg 
+                         hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg gap-2 
+                         transform hover:translate-y-[-2px]"
               >
                 <svg 
                   className="w-5 h-5" 
@@ -462,7 +475,7 @@ const Backtests = () => {
         </div>
       </section>
 
-      {/* Key Statistics */}
+      {/* Key Performance Statistics */}
       <section className="mb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center animate-fade-in">

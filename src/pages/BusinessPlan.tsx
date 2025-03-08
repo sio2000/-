@@ -34,89 +34,79 @@ const BusinessPlan = () => {
   ];
 
   return (
-    <div className="min-h-screen py-20">
-      {/* Hero Section */}
-      <section className="mb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">
+    <div className="min-h-screen py-12 md:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="space-y-8 md:space-y-12">
+          {/* Hero Section */}
+          <section className="bg-white p-4 md:p-8 rounded-2xl shadow-lg">
+            <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">
               Investment Partnership Structure
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            </h2>
+            <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto">
               Join our proven Forex trading venture with 15+ years of backtested results. 
               We offer a transparent partnership model with consistent returns and professional management.
             </p>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* Business Model */}
-      <section className="mb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-            <div className="p-8">
-              <div className="flex items-center gap-4 mb-6">
-                <Building2 className="w-8 h-8 text-blue-600" />
-                <h2 className="text-2xl font-bold text-gray-900">Business Model</h2>
+          {/* Business Model */}
+          <section className="bg-white p-4 md:p-8 rounded-2xl shadow-lg">
+            <div className="flex items-center gap-4 mb-6">
+              <Building2 className="w-8 h-8 text-blue-600" />
+              <h2 className="text-2xl font-bold text-gray-900">Business Model</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Investment Structure</h3>
+                <ul className="space-y-3 text-gray-600">
+                  <li className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                    Minimum trading capital: €10,000
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                    Annual operational fee: €5,000
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                    Profit sharing based on capital contribution
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                    Quarterly profit distributions
+                  </li>
+                </ul>
               </div>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h3 className="text-lg font-semibold mb-4">Investment Structure</h3>
-                  <ul className="space-y-3 text-gray-600">
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                      Minimum trading capital: €10,000
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                      Annual operational fee: €5,000
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                      Profit sharing based on capital contribution
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                      Quarterly profit distributions
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-4">Partner Benefits</h3>
-                  <ul className="space-y-3 text-gray-600">
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                      Access to proven trading algorithm
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                      Real-time performance monitoring
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                      Professional risk management
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                      Tax-efficient structure
-                    </li>
-                  </ul>
-                </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Partner Benefits</h3>
+                <ul className="space-y-3 text-gray-600">
+                  <li className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                    Access to proven trading algorithm
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                    Real-time performance monitoring
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                    Professional risk management
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                    Tax-efficient structure
+                  </li>
+                </ul>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* Annual Fee Breakdown */}
-      <section className="mb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl shadow-lg p-8">
+          {/* Annual Fee Breakdown */}
+          <section className="bg-gradient-to-br from-blue-50 to-white p-4 md:p-8 rounded-2xl shadow-lg">
             <div className="flex items-center gap-4 mb-8">
               <PieChart className="w-8 h-8 text-blue-600" />
               <h2 className="text-2xl font-bold text-gray-900">Annual Fee Breakdown</h2>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
               {annualFees.map((fee, index) => (
                 <div key={index} className="bg-white p-6 rounded-xl shadow">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -136,19 +126,15 @@ const BusinessPlan = () => {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* Offshore Structure */}
-      <section className="mb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          {/* Offshore Structure */}
+          <section className="bg-white p-4 md:p-8 rounded-2xl shadow-lg">
             <div className="flex items-center gap-4 mb-8">
               <Landmark className="w-8 h-8 text-blue-600" />
               <h2 className="text-2xl font-bold text-gray-900">Offshore Structure</h2>
             </div>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
               <div>
                 <h3 className="text-lg font-semibold mb-4">Jurisdictions</h3>
                 <ul className="space-y-3 text-gray-600">
@@ -174,19 +160,15 @@ const BusinessPlan = () => {
                 </ul>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* Risk Management */}
-      <section className="mb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          {/* Risk Management */}
+          <section className="bg-white p-4 md:p-8 rounded-2xl shadow-lg">
             <div className="flex items-center gap-4 mb-8">
               <Shield className="w-8 h-8 text-blue-600" />
               <h2 className="text-2xl font-bold text-gray-900">Risk Management</h2>
             </div>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
               <div className="bg-gray-50 p-6 rounded-xl">
                 <h3 className="text-lg font-semibold mb-4">Position Sizing</h3>
                 <p className="text-gray-600">
@@ -209,14 +191,10 @@ const BusinessPlan = () => {
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* Become a Partner */}
-      <section>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl shadow-lg p-8 text-white">
+          {/* Become a Partner */}
+          <section className="bg-gradient-to-br from-blue-600 to-indigo-600 p-4 md:p-8 rounded-2xl shadow-lg text-white">
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-3xl font-bold mb-6">Become a Partner</h2>
               <p className="text-lg mb-8 opacity-90">
@@ -232,9 +210,9 @@ const BusinessPlan = () => {
                 Contact Us to Get Started <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </div>
-          </div>
+          </section>
         </div>
-      </section>
+      </div>
     </div>
   );
 };
