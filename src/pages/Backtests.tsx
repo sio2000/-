@@ -5,8 +5,9 @@ import { ArrowRight, Info } from 'lucide-react';
 import * as TooltipUI from '@radix-ui/react-tooltip';
 
 const Backtests = () => {
-  // Sample backtest data (2008-2023)
+  // Sample backtest data (2007-2024)
   const performanceData = [
+    { year: '2007', return: 285, drawdown: -45 },
     { year: '2008', return: 358, drawdown: -72 },
     { year: '2009', return: 170, drawdown: -28 },
     { year: '2010', return: 105, drawdown: -28 },
@@ -57,7 +58,7 @@ const Backtests = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in">
-              Backtest Results (2008-2023)
+              Backtest Results (2007-2024)
             </h1>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto animate-fade-in-delayed">
               Comprehensive backtest analysis demonstrating consistent performance through 
@@ -118,10 +119,10 @@ const Backtests = () => {
         </div>
       </section>
 
-      {/* Backtest Statistics */}
+      {/* Detailed Backtest Results */}
       <section className="mb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="bg-white p-8 rounded-2xl shadow-lg">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
               Detailed Backtest Results
             </h2>
@@ -133,7 +134,7 @@ const Backtests = () => {
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Symbol:</span>
-                    <span className="font-semibold">USDJPY</span>
+                    <span className="font-semibold">Major & Minor Forex Pairs</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Period:</span>
@@ -191,99 +192,6 @@ const Backtests = () => {
                     <span className="text-gray-600">Loss Trades:</span>
                     <span className="font-semibold">5,082</span>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Trading Pairs & Timeframes */}
-            <div className="mb-12">
-              {/* Title Section */}
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                  Trading Capabilities
-                </h3>
-                <p className="text-gray-600 max-w-3xl mx-auto">
-                  The bot trades on the following timeframes, supporting 
-                  <span className="font-semibold text-blue-600"> 28 currency pairs </span> 
-                  and
-                  <span className="font-semibold text-green-600"> 16 timeframes</span>.
-                </p>
-              </div>
-
-              {/* Grid Container */}
-              <div className="grid md:grid-cols-2 gap-8">
-                {/* Trading Pairs */}
-                <div className="bg-gray-50 p-6 rounded-xl">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                    Trading Pairs (28)
-                  </h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    {[
-                      'AUDCAD', 'AUDCHF', 'AUDJPY', 'AUDNZD', 'AUDUSD',
-                      'CADCHF', 'CADJPY', 'CHFJPY', 'EURAUD', 'EURCAD',
-                      'EURCHF', 'EURGBP', 'EURJPY', 'EURNZD', 'EURUSD',
-                      'GBPAUD', 'GBPCAD', 'GBPCHF', 'GBPJPY', 'GBPNZD',
-                      'GBPUSD', 'NZDCAD', 'NZDCHF', 'NZDJPY', 'NZDUSD',
-                      'USDCAD', 'USDCHF', 'USDJPY'
-                    ].map((pair) => (
-                      <div 
-                        key={pair} 
-                        className="bg-white px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow duration-200"
-                      >
-                        {pair}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-4">
-                    <Link
-                      to="/trading-pairs"
-                      className="inline-flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white 
-                               font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 gap-2"
-                    >
-                      Major & Minor Pairs
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Timeframes */}
-                <div className="bg-gray-50 p-6 rounded-xl">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                    Timeframes (16)
-                  </h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    {[
-                      'PERIOD_M5',
-                      'PERIOD_M10',
-                      'PERIOD_M12',
-                      'PERIOD_M15',
-                      'PERIOD_M20',
-                      'PERIOD_M30',
-                      'PERIOD_H1',
-                      'PERIOD_H2',
-                      'PERIOD_H3',
-                      'PERIOD_H4',
-                      'PERIOD_H6',
-                      'PERIOD_H8',
-                      'PERIOD_H12',
-                      'PERIOD_D1',
-                      'PERIOD_W1',
-                      'PERIOD_MN1'
-                    ].map((timeframe) => (
-                      <div 
-                        key={timeframe} 
-                        className="bg-white px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow duration-200 flex items-center justify-between"
-                      >
-                        <span>{timeframe}</span>
-                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                      </div>
-                    ))}
-                  </div>
-                  <p className="text-sm text-gray-500 mt-4 italic">
-                    Multi-timeframe analysis from 5 minutes to monthly timeframes
-                  </p>
                 </div>
               </div>
             </div>
@@ -452,7 +360,33 @@ const Backtests = () => {
         </div>
       </section>
 
-      {/* Video Section */}
+      {/* Key Performance Statistics */}
+      <section className="mb-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white p-8 rounded-2xl shadow-lg">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center animate-fade-in">
+              Key Performance Statistics
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {statistics.map((stat, index) => (
+                <div 
+                  key={index} 
+                  className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-blue-50/30"
+                >
+                  <h3 className="text-lg font-semibold text-gray-600 mb-2 transition-colors duration-200 group-hover:text-gray-900">
+                    {stat.label}
+                  </h3>
+                  <p className="text-3xl font-bold text-blue-600 transition-colors duration-200 group-hover:text-blue-700">
+                    {stat.value}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Expert Advisor Video Section */}
       <section className="mb-20 bg-gradient-to-br from-gray-50 to-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 transform hover:scale-105 transition-all duration-300">
@@ -475,26 +409,96 @@ const Backtests = () => {
         </div>
       </section>
 
-      {/* Key Performance Statistics */}
+      {/* Trading Capabilities Section */}
       <section className="mb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center animate-fade-in">
-            Key Performance Statistics
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {statistics.map((stat, index) => (
-              <div 
-                key={index} 
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-blue-50/30"
-              >
-                <h3 className="text-lg font-semibold text-gray-600 mb-2 transition-colors duration-200 group-hover:text-gray-900">
-                  {stat.label}
+          <div className="bg-white p-8 rounded-2xl shadow-lg">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center animate-fade-in">
+              Trading Capabilities
+            </h2>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              The bot trades on the following timeframes, supporting 
+              <span className="font-semibold text-blue-600"> 28 currency pairs </span> 
+              and
+              <span className="font-semibold text-green-600"> 16 timeframes</span>.
+            </p>
+
+            {/* Grid Container */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Trading Pairs */}
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                  Trading Pairs (28)
                 </h3>
-                <p className="text-3xl font-bold text-blue-600 transition-colors duration-200 group-hover:text-blue-700">
-                  {stat.value}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {[
+                    'AUDCAD', 'AUDCHF', 'AUDJPY', 'AUDNZD', 'AUDUSD',
+                    'CADCHF', 'CADJPY', 'CHFJPY', 'EURAUD', 'EURCAD',
+                    'EURCHF', 'EURGBP', 'EURJPY', 'EURNZD', 'EURUSD',
+                    'GBPAUD', 'GBPCAD', 'GBPCHF', 'GBPJPY', 'GBPNZD',
+                    'GBPUSD', 'NZDCAD', 'NZDCHF', 'NZDJPY', 'NZDUSD',
+                    'USDCAD', 'USDCHF', 'USDJPY'
+                  ].map((pair) => (
+                    <div 
+                      key={pair} 
+                      className="bg-white px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow duration-200"
+                    >
+                      {pair}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4">
+                  <Link
+                    to="/trading-pairs"
+                    className="inline-flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white 
+                             font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 gap-2"
+                  >
+                    Major & Minor Pairs
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Timeframes */}
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                  Timeframes (16)
+                </h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {[
+                    'PERIOD_M5',
+                    'PERIOD_M10',
+                    'PERIOD_M12',
+                    'PERIOD_M15',
+                    'PERIOD_M20',
+                    'PERIOD_M30',
+                    'PERIOD_H1',
+                    'PERIOD_H2',
+                    'PERIOD_H3',
+                    'PERIOD_H4',
+                    'PERIOD_H6',
+                    'PERIOD_H8',
+                    'PERIOD_H12',
+                    'PERIOD_D1',
+                    'PERIOD_W1',
+                    'PERIOD_MN1'
+                  ].map((timeframe) => (
+                    <div 
+                      key={timeframe} 
+                      className="bg-white px-3 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-shadow duration-200 flex items-center justify-between"
+                    >
+                      <span>{timeframe}</span>
+                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-sm text-gray-500 mt-4 italic">
+                  Multi-timeframe analysis from 5 minutes to monthly timeframes
                 </p>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>

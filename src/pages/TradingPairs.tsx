@@ -19,17 +19,29 @@ const TradingPairs = () => {
           </div>
           
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                Major Pairs
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
-                  100% Coverage
-                </span>
+            {/* Major Pairs */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                Major Pairs (15)
               </h3>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  'EUR/USD', 'GBP/USD', 'USD/JPY', 'USD/CHF',
-                  'USD/CAD', 'AUD/USD', 'NZD/USD'
+                  'EUR/USD',
+                  'GBP/USD',
+                  'USD/JPY',
+                  'USD/CHF',
+                  'USD/CAD',
+                  'EUR/JPY',
+                  'EUR/GBP',
+                  'EUR/CHF',
+                  'EUR/CAD',
+                  'GBP/JPY',
+                  'GBP/CHF',
+                  'GBP/CAD',
+                  'CAD/JPY',
+                  'CAD/CHF',
+                  'CHF/JPY'
                 ].map((pair) => (
                   <div 
                     key={pair} 
@@ -43,17 +55,27 @@ const TradingPairs = () => {
               </div>
             </div>
 
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                Minor Pairs
-                <span className="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full">
-                  100% Coverage
-                </span>
+            {/* Minor Pairs */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                Minor Pairs (13)
               </h3>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  'EUR/GBP', 'EUR/AUD', 'GBP/JPY',
-                  'EUR/JPY', 'EUR/CHF', 'AUD/JPY'
+                  'AUD/USD',
+                  'NZD/USD',
+                  'AUD/JPY',
+                  'AUD/CHF',
+                  'AUD/CAD',
+                  'AUD/NZD',
+                  'EUR/AUD',
+                  'EUR/NZD',
+                  'GBP/AUD',
+                  'GBP/NZD',
+                  'NZD/JPY',
+                  'NZD/CAD',
+                  'NZD/CHF'
                 ].map((pair) => (
                   <div 
                     key={pair} 
