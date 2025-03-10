@@ -8,5 +8,14 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   publicDir: 'public',
-  assetsInclude: ['**/*.mp4']
+  assetsInclude: ['**/*.mp4'],
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
+  }
 });
