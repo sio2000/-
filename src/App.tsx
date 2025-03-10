@@ -12,6 +12,7 @@ import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
 import TradingPairs from './pages/TradingPairs';
+import Biography from './pages/Biography';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/trading-pairs" element={<TradingPairs />} />
+            <Route path="/biography" element={<Biography />} />
           </Routes>
         </main>
         <Footer />

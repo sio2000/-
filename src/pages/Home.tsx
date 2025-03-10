@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, LineChart, Shield, TrendingUp, Brain, ShieldCheck, Zap, BarChart, Scale, ExternalLink } from 'lucide-react';
+import { ArrowRight, LineChart, Shield, TrendingUp, Brain, ShieldCheck, Zap, BarChart, Scale, ExternalLink, Building2, BookOpen } from 'lucide-react';
 import Button from '../components/Button';
 
 const heroBackground = new URL('../assets/images/herobackground.jpg', import.meta.url).href;
@@ -338,35 +338,64 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Video Showcase Section */}
-      <section className="py-20 bg-gray-50">
+      {/* Navigation Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Trust us, we are ForexBot!
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Explore Our Journey
             </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Discover our comprehensive business plan and learn more about our story
+            </p>
           </div>
 
-          {/* Reduced max-width container for smaller video */}
-          <div className="max-w-4xl mx-auto">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300">
-              {/* Video Container with 16:9 Aspect Ratio */}
-              <div className="relative pb-[56.25%] h-0">
-                <video
-                  className="absolute top-0 left-0 w-full h-full object-cover"
-                  controls
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                >
-                  <source src={forexVideo} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Business Plan Card */}
+            <div className="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="absolute top-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-bl-xl rounded-tr-xl">
+                Featured
               </div>
+              <div className="flex flex-col h-full">
+                <div className="mb-6">
+                  <div className="bg-blue-100 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
+                    <Building2 className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    Business Plan
+                  </h3>
+                  <p className="text-gray-600">
+                    Explore our comprehensive investment structure, projected returns, and partnership opportunities.
+                  </p>
+                </div>
+                <Button href="/business-plan" className="mt-auto gap-2 w-full justify-center">
+                  View Business Plan <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
+            </div>
 
-              {/* Optional Overlay for Better UI */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+            {/* Biography Card */}
+            <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="flex flex-col h-full">
+                <div className="mb-6">
+                  <div className="bg-green-100 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
+                    <BookOpen className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    Our Biography
+                  </h3>
+                  <p className="text-gray-600">
+                    Learn about our journey, expertise, and proven track record in Forex trading.
+                  </p>
+                </div>
+                <Button 
+                  href="/biography" 
+                  variant="secondary"
+                  className="mt-auto gap-2 w-full justify-center bg-white text-green-600 border-green-200 hover:bg-green-50"
+                >
+                  Read Our Story <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
