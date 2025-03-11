@@ -45,17 +45,19 @@ const Home = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative pt-20 pb-32">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url(${heroBackground})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        >
-          {/* Overlay */}
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+          >
+            <source src="/src/assets/video/fvid.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         </div>
 
@@ -66,11 +68,7 @@ const Home = () => {
               Advanced Forex Trading <br />
               <span className="text-blue-400">Powered by Human Expertise</span>
             </h1>
-            <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-              A proven automated trading strategy that has consistently delivered results
-              through multiple economic cycles and market conditions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-24">
               <Button
                 href="https://www.myfxbook.com/members/giannis/funded-instatrader/10605583"
                 className="gap-2"
@@ -88,7 +86,7 @@ const Home = () => {
       {/* MyFXBook Live Performance Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <h2 className="text-4xl font-bold text-gray-900 mb-6 animate-fade-in flex items-center justify-center gap-3">
               <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>

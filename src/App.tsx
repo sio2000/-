@@ -13,6 +13,8 @@ import Contact from './pages/Contact';
 import Footer from './components/Footer';
 import TradingPairs from './pages/TradingPairs';
 import Biography from './pages/Biography';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/trading-pairs" element={<TradingPairs />} />
             <Route path="/biography" element={<Biography />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
           </Routes>
         </main>
         <Footer />

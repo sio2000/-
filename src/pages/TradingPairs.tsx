@@ -92,7 +92,7 @@ const TradingPairs = () => {
 
           <div className="mt-8 p-6 bg-blue-50 rounded-xl border border-blue-100">
             <p className="text-blue-800 text-center text-lg">
-              Our AI trading system actively monitors and trades all major and minor currency pairs, 
+              Our trading system actively monitors and trades all major and minor currency pairs, 
               providing comprehensive coverage of the most liquid and traded pairs in the Forex market.
             </p>
           </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, MessageCircle, ArrowRight } from 'lucide-react';
+import { ChevronDown, ChevronUp, MessageCircle, ArrowRight, HelpCircle } from 'lucide-react';
 import Button from '../components/Button';
 
 interface FAQItem {
@@ -159,48 +159,67 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="min-h-screen py-20">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="mb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50"></div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">
+            <div className="inline-flex items-center justify-center p-3 bg-blue-600/20 rounded-full mb-6 backdrop-blur-sm">
+              <HelpCircle className="w-8 h-8 text-blue-400" />
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Frequently Asked Questions
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Find answers to common questions about our Forex trading partnership opportunity.
+            <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+              Find detailed answers about our Forex trading strategy and partnership opportunities
             </p>
           </div>
         </div>
       </section>
 
       {/* FAQ Accordion */}
-      <section className="mb-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-4">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-6">
             {faqItems.map((item, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-xl shadow-md overflow-hidden"
+                className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300"
               >
                 <button
-                  className="w-full px-6 py-4 flex items-center justify-between text-left"
+                  className="w-full px-8 py-6 flex items-center justify-between text-left"
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 >
-                  <span className="text-lg font-semibold text-gray-900">
+                  <span className="text-lg font-semibold text-gray-900 pr-8">
                     {item.question}
                   </span>
-                  {openIndex === index ? (
-                    <ChevronUp className="w-5 h-5 text-blue-600" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5 text-blue-600" />
-                  )}
+                  <div className={`p-2 rounded-full bg-blue-50 transition-transform duration-300 
+                    ${openIndex === index ? 'rotate-180 bg-blue-100' : ''}`}>
+                    <ChevronDown className={`w-5 h-5 ${openIndex === index ? 'text-blue-600' : 'text-blue-400'}`} />
+                  </div>
                 </button>
-                {openIndex === index && (
-                  <div className="px-6 pb-4 text-gray-600">
+                <div 
+                  className={`px-8 transition-all duration-300 ease-in-out overflow-hidden
+                    ${openIndex === index ? 'pb-8 opacity-100' : 'max-h-0 opacity-0'}`}
+                >
+                  <div className="prose prose-blue max-w-none text-gray-600">
                     {item.answer}
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>
@@ -208,24 +227,26 @@ const FAQ = () => {
       </section>
 
       {/* Contact CTA */}
-      <section>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl shadow-lg p-8">
-            <div className="flex flex-col items-center text-center">
-              <div className="bg-blue-100 p-3 rounded-full mb-4">
-                <MessageCircle className="w-6 h-6 text-blue-600" />
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Still Have Questions?
-              </h2>
-              <p className="text-gray-600 mb-6">
-                We're here to help! Contact us for detailed information about our 
-                trading partnership opportunity.
-              </p>
-              <Button href="/contact" className="gap-2">
-                Contact Us <ArrowRight className="w-5 h-5" />
-              </Button>
+      <section className="pb-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-xl p-12 text-center">
+            <div className="inline-flex items-center justify-center p-3 bg-white/10 rounded-full mb-6 backdrop-blur-sm">
+              <MessageCircle className="w-8 h-8 text-white" />
             </div>
+            <h2 className="text-3xl font-bold text-white mb-4">
+              Still Have Questions?
+            </h2>
+            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+              We're here to help! Contact us for detailed information about our 
+              trading partnership opportunity.
+            </p>
+            <Button 
+              href="/contact" 
+              variant="secondary"
+              className="bg-white text-blue-600 hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Contact Us <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
           </div>
         </div>
       </section>

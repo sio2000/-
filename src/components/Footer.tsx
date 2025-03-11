@@ -7,7 +7,6 @@ import {
   Linkedin, 
   Mail, 
   Shield, 
-  AlertTriangle,
   ExternalLink
 } from 'lucide-react';
 
@@ -20,7 +19,7 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-bold text-lg mb-4">About Us</h3>
             <p className="text-sm mb-4">
-              Advanced AI-powered Forex trading solution delivering consistent returns through automated strategies and risk management.
+              Advanced Forex trading solution delivering consistent returns through automated strategies and risk management.
             </p>
             <div className="flex gap-4">
               <a 
@@ -33,19 +32,25 @@ const Footer = () => {
               </a>
               <a 
                 href="https://twitter.com" 
-                className="bg-[#1DA1F2] p-2 rounded-lg text-white hover:bg-[#1D8FF2] transition-colors"
+                className="bg-[#1DA1F2] p-2 rounded-lg text-white hover:bg-[#1A8CD8] transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Twitter className="w-5 h-5" />
               </a>
               <a 
                 href="https://instagram.com" 
-                className="bg-[#E4405F] p-2 rounded-lg text-white hover:bg-[#D4304F] transition-colors"
+                className="bg-[#E4405F] p-2 rounded-lg text-white hover:bg-[#D93A54] transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a 
                 href="https://linkedin.com" 
                 className="bg-[#0A66C2] p-2 rounded-lg text-white hover:bg-[#0955A2] transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -55,52 +60,61 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h3 className="text-white font-bold text-lg mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2">
               <li>
-                <Link to="/backtests" className="hover:text-blue-400 transition-colors">Backtest Results</Link>
+                <Link to="/backtests" className="hover:text-blue-400 transition-colors">
+                  Backtest Results
+                </Link>
               </li>
               <li>
-                <Link to="/live-vs-backtest" className="hover:text-blue-400 transition-colors">Live vs Backtest</Link>
+                <Link to="/live-vs-backtest" className="hover:text-blue-400 transition-colors">
+                  Live vs Backtest
+                </Link>
               </li>
               <li>
-                <Link to="/monthly-performance" className="hover:text-blue-400 transition-colors">Monthly Performance</Link>
+                <Link to="/monthly-performance" className="hover:text-blue-400 transition-colors">
+                  Monthly Performance
+                </Link>
               </li>
               <li>
-                <Link to="/business-plan" className="hover:text-blue-400 transition-colors">Business Plan</Link>
+                <Link to="/business-plan" className="hover:text-blue-400 transition-colors">
+                  Business Plan
+                </Link>
               </li>
               <li>
-                <Link to="/faq" className="hover:text-blue-400 transition-colors">FAQ</Link>
+                <Link to="/faq" className="hover:text-blue-400 transition-colors">
+                  FAQ
+                </Link>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-blue-400 transition-colors">Contact</Link>
+                <Link to="/contact" className="hover:text-blue-400 transition-colors">
+                  Contact
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Legal & Security */}
+          {/* Legal */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-4">Legal & Security</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
               <li>
-                <Link to="/privacy-policy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
+                <Link to="/privacy-policy" className="hover:text-blue-400 transition-colors">
+                  Privacy Policy
+                </Link>
               </li>
               <li>
-                <Link to="/terms-of-service" className="hover:text-blue-400 transition-colors">Terms of Service</Link>
-              </li>
-              <li>
-                <Link to="/risk-disclosure" className="hover:text-blue-400 transition-colors">Risk Disclosure</Link>
-              </li>
-              <li className="flex items-center gap-2">
-                <Shield className="w-4 h-4" />
-                <span>256-bit SSL Protection</span>
+                <Link to="/terms-of-service" className="hover:text-blue-400 transition-colors">
+                  Terms of Service
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Contact & Verification */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-4">Verification</h3>
-            <ul className="space-y-3 text-sm">
+            <h3 className="text-white font-bold text-lg mb-4">Contact & Verification</h3>
+            <ul className="space-y-2">
               <li>
                 <a 
                   href="https://www.myfxbook.com/members/giannis/funded-instatrader/10605583" 
