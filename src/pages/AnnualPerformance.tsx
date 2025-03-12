@@ -396,68 +396,88 @@ const AnnualPerformance = () => {
         </div>
       </div>
 
-      {/* Annual Statistics */}
-      <section className="py-16 bg-gradient-to-br from-gray-900 via-blue-900 to-blue-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">
-            Annual Performance Statistics
-          </h2>
-          <p className="text-blue-200 text-center mb-12 max-w-2xl mx-auto">
-            Year-over-year analysis of our trading strategy's performance
-          </p>
+      {/* Add mobile-only styles */}
+      <style jsx>{`
+        /* Mobile-only styles (max-width: 768px) */
+        @media (max-width: 768px) {
+          /* Make charts scrollable on mobile */
+          .chart-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
 
-          {/* Stats Grid - Add scrollbar-hide for mobile */}
-          <div className="overflow-x-auto scrollbar-hide">
-            <div className="min-w-[768px]">
-              {/* Keep original grid */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                {/* ... existing stat cards stay the same ... */}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <style jsx>{`
-          /* Hide scrollbar for Chrome, Safari and Opera */
-          .scrollbar-hide::-webkit-scrollbar {
+          /* Hide scrollbars but keep functionality */
+          .chart-container::-webkit-scrollbar {
             display: none;
           }
-
-          /* Hide scrollbar for IE, Edge and Firefox */
-          .scrollbar-hide {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+          
+          .chart-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
           }
-        `}</style>
-      </section>
 
-      {/* Annual Chart Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Chart Container - Add scrollbar-hide for mobile */}
-          <div className="overflow-x-auto scrollbar-hide">
-            <div className="min-w-[768px]">
-              <div className="bg-white rounded-2xl shadow-lg p-8">
-                {/* ... existing chart content stays the same ... */}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          /* Adjust padding for mobile */
+          .p-8 {
+            padding: 1rem;
+          }
 
-      {/* Annual Details Table */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Table Container - Add scrollbar-hide for mobile */}
-          <div className="overflow-x-auto scrollbar-hide">
-            <div className="min-w-[768px]">
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                {/* ... existing table content stays the same ... */}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          /* Stack grid items on mobile */
+          .grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+
+          /* Make images responsive */
+          img {
+            max-width: 100%;
+            height: auto;
+          }
+
+          /* Adjust chart heights for mobile */
+          .h-[400px] {
+            height: 300px;
+          }
+
+          /* Ensure charts are responsive */
+          .recharts-wrapper {
+            max-width: 100%;
+          }
+
+          /* Add horizontal scrolling for tables */
+          .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+
+          /* Reduce text sizes on mobile */
+          .text-4xl {
+            font-size: 2rem;
+          }
+
+          .text-2xl {
+            font-size: 1.5rem;
+          }
+
+          /* Adjust spacing */
+          .mb-6 {
+            margin-bottom: 1rem;
+          }
+
+          .gap-8 {
+            gap: 1rem;
+          }
+        }
+      `}</style>
+
+      {/* Wrap charts in scrollable containers for mobile */}
+      <div className="chart-container">
+        {/* ... existing chart content ... */}
+      </div>
+
+      {/* Wrap tables in scrollable containers for mobile */}
+      <div className="table-container">
+        {/* ... existing table content ... */}
+      </div>
     </div>
   );
 };
