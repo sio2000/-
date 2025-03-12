@@ -107,98 +107,115 @@ const MonthlyPerformance = () => {
             Consistent performance across multiple metrics, demonstrating the reliability of our trading strategy
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {[
-              {
-                label: "Average Monthly Return",
-                value: "3.0%",
-                icon: "📈",
-                description: "Consistent monthly performance",
-                trend: "Stable",
-                trendColor: "text-green-400"
-              },
-              {
-                label: "Average Trades per Month",
-                value: "14",
-                icon: "🎯",
-                description: "Selective trading approach",
-                trend: "Optimal",
-                trendColor: "text-blue-400"
-              },
-              {
-                label: "Average Win Rate",
-                value: "69.6%",
-                icon: "🏆",
-                description: "High probability setups",
-                trend: "Strong",
-                trendColor: "text-green-400"
-              },
-              {
-                label: "Best Month",
-                value: "3.3%",
-                icon: "⭐",
-                description: "Peak performance",
-                trend: "July 2023",
-                trendColor: "text-yellow-400"
-              },
-              {
-                label: "Worst Month",
-                value: "2.7%",
-                icon: "📊",
-                description: "Risk-managed downside",
-                trend: "August 2023",
-                trendColor: "text-blue-400"
-              },
-              {
-                label: "Consecutive Winning Months",
-                value: "12",
-                icon: "🔄",
-                description: "Unbroken success streak",
-                trend: "Ongoing",
-                trendColor: "text-green-400"
-              }
-            ].map((stat, index) => (
-              <div 
-                key={index}
-                className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-6 
-                  transform hover:-translate-y-1 transition-all duration-300
-                  hover:bg-white/15 group animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <span className="text-4xl mb-4 block" role="img" aria-label={stat.label}>
-                      {stat.icon}
-                    </span>
-                    <h3 className="text-lg font-medium text-blue-100 group-hover:text-white transition-colors">
-                      {stat.label}
-                    </h3>
-                  </div>
-                  <span className="text-3xl font-bold text-white">
-                    {stat.value}
-                  </span>
-                </div>
-                
-                <p className="text-blue-200 text-sm mb-3">
-                  {stat.description}
-                </p>
-                
-                <div className="flex items-center gap-2">
-                  <div className="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
-                    <div className="h-full w-2/3 bg-gradient-to-r from-blue-400 to-blue-300 rounded-full"></div>
-                  </div>
-                  <span className={`text-sm font-medium ${stat.trendColor}`}>
-                    {stat.trend}
-                  </span>
-                </div>
+          <div className="overflow-x-auto scrollbar-hide">
+            <div className="min-w-[768px]">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                {[
+                  {
+                    label: "Average Monthly Return",
+                    value: "3.0%",
+                    icon: "📈",
+                    description: "Consistent monthly performance",
+                    trend: "Stable",
+                    trendColor: "text-green-400"
+                  },
+                  {
+                    label: "Average Trades per Month",
+                    value: "14",
+                    icon: "🎯",
+                    description: "Selective trading approach",
+                    trend: "Optimal",
+                    trendColor: "text-blue-400"
+                  },
+                  {
+                    label: "Average Win Rate",
+                    value: "69.6%",
+                    icon: "🏆",
+                    description: "High probability setups",
+                    trend: "Strong",
+                    trendColor: "text-green-400"
+                  },
+                  {
+                    label: "Best Month",
+                    value: "3.3%",
+                    icon: "⭐",
+                    description: "Peak performance",
+                    trend: "July 2023",
+                    trendColor: "text-yellow-400"
+                  },
+                  {
+                    label: "Worst Month",
+                    value: "2.7%",
+                    icon: "📊",
+                    description: "Risk-managed downside",
+                    trend: "August 2023",
+                    trendColor: "text-blue-400"
+                  },
+                  {
+                    label: "Consecutive Winning Months",
+                    value: "12",
+                    icon: "🔄",
+                    description: "Unbroken success streak",
+                    trend: "Ongoing",
+                    trendColor: "text-green-400"
+                  }
+                ].map((stat, index) => (
+                  <div 
+                    key={index}
+                    className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-6 
+                      transform hover:-translate-y-1 transition-all duration-300
+                      hover:bg-white/15 group animate-fade-in"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <span className="text-4xl mb-4 block" role="img" aria-label={stat.label}>
+                          {stat.icon}
+                        </span>
+                        <h3 className="text-lg font-medium text-blue-100 group-hover:text-white transition-colors">
+                          {stat.label}
+                        </h3>
+                      </div>
+                      <span className="text-3xl font-bold text-white">
+                        {stat.value}
+                      </span>
+                    </div>
+                    
+                    <p className="text-blue-200 text-sm mb-3">
+                      {stat.description}
+                    </p>
+                    
+                    <div className="flex items-center gap-2">
+                      <div className="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
+                        <div className="h-full w-2/3 bg-gradient-to-r from-blue-400 to-blue-300 rounded-full"></div>
+                      </div>
+                      <span className={`text-sm font-medium ${stat.trendColor}`}>
+                        {stat.trend}
+                      </span>
+                    </div>
 
-                {/* Decorative Elements */}
-                <div className="absolute top-0 right-0 -mt-2 -mr-2 w-24 h-24 bg-blue-400/10 rounded-full blur-2xl group-hover:bg-blue-400/20 transition-all duration-300"></div>
-                <div className="absolute bottom-0 left-0 -mb-2 -ml-2 w-16 h-16 bg-white/5 rounded-full blur-xl"></div>
+                    {/* Decorative Elements */}
+                    <div className="absolute top-0 right-0 -mt-2 -mr-2 w-24 h-24 bg-blue-400/10 rounded-full blur-2xl group-hover:bg-blue-400/20 transition-all duration-300"></div>
+                    <div className="absolute bottom-0 left-0 -mb-2 -ml-2 w-16 h-16 bg-white/5 rounded-full blur-xl"></div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
+
+        <style jsx>{`
+          /* Hide scrollbar for Chrome, Safari and Opera */
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+
+          /* Hide scrollbar for IE, Edge and Firefox */
+          .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+          }
+        `}</style>
       </section>
 
       {/* Monthly Details Table */}
@@ -207,54 +224,58 @@ const MonthlyPerformance = () => {
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
             Detailed Monthly Breakdown
           </h2>
-          <div className="bg-white rounded-xl shadow-xl overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead>
-                  <tr className="bg-gradient-to-r from-blue-50 to-indigo-50">
-                    {["Month", "Return", "Trades", "Win Rate"].map((header, index) => (
-                      <th
-                        key={index}
-                        className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"
-                      >
-                        {header}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  {monthlyData.map((month, index) => (
-                    <tr 
-                      key={index}
-                      className="hover:bg-blue-50/50 transition-colors duration-200"
-                    >
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="text-sm font-semibold text-gray-900">
-                          {month.month}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="text-sm font-bold text-blue-600">
-                          {month.return}%
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="text-sm text-gray-900">
-                          {month.trades}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                          ${month.winRate >= 70 ? 'bg-green-100 text-green-800' : 
-                          month.winRate >= 65 ? 'bg-blue-100 text-blue-800' : 
-                          'bg-gray-100 text-gray-800'}`}>
-                          {month.winRate}%
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+          <div className="overflow-x-auto">
+            <div className="min-w-[768px]">
+              <div className="bg-white rounded-xl shadow-xl overflow-hidden">
+                <div className="overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead>
+                      <tr className="bg-gradient-to-r from-blue-50 to-indigo-50">
+                        {["Month", "Return", "Trades", "Win Rate"].map((header, index) => (
+                          <th
+                            key={index}
+                            className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider"
+                          >
+                            {header}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
+                      {monthlyData.map((month, index) => (
+                        <tr 
+                          key={index}
+                          className="hover:bg-blue-50/50 transition-colors duration-200"
+                        >
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <span className="text-sm font-semibold text-gray-900">
+                              {month.month}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <span className="text-sm font-bold text-blue-600">
+                              {month.return}%
+                            </span>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <span className="text-sm text-gray-900">
+                              {month.trades}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                              ${month.winRate >= 70 ? 'bg-green-100 text-green-800' : 
+                              month.winRate >= 65 ? 'bg-blue-100 text-blue-800' : 
+                              'bg-gray-100 text-gray-800'}`}>
+                              {month.winRate}%
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>

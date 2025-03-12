@@ -395,6 +395,69 @@ const AnnualPerformance = () => {
           </div>
         </div>
       </div>
+
+      {/* Annual Statistics */}
+      <section className="py-16 bg-gradient-to-br from-gray-900 via-blue-900 to-blue-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">
+            Annual Performance Statistics
+          </h2>
+          <p className="text-blue-200 text-center mb-12 max-w-2xl mx-auto">
+            Year-over-year analysis of our trading strategy's performance
+          </p>
+
+          {/* Stats Grid - Add scrollbar-hide for mobile */}
+          <div className="overflow-x-auto scrollbar-hide">
+            <div className="min-w-[768px]">
+              {/* Keep original grid */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                {/* ... existing stat cards stay the same ... */}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <style jsx>{`
+          /* Hide scrollbar for Chrome, Safari and Opera */
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+
+          /* Hide scrollbar for IE, Edge and Firefox */
+          .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+          }
+        `}</style>
+      </section>
+
+      {/* Annual Chart Section */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Chart Container - Add scrollbar-hide for mobile */}
+          <div className="overflow-x-auto scrollbar-hide">
+            <div className="min-w-[768px]">
+              <div className="bg-white rounded-2xl shadow-lg p-8">
+                {/* ... existing chart content stays the same ... */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Annual Details Table */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Table Container - Add scrollbar-hide for mobile */}
+          <div className="overflow-x-auto scrollbar-hide">
+            <div className="min-w-[768px]">
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                {/* ... existing table content stays the same ... */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
