@@ -100,108 +100,153 @@ const MonthlyPerformance = () => {
       {/* Monthly Statistics */}
       <section className="py-16 bg-gradient-to-br from-gray-900 via-blue-900 to-blue-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">
-            Performance Statistics
-          </h2>
-          <p className="text-blue-200 text-center mb-12 max-w-2xl mx-auto">
-            Consistent performance across multiple metrics, demonstrating the reliability of our trading strategy
-          </p>
-
-          <div className="table-container">
-            <div className="overflow-x-auto">
-              <div className="min-w-[768px]">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                  {[
-                    {
-                      label: "Average Monthly Return",
-                      value: "3.0%",
-                      icon: "📈",
-                      description: "Consistent monthly performance",
-                      trend: "Stable",
-                      trendColor: "text-green-400"
-                    },
-                    {
-                      label: "Average Trades per Month",
-                      value: "14",
-                      icon: "🎯",
-                      description: "Selective trading approach",
-                      trend: "Optimal",
-                      trendColor: "text-blue-400"
-                    },
-                    {
-                      label: "Average Win Rate",
-                      value: "69.6%",
-                      icon: "🏆",
-                      description: "High probability setups",
-                      trend: "Strong",
-                      trendColor: "text-green-400"
-                    },
-                    {
-                      label: "Best Month",
-                      value: "3.3%",
-                      icon: "⭐",
-                      description: "Peak performance",
-                      trend: "July 2023",
-                      trendColor: "text-yellow-400"
-                    },
-                    {
-                      label: "Worst Month",
-                      value: "2.7%",
-                      icon: "📊",
-                      description: "Risk-managed downside",
-                      trend: "August 2023",
-                      trendColor: "text-blue-400"
-                    },
-                    {
-                      label: "Consecutive Winning Months",
-                      value: "12",
-                      icon: "🔄",
-                      description: "Unbroken success streak",
-                      trend: "Ongoing",
-                      trendColor: "text-green-400"
-                    }
-                  ].map((stat, index) => (
-                    <div 
-                      key={index}
-                      className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-6 
-                        transform hover:-translate-y-1 transition-all duration-300
-                        hover:bg-white/15 group animate-fade-in"
-                      style={{ animationDelay: `${index * 100}ms` }}
-                    >
-                      <div className="flex items-start justify-between mb-4">
-                        <div>
-                          <span className="text-4xl mb-4 block" role="img" aria-label={stat.label}>
-                            {stat.icon}
-                          </span>
-                          <h3 className="text-lg font-medium text-blue-100 group-hover:text-white transition-colors">
-                            {stat.label}
-                          </h3>
-                        </div>
-                        <span className="text-3xl font-bold text-white">
-                          {stat.value}
-                        </span>
-                      </div>
-                      
-                      <p className="text-blue-200 text-sm mb-3">
-                        {stat.description}
-                      </p>
-                      
-                      <div className="flex items-center gap-2">
-                        <div className="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
-                          <div className="h-full w-2/3 bg-gradient-to-r from-blue-400 to-blue-300 rounded-full"></div>
-                        </div>
-                        <span className={`text-sm font-medium ${stat.trendColor}`}>
-                          {stat.trend}
-                        </span>
-                      </div>
-
-                      {/* Decorative Elements */}
-                      <div className="absolute top-0 right-0 -mt-2 -mr-2 w-24 h-24 bg-blue-400/10 rounded-full blur-2xl group-hover:bg-blue-400/20 transition-all duration-300"></div>
-                      <div className="absolute bottom-0 left-0 -mb-2 -ml-2 w-16 h-16 bg-white/5 rounded-full blur-xl"></div>
+          <div className="stats-container">
+            {/* Top 3 stats */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+              {[
+                {
+                  label: "Average Monthly Return",
+                  value: "3.0%",
+                  icon: "📈",
+                  description: "Consistent monthly performance",
+                  trend: "Stable",
+                  trendColor: "text-green-400"
+                },
+                {
+                  label: "Average Trades per Month",
+                  value: "14",
+                  icon: "🎯",
+                  description: "Selective trading approach",
+                  trend: "Optimal",
+                  trendColor: "text-blue-400"
+                },
+                {
+                  label: "Average Win Rate",
+                  value: "69.6%",
+                  icon: "🏆",
+                  description: "High probability setups",
+                  trend: "Strong",
+                  trendColor: "text-green-400"
+                }
+              ].map((stat, index) => (
+                <div 
+                  key={index}
+                  className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-6 
+                    transform hover:-translate-y-1 transition-all duration-300
+                    hover:bg-white/15 group animate-fade-in"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <span className="text-4xl mb-4 block" role="img" aria-label={stat.label}>
+                        {stat.icon}
+                      </span>
+                      <h3 className="text-lg font-medium text-blue-100 group-hover:text-white transition-colors">
+                        {stat.label}
+                      </h3>
                     </div>
-                  ))}
+                    <span className="text-3xl font-bold text-white">
+                      {stat.value}
+                    </span>
+                  </div>
+                  
+                  <p className="text-blue-200 text-sm mb-3">
+                    {stat.description}
+                  </p>
+                  
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
+                      <div className="h-full w-2/3 bg-gradient-to-r from-blue-400 to-blue-300 rounded-full"></div>
+                    </div>
+                    <span className={`text-sm font-medium ${stat.trendColor}`}>
+                      {stat.trend}
+                    </span>
+                  </div>
+
+                  {/* Decorative Elements */}
+                  <div className="absolute top-0 right-0 -mt-2 -mr-2 w-24 h-24 bg-blue-400/10 rounded-full blur-2xl group-hover:bg-blue-400/20 transition-all duration-300"></div>
+                  <div className="absolute bottom-0 left-0 -mb-2 -ml-2 w-16 h-16 bg-white/5 rounded-full blur-xl"></div>
                 </div>
-              </div>
+              ))}
+            </div>
+
+            {/* Center text */}
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Performance Statistics
+              </h2>
+              <p className="text-blue-200 max-w-3xl mx-auto">
+                Consistent performance across multiple metrics, demonstrating the reliability of our trading strategy
+              </p>
+            </div>
+
+            {/* Bottom 3 stats */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  label: "Best Month",
+                  value: "3.3%",
+                  icon: "⭐",
+                  description: "Peak performance",
+                  trend: "July 2023",
+                  trendColor: "text-yellow-400"
+                },
+                {
+                  label: "Worst Month",
+                  value: "2.7%",
+                  icon: "📊",
+                  description: "Risk-managed downside",
+                  trend: "August 2023",
+                  trendColor: "text-blue-400"
+                },
+                {
+                  label: "Consecutive Winning Months",
+                  value: "12",
+                  icon: "🔄",
+                  description: "Unbroken success streak",
+                  trend: "Ongoing",
+                  trendColor: "text-green-400"
+                }
+              ].map((stat, index) => (
+                <div 
+                  key={index}
+                  className="relative bg-white/10 backdrop-blur-lg rounded-2xl p-6 
+                    transform hover:-translate-y-1 transition-all duration-300
+                    hover:bg-white/15 group animate-fade-in"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <span className="text-4xl mb-4 block" role="img" aria-label={stat.label}>
+                        {stat.icon}
+                      </span>
+                      <h3 className="text-lg font-medium text-blue-100 group-hover:text-white transition-colors">
+                        {stat.label}
+                      </h3>
+                    </div>
+                    <span className="text-3xl font-bold text-white">
+                      {stat.value}
+                    </span>
+                  </div>
+                  
+                  <p className="text-blue-200 text-sm mb-3">
+                    {stat.description}
+                  </p>
+                  
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
+                      <div className="h-full w-2/3 bg-gradient-to-r from-blue-400 to-blue-300 rounded-full"></div>
+                    </div>
+                    <span className={`text-sm font-medium ${stat.trendColor}`}>
+                      {stat.trend}
+                    </span>
+                  </div>
+
+                  {/* Decorative Elements */}
+                  <div className="absolute top-0 right-0 -mt-2 -mr-2 w-24 h-24 bg-blue-400/10 rounded-full blur-2xl group-hover:bg-blue-400/20 transition-all duration-300"></div>
+                  <div className="absolute bottom-0 left-0 -mb-2 -ml-2 w-16 h-16 bg-white/5 rounded-full blur-xl"></div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

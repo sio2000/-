@@ -43,41 +43,122 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative pt-20 pb-32">
-        {/* Video Background */}
-        <div className="absolute inset-0 z-0">
-          <video
-            className="w-full h-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-          >
-            <source src="/src/assets/video/fvid.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        </div>
+      {/* Add mobile-only styles */}
+      <style jsx>{`
+        /* Mobile-only styles (max-width: 768px) */
+        @media (max-width: 768px) {
+          /* Make sections scrollable on mobile */
+          .scroll-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
 
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Advanced Forex Trading <br />
-              <span className="text-blue-400">Powered by Human Expertise</span>
-            </h1>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-24">
-              <Button
-                href="https://www.myfxbook.com/members/giannis/funded-instatrader/10605583"
-                className="gap-2"
-              >
-                View on MyFXBook <ArrowRight className="w-5 h-5" />
-              </Button>
-              <Button variant="secondary" href="/contact" className="gap-2">
-                Contact Me <ArrowRight className="w-5 h-5" />
-              </Button>
+          /* Hide scrollbars but keep functionality */
+          .scroll-container::-webkit-scrollbar {
+            display: none;
+          }
+          
+          .scroll-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+
+          /* Adjust padding for mobile */
+          .p-8 {
+            padding: 1rem;
+          }
+
+          /* Stack grid items on mobile */
+          .grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+
+          /* Make images and videos responsive */
+          img, video {
+            max-width: 100%;
+            height: auto;
+          }
+
+          /* Ensure feature cards stack properly */
+          .features-grid {
+            grid-template-columns: 1fr;
+          }
+
+          /* Reduce text sizes on mobile */
+          .text-4xl {
+            font-size: 2rem;
+          }
+
+          .text-2xl {
+            font-size: 1.5rem;
+          }
+
+          /* Adjust spacing */
+          .mb-6 {
+            margin-bottom: 1rem;
+          }
+
+          .gap-8 {
+            gap: 1rem;
+          }
+
+          /* Adjust hero section for mobile */
+          .hero-content {
+            padding-left: 1rem;
+            padding-right: 1rem;
+          }
+
+          /* Make buttons stack on mobile */
+          .button-container {
+            flex-direction: column;
+            gap: 1rem;
+          }
+
+          /* Adjust feature section spacing */
+          .feature-section {
+            padding: 2rem 1rem;
+          }
+        }
+      `}</style>
+
+      {/* Hero Section */}
+      <section className="hero-section relative pt-20 pb-32">
+        <div className="scroll-container">
+          {/* Video Background */}
+          <div className="absolute inset-0 z-0">
+            <video
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src="/src/assets/video/fvid.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+          </div>
+
+          {/* Content */}
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                Advanced Forex Trading <br />
+                <span className="text-blue-400">Powered by Human Expertise</span>
+              </h1>
+              <div className="button-container flex flex-col sm:flex-row gap-4 justify-center mt-24">
+                <Button
+                  href="https://www.myfxbook.com/members/giannis/funded-instatrader/10605583"
+                  className="gap-2"
+                >
+                  View on MyFXBook <ArrowRight className="w-5 h-5" />
+                </Button>
+                <Button variant="secondary" href="/contact" className="gap-2">
+                  Contact Me <ArrowRight className="w-5 h-5" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -245,31 +326,33 @@ const Home = () => {
       </section>
 
       {/* Key Features Grid */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h3 className="text-3xl font-bold text-gray-900 mb-12 text-center animate-fade-in">
-            Key Features
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div 
-                key={index} 
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-gradient-to-br from-white to-blue-50 group"
-              >
-                <div className="bg-blue-50 w-16 h-16 rounded-lg flex items-center justify-center mb-6 transform group-hover:rotate-6 transition-all duration-300 group-hover:bg-blue-100">
-                  <div className="transform group-hover:scale-110 transition-transform duration-300">
-                    {feature.icon}
+      <section className="feature-section py-20">
+        <div className="scroll-container">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 className="text-3xl font-bold text-gray-900 mb-12 text-center animate-fade-in">
+              Key Features
+            </h3>
+            <div className="features-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {features.map((feature, index) => (
+                <div 
+                  key={index} 
+                  className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-gradient-to-br from-white to-blue-50 group"
+                >
+                  <div className="bg-blue-50 w-16 h-16 rounded-lg flex items-center justify-center mb-6 transform group-hover:rotate-6 transition-all duration-300 group-hover:bg-blue-100">
+                    <div className="transform group-hover:scale-110 transition-transform duration-300">
+                      {feature.icon}
+                    </div>
                   </div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
+                    {feature.title}
+                  </h4>
+                  <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">
+                    {feature.description}
+                  </p>
+                  <div className="mt-6 h-1 w-0 group-hover:w-1/3 bg-blue-500 transition-all duration-300"></div>
                 </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
-                  {feature.title}
-                </h4>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">
-                  {feature.description}
-                </p>
-                <div className="mt-6 h-1 w-0 group-hover:w-1/3 bg-blue-500 transition-all duration-300"></div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -338,61 +421,63 @@ const Home = () => {
 
       {/* Navigation Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Explore Our Journey
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Discover our comprehensive business plan and learn more about our story
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Business Plan Card */}
-            <div className="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="absolute top-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-bl-xl rounded-tr-xl">
-                Featured
-              </div>
-              <div className="flex flex-col h-full">
-                <div className="mb-6">
-                  <div className="bg-blue-100 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
-                    <Building2 className="w-8 h-8 text-blue-600" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    Business Plan
-                  </h3>
-                  <p className="text-gray-600">
-                    Explore our comprehensive investment structure, projected returns, and partnership opportunities.
-                  </p>
-                </div>
-                <Button href="/business-plan" className="mt-auto gap-2 w-full justify-center">
-                  View Business Plan <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </div>
+        <div className="scroll-container">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Explore Our Journey
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Discover our comprehensive business plan and learn more about our story
+              </p>
             </div>
 
-            {/* Biography Card */}
-            <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="flex flex-col h-full">
-                <div className="mb-6">
-                  <div className="bg-green-100 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
-                    <BookOpen className="w-8 h-8 text-green-600" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    Our Biography
-                  </h3>
-                  <p className="text-gray-600">
-                    Learn about our journey, expertise, and proven track record in Forex trading.
-                  </p>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {/* Business Plan Card */}
+              <div className="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="absolute top-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-bl-xl rounded-tr-xl">
+                  Featured
                 </div>
-                <Button 
-                  href="/biography" 
-                  variant="secondary"
-                  className="mt-auto gap-2 w-full justify-center bg-white text-green-600 border-green-200 hover:bg-green-50"
-                >
-                  Read Our Story <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <div className="flex flex-col h-full">
+                  <div className="mb-6">
+                    <div className="bg-blue-100 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
+                      <Building2 className="w-8 h-8 text-blue-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                      Business Plan
+                    </h3>
+                    <p className="text-gray-600">
+                      Explore our comprehensive investment structure, projected returns, and partnership opportunities.
+                    </p>
+                  </div>
+                  <Button href="/business-plan" className="mt-auto gap-2 w-full justify-center">
+                    View Business Plan <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* Biography Card */}
+              <div className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="flex flex-col h-full">
+                  <div className="mb-6">
+                    <div className="bg-green-100 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
+                      <BookOpen className="w-8 h-8 text-green-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                      Our Biography
+                    </h3>
+                    <p className="text-gray-600">
+                      Learn about our journey, expertise, and proven track record in Forex trading.
+                    </p>
+                  </div>
+                  <Button 
+                    href="/biography" 
+                    variant="secondary"
+                    className="mt-auto gap-2 w-full justify-center bg-white text-green-600 border-green-200 hover:bg-green-50"
+                  >
+                    Read Our Story <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

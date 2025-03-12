@@ -72,9 +72,87 @@ const LiveVsBacktest = () => {
         </div>
       </section>
 
-      {/* Performance Comparison Chart */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Add mobile-only styles */}
+      <style jsx>{`
+        /* Mobile-only styles (max-width: 768px) */
+        @media (max-width: 768px) {
+          /* Make charts scrollable on mobile */
+          .chart-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+
+          /* Hide scrollbars but keep functionality */
+          .chart-container::-webkit-scrollbar {
+            display: none;
+          }
+          
+          .chart-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+
+          /* Adjust padding for mobile */
+          .p-8 {
+            padding: 1rem;
+          }
+
+          /* Stack grid items on mobile */
+          .grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+
+          /* Make images responsive */
+          img {
+            max-width: 100%;
+            height: auto;
+          }
+
+          /* Adjust chart heights for mobile */
+          .h-[400px] {
+            height: 300px;
+          }
+
+          /* Ensure charts are responsive */
+          .recharts-wrapper {
+            max-width: 100%;
+          }
+
+          /* Add horizontal scrolling for tables */
+          .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+
+          /* Reduce text sizes on mobile */
+          .text-4xl {
+            font-size: 2rem;
+          }
+
+          .text-2xl {
+            font-size: 1.5rem;
+          }
+
+          /* Adjust spacing */
+          .mb-6 {
+            margin-bottom: 1rem;
+          }
+
+          .gap-8 {
+            gap: 1rem;
+          }
+
+          /* Adjust metrics cards */
+          .metrics-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
+
+      {/* Wrap performance chart in scrollable container */}
+      <section className="mb-20">
+        <div className="chart-container">
           <div className="bg-white p-8 rounded-2xl shadow-lg">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
               Monthly Performance Comparison
@@ -109,19 +187,10 @@ const LiveVsBacktest = () => {
         </div>
       </section>
 
-      {/* Metrics Comparison */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Key Metrics Comparison
-            </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              Detailed analysis of performance metrics between live trading and backtesting results
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
+      {/* Wrap metrics in scrollable container */}
+      <section className="mb-20">
+        <div className="table-container">
+          <div className="metrics-grid grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {metrics.map((metric, index) => (
               <div 
                 key={index} 

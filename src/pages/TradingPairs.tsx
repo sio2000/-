@@ -18,74 +18,144 @@ const TradingPairs = () => {
             </div>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            {/* Major Pairs */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                Major Pairs (15)
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  'EUR/USD',
-                  'GBP/USD',
-                  'USD/JPY',
-                  'USD/CHF',
-                  'USD/CAD',
-                  'EUR/JPY',
-                  'EUR/GBP',
-                  'EUR/CHF',
-                  'EUR/CAD',
-                  'GBP/JPY',
-                  'GBP/CHF',
-                  'GBP/CAD',
-                  'CAD/JPY',
-                  'CAD/CHF',
-                  'CHF/JPY'
-                ].map((pair) => (
-                  <div 
-                    key={pair} 
-                    className="p-3 bg-gray-50 rounded-lg text-gray-700 transition-all duration-200
-                             hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:-translate-y-0.5
-                             hover:bg-white cursor-pointer"
-                  >
-                    {pair}
-                  </div>
-                ))}
-              </div>
-            </div>
+          {/* Add mobile-only styles */}
+          <style jsx>{`
+            /* Mobile-only styles (max-width: 768px) */
+            @media (max-width: 768px) {
+              /* Make sections scrollable on mobile */
+              .scroll-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+              }
 
-            {/* Minor Pairs */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                Minor Pairs (13)
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  'AUD/USD',
-                  'NZD/USD',
-                  'AUD/JPY',
-                  'AUD/CHF',
-                  'AUD/CAD',
-                  'AUD/NZD',
-                  'EUR/AUD',
-                  'EUR/NZD',
-                  'GBP/AUD',
-                  'GBP/NZD',
-                  'NZD/JPY',
-                  'NZD/CAD',
-                  'NZD/CHF'
-                ].map((pair) => (
-                  <div 
-                    key={pair} 
-                    className="p-3 bg-gray-50 rounded-lg text-gray-700 transition-all duration-200
-                             hover:shadow-[0_0_15px_rgba(34,197,94,0.5)] hover:-translate-y-0.5
-                             hover:bg-white cursor-pointer"
-                  >
-                    {pair}
-                  </div>
-                ))}
+              /* Hide scrollbars but keep functionality */
+              .scroll-container::-webkit-scrollbar {
+                display: none;
+              }
+              
+              .scroll-container {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+              }
+
+              /* Adjust padding for mobile */
+              .p-8 {
+                padding: 1rem;
+              }
+
+              /* Stack grid items on mobile */
+              .grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+              }
+
+              /* Make currency pair cards responsive */
+              .pair-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+              }
+
+              /* Make images responsive */
+              img {
+                max-width: 100%;
+                height: auto;
+              }
+
+              /* Reduce text sizes on mobile */
+              .text-4xl {
+                font-size: 2rem;
+              }
+
+              .text-2xl {
+                font-size: 1.5rem;
+              }
+
+              /* Adjust spacing */
+              .mb-6 {
+                margin-bottom: 1rem;
+              }
+
+              .gap-8 {
+                gap: 1rem;
+              }
+
+              /* Adjust benefit cards */
+              .benefit-card {
+                padding: 0.75rem;
+              }
+            }
+          `}</style>
+
+          {/* Wrap currency pairs in scrollable container */}
+          <div className="scroll-container">
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Major Pairs */}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                  Major Pairs (15)
+                </h3>
+                <div className="pair-grid grid grid-cols-2 gap-4">
+                  {[
+                    'EUR/USD',
+                    'GBP/USD',
+                    'USD/JPY',
+                    'USD/CHF',
+                    'USD/CAD',
+                    'EUR/JPY',
+                    'EUR/GBP',
+                    'EUR/CHF',
+                    'EUR/CAD',
+                    'GBP/JPY',
+                    'GBP/CHF',
+                    'GBP/CAD',
+                    'CAD/JPY',
+                    'CAD/CHF',
+                    'CHF/JPY'
+                  ].map((pair) => (
+                    <div 
+                      key={pair} 
+                      className="p-3 bg-gray-50 rounded-lg text-gray-700 transition-all duration-200
+                               hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:-translate-y-0.5
+                               hover:bg-white cursor-pointer"
+                    >
+                      {pair}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Minor Pairs */}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                  Minor Pairs (13)
+                </h3>
+                <div className="pair-grid grid grid-cols-2 gap-4">
+                  {[
+                    'AUD/USD',
+                    'NZD/USD',
+                    'AUD/JPY',
+                    'AUD/CHF',
+                    'AUD/CAD',
+                    'AUD/NZD',
+                    'EUR/AUD',
+                    'EUR/NZD',
+                    'GBP/AUD',
+                    'GBP/NZD',
+                    'NZD/JPY',
+                    'NZD/CAD',
+                    'NZD/CHF'
+                  ].map((pair) => (
+                    <div 
+                      key={pair} 
+                      className="p-3 bg-gray-50 rounded-lg text-gray-700 transition-all duration-200
+                               hover:shadow-[0_0_15px_rgba(34,197,94,0.5)] hover:-translate-y-0.5
+                               hover:bg-white cursor-pointer"
+                    >
+                      {pair}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -132,19 +202,22 @@ const TradingPairs = () => {
                 trading opportunities. Covering both Major and Minor Pairs allows us to:
               </p>
 
-              <div className="space-y-4 mb-8">
-                {[
-                  'Diversify risk – Reducing dependency on a single market.',
-                  'Unlock more trading opportunities – Capturing trends and movements across different pairs.',
-                  'Ensure consistent performance – Balancing stability from major pairs with dynamic moves from minor pairs.'
-                ].map((benefit, index) => (
-                  <div key={index} className="flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm">
-                    <div className="mt-1">
-                      <Check className="w-6 h-6 text-green-500" />
+              {/* Wrap benefits in scrollable container */}
+              <div className="scroll-container mt-12">
+                <div className="space-y-4">
+                  {[
+                    'Diversify risk – Reducing dependency on a single market.',
+                    'Unlock more trading opportunities – Capturing trends and movements across different pairs.',
+                    'Ensure consistent performance – Balancing stability from major pairs with dynamic moves from minor pairs.'
+                  ].map((benefit, index) => (
+                    <div key={index} className="benefit-card flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm">
+                      <div className="mt-1">
+                        <Check className="w-6 h-6 text-green-500" />
+                      </div>
+                      <p className="text-gray-700 text-lg">{benefit}</p>
                     </div>
-                    <p className="text-gray-700 text-lg">{benefit}</p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
 
               <p className="text-gray-600 text-lg mb-8">

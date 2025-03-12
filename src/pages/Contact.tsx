@@ -308,6 +308,161 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      {/* Add mobile-only styles */}
+      <style jsx>{`
+        /* Mobile-only styles (max-width: 768px) */
+        @media (max-width: 768px) {
+          /* Make sections scrollable on mobile */
+          .scroll-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 0 1rem;
+          }
+
+          /* Hide scrollbars but keep functionality */
+          .scroll-container::-webkit-scrollbar {
+            display: none;
+          }
+          
+          .scroll-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+
+          /* Adjust padding for mobile */
+          .p-8, .p-12 {
+            padding: 1.5rem;
+          }
+
+          /* Stack grid items on mobile */
+          .grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem;
+          }
+
+          /* Make images responsive */
+          img {
+            max-width: 100%;
+            height: auto;
+          }
+
+          /* Reduce text sizes on mobile */
+          .text-4xl {
+            font-size: 2rem;
+          }
+
+          .text-2xl {
+            font-size: 1.5rem;
+          }
+
+          .text-xl {
+            font-size: 1.125rem;
+          }
+
+          /* Adjust spacing */
+          .mb-6 {
+            margin-bottom: 1rem;
+          }
+
+          .mb-12 {
+            margin-bottom: 2rem;
+          }
+
+          .gap-8 {
+            gap: 1.5rem;
+          }
+
+          /* Contact form specific styles */
+          .form-container {
+            padding: 1.5rem;
+          }
+
+          .input-group {
+            margin-bottom: 1rem;
+          }
+
+          input, textarea {
+            font-size: 16px; /* Prevent iOS zoom */
+            padding: 0.75rem;
+          }
+
+          /* Make contact info stack on mobile */
+          .contact-info {
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 1.5rem;
+          }
+
+          .contact-card {
+            width: 100%;
+            padding: 1.25rem;
+          }
+
+          /* Adjust icon sizes and containers */
+          .icon-container {
+            width: 2.5rem;
+            height: 2.5rem;
+            min-width: 2.5rem;
+          }
+
+          /* Improve button touch targets */
+          button {
+            min-height: 44px;
+            width: 100%;
+          }
+
+          /* Adjust hero section padding */
+          .py-24 {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+          }
+
+          /* Stack social media icons */
+          .social-icons {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+          }
+
+          /* Make map responsive */
+          .map-container {
+            height: 300px;
+            margin: 1.5rem -1rem;
+          }
+
+          /* Adjust office hours table */
+          .hours-table {
+            font-size: 0.875rem;
+          }
+
+          .hours-table td {
+            padding: 0.5rem;
+          }
+
+          /* Make address cards stack */
+          .address-cards {
+            flex-direction: column;
+          }
+
+          /* Improve form layout */
+          .form-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+          }
+
+          .form-group {
+            margin-bottom: 1rem;
+          }
+
+          /* Adjust success/error messages */
+          .message-container {
+            margin: 1rem 0;
+            padding: 1rem;
+          }
+        }
+      `}</style>
     </div>
   );
 };

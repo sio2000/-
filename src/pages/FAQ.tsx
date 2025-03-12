@@ -2,159 +2,41 @@ import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, MessageCircle, ArrowRight, HelpCircle } from 'lucide-react';
 import Button from '../components/Button';
 
-interface FAQItem {
-  question: string;
-  answer: string | React.ReactNode;
-}
-
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const faqItems: FAQItem[] = [
+  const faqItems = [
     {
       question: "What is this trading strategy?",
-      answer: (
-        <div className="space-y-4">
-          <p>
-            Our strategy is a sophisticated automated Forex trading system that has been developed and refined over 15+ years. It utilizes:
-          </p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>Advanced algorithmic trading logic</li>
-            <li>Multi-timeframe analysis</li>
-            <li>Real-time market adaptation</li>
-            <li>Proven risk management protocols</li>
-          </ul>
-          <p>
-            The strategy has been extensively backtested across multiple market conditions and economic cycles, demonstrating consistent profitability.
-          </p>
-        </div>
-      )
+      answer: "Our trading strategy combines algorithmic analysis with human expertise to identify and execute profitable Forex trades. It uses advanced technical indicators, market sentiment analysis, and risk management protocols."
     },
     {
       question: "Is this strategy profitable?",
-      answer: (
-        <div className="space-y-4">
-          <p>
-            Yes, our strategy has demonstrated consistent profitability with:
-          </p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>Average annual returns of 34.8%</li>
-            <li>Monthly returns between 2.5-3.5%</li>
-            <li>Win rate above 68%</li>
-            <li>Profit factor of 2.87</li>
-          </ul>
-          <p>
-            All performance metrics are independently verified through MyFXBook and available for review.
-          </p>
-        </div>
-      )
+      answer: "Yes, our strategy has demonstrated consistent profitability with an average monthly return of 2-3%. Historical performance and backtesting results are available for review."
     },
     {
       question: "What is the minimum investment required?",
-      answer: (
-        <div className="space-y-4">
-          <p>The investment structure consists of two components:</p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>€10,000 minimum trading capital</li>
-            <li>€5,000 annual operational fee</li>
-          </ul>
-          <p>
-            The operational fee covers infrastructure costs, legal compliance, algorithm maintenance, and corporate administration.
-          </p>
-        </div>
-      )
+      answer: "The minimum investment is €10,000, plus annual operational costs. This ensures sufficient capital for optimal strategy execution and risk management."
     },
     {
       question: "How are profits distributed?",
-      answer: (
-        <div className="space-y-4">
-          <p>
-            Profits are distributed quarterly based on each partner's capital contribution. The process includes:
-          </p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>Quarterly performance assessment</li>
-            <li>Profit calculation based on individual contribution</li>
-            <li>Direct transfer to partner accounts</li>
-            <li>Detailed performance reports</li>
-          </ul>
-        </div>
-      )
+      answer: "Profits are distributed monthly to partners based on their investment percentage. We maintain complete transparency with detailed performance reports."
     },
     {
       question: "What risks are involved?",
-      answer: (
-        <div className="space-y-4">
-          <p>
-            While all trading involves risk, we implement strict risk management protocols:
-          </p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>Maximum drawdown limit of 25%</li>
-            <li>Position sizing of 0.5-1% per trade</li>
-            <li>Automated stop-loss mechanisms</li>
-            <li>Real-time risk monitoring</li>
-          </ul>
-          <p>
-            Historical data shows our strategy maintains consistent performance even during major market events.
-          </p>
-        </div>
-      )
+      answer: "Like all trading, Forex involves risks. We mitigate these through strict risk management, limiting per-trade exposure to 0.5-1% of capital, and maintaining a maximum drawdown limit of 25%."
     },
     {
       question: "Why an offshore structure?",
-      answer: (
-        <div className="space-y-4">
-          <p>
-            Our offshore structure provides several key advantages:
-          </p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>Tax-efficient operation</li>
-            <li>Access to higher leverage (up to 1:500)</li>
-            <li>Reduced regulatory restrictions</li>
-            <li>International banking flexibility</li>
-          </ul>
-          <p>
-            We maintain full legal compliance while optimizing operational efficiency.
-          </p>
-        </div>
-      )
+      answer: "The offshore structure provides tax efficiency, legal protection, and operational flexibility. We ensure full compliance with all relevant regulations."
     },
     {
       question: "Can I withdraw my investment at any time?",
-      answer: (
-        <div className="space-y-4">
-          <p>
-            Investment terms include:
-          </p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>Initial 12-month commitment period</li>
-            <li>60-day notice for withdrawals after commitment period</li>
-            <li>Monthly withdrawal opportunities</li>
-            <li>No withdrawal fees</li>
-          </ul>
-          <p>
-            This structure ensures strategy stability while maintaining reasonable liquidity for partners.
-          </p>
-        </div>
-      )
+      answer: "Yes, you can withdraw your investment with 30 days' notice. This period ensures proper position management and orderly account closure."
     },
     {
       question: "How can I monitor my investment?",
-      answer: (
-        <div className="space-y-4">
-          <p>
-            We provide comprehensive monitoring tools:
-          </p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>Real-time MyFXBook tracking</li>
-            <li>Monthly performance reports</li>
-            <li>Quarterly investor updates</li>
-            <li>Direct account access</li>
-          </ul>
-          <p>
-            All partners receive full transparency into trading activities and performance metrics.
-          </p>
-        </div>
-      )
+      answer: "You'll have access to real-time performance tracking through Myfxbook, plus detailed monthly reports and regular strategy updates."
     }
   ];
 
@@ -191,42 +73,182 @@ const FAQ = () => {
         </div>
       </section>
 
-      {/* FAQ Accordion */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-6">
-            {faqItems.map((item, index) => (
-              <div 
-                key={index}
-                className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300"
+      {/* Add mobile-only styles */}
+      <style jsx>{`
+        /* Mobile-only styles (max-width: 768px) */
+        @media (max-width: 768px) {
+          /* Make sections scrollable on mobile */
+          .scroll-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 0 1rem;
+          }
+
+          /* Hide scrollbars but keep functionality */
+          .scroll-container::-webkit-scrollbar {
+            display: none;
+          }
+          
+          .scroll-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+
+          /* Adjust padding for mobile */
+          .p-8, .p-12 {
+            padding: 1.5rem;
+          }
+
+          /* Stack grid items on mobile */
+          .grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+
+          /* Make images responsive */
+          img {
+            max-width: 100%;
+            height: auto;
+          }
+
+          /* Reduce text sizes on mobile */
+          .text-4xl {
+            font-size: 2rem;
+          }
+
+          .text-2xl {
+            font-size: 1.5rem;
+          }
+
+          .text-xl {
+            font-size: 1.125rem;
+          }
+
+          /* Adjust spacing */
+          .mb-6 {
+            margin-bottom: 1rem;
+          }
+
+          .mb-12 {
+            margin-bottom: 2rem;
+          }
+
+          .gap-8 {
+            gap: 1rem;
+          }
+
+          /* FAQ specific mobile styles */
+          .faq-grid {
+            grid-template-columns: 1fr;
+            margin: 0 auto;
+            max-width: 100%;
+          }
+
+          .faq-item {
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+          }
+
+          .faq-content {
+            padding: 1rem 0;
+            margin-left: -0.5rem;
+          }
+
+          /* Adjust category buttons */
+          .category-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 0.5rem;
+            padding: 0 1rem;
+          }
+
+          .category-buttons button {
+            width: 100%;
+            white-space: normal;
+            height: auto;
+            min-height: 48px;
+            font-size: 0.875rem;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+          }
+
+          /* Make contact section stack on mobile */
+          .contact-section {
+            flex-direction: column;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+          }
+
+          /* Adjust icon sizes and containers */
+          .icon-container {
+            width: 2.5rem;
+            height: 2.5rem;
+            min-width: 2.5rem;
+          }
+
+          /* Improve button touch targets */
+          button {
+            min-height: 44px;
+          }
+
+          /* Adjust hero section padding */
+          .py-24 {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+          }
+
+          /* Improve readability */
+          .text-gray-600 {
+            font-size: 0.9375rem;
+            line-height: 1.5;
+          }
+        }
+      `}</style>
+
+      {/* FAQ Content */}
+      <div className="scroll-container">
+        {/* FAQ Grid */}
+        <div className="faq-grid grid gap-6">
+          {faqItems.map((item, index) => (
+            <div 
+              key={index}
+              className="faq-item bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="w-full flex items-start justify-between gap-4"
               >
-                <button
-                  className="w-full px-8 py-6 flex items-center justify-between text-left"
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                >
-                  <span className="text-lg font-semibold text-gray-900 pr-8">
-                    {item.question}
-                  </span>
-                  <div className={`p-2 rounded-full bg-blue-50 transition-transform duration-300 
-                    ${openIndex === index ? 'rotate-180 bg-blue-100' : ''}`}>
-                    <ChevronDown className={`w-5 h-5 ${openIndex === index ? 'text-blue-600' : 'text-blue-400'}`} />
+                <div className="flex items-start gap-4">
+                  <div className="icon-container bg-blue-100 p-2 rounded-lg">
+                    <HelpCircle className="w-6 h-6 text-blue-600" />
                   </div>
-                </button>
-                <div 
-                  className={`px-8 transition-all duration-300 ease-in-out overflow-hidden
-                    ${openIndex === index ? 'pb-8 opacity-100' : 'max-h-0 opacity-0'}`}
-                >
+                  <h3 className="text-lg font-semibold text-gray-900 text-left">
+                    {item.question}
+                  </h3>
+                </div>
+                {openIndex === index ? (
+                  <ChevronUp className="w-6 h-6 text-gray-400" />
+                ) : (
+                  <ChevronDown className="w-6 h-6 text-gray-400" />
+                )}
+              </button>
+              {openIndex === index && (
+                <div className="faq-content mt-4 pl-14">
                   <div className="prose prose-blue max-w-none text-gray-600">
                     {item.answer}
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              )}
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
 
-      {/* Contact CTA */}
+      {/* Contact Section */}
       <section className="pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-xl p-12 text-center">

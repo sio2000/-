@@ -68,9 +68,87 @@ const Backtests = () => {
         </div>
       </section>
 
+      {/* Add mobile-only styles */}
+      <style jsx>{`
+        /* Mobile-only styles (max-width: 768px) */
+        @media (max-width: 768px) {
+          /* Make charts scrollable on mobile */
+          .chart-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+
+          /* Hide scrollbars but keep functionality */
+          .chart-container::-webkit-scrollbar {
+            display: none;
+          }
+          
+          .chart-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+
+          /* Adjust padding for mobile */
+          .p-8 {
+            padding: 1rem;
+          }
+
+          /* Stack grid items on mobile */
+          .grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+
+          /* Make images responsive */
+          img {
+            max-width: 100%;
+            height: auto;
+          }
+
+          /* Adjust chart heights for mobile */
+          .h-[400px] {
+            height: 300px;
+          }
+
+          /* Ensure charts are responsive */
+          .recharts-wrapper {
+            max-width: 100%;
+          }
+
+          /* Add horizontal scrolling for tables */
+          .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+
+          /* Reduce text sizes on mobile */
+          .text-4xl {
+            font-size: 2rem;
+          }
+
+          .text-2xl {
+            font-size: 1.5rem;
+          }
+
+          /* Adjust spacing */
+          .mb-6 {
+            margin-bottom: 1rem;
+          }
+
+          .gap-8 {
+            gap: 1rem;
+          }
+
+          /* Adjust statistics grid */
+          .stats-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
+
       {/* Historical Performance Section */}
       <section className="mb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="chart-container">
           <div className="bg-white p-8 rounded-2xl shadow-lg">
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
@@ -362,26 +440,21 @@ const Backtests = () => {
 
       {/* Key Performance Statistics */}
       <section className="mb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white p-8 rounded-2xl shadow-lg">
-            <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center animate-fade-in">
-            Key Performance Statistics
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="table-container">
+          <div className="stats-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {statistics.map((stat, index) => (
-                <div 
-                  key={index} 
-                  className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-blue-50/30"
-                >
-                  <h3 className="text-lg font-semibold text-gray-600 mb-2 transition-colors duration-200 group-hover:text-gray-900">
-                  {stat.label}
-                </h3>
-                  <p className="text-3xl font-bold text-blue-600 transition-colors duration-200 group-hover:text-blue-700">
-                  {stat.value}
-                </p>
+              <div 
+                key={index} 
+                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-blue-50/30"
+              >
+                <h3 className="text-lg font-semibold text-gray-600 mb-2 transition-colors duration-200 group-hover:text-gray-900">
+                {stat.label}
+              </h3>
+                <p className="text-3xl font-bold text-blue-600 transition-colors duration-200 group-hover:text-blue-700">
+                {stat.value}
+              </p>
               </div>
             ))}
-            </div>
           </div>
         </div>
       </section>
