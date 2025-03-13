@@ -9,44 +9,32 @@ const Contact = () => {
     email: '',
     message: ''
   });
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [errors, setErrors] = useState<{[key: string]: string}>({});
-
-  const validateForm = () => {
-    const newErrors: {[key: string]: string} = {};
-    
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    }
-    
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
-    }
-    
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
-    }
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (validateForm()) {
-      // Here you would typically send the form data to your backend
-      console.log('Form submitted:', formData);
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
+    setStatus('sending');
+
+    try {
+      // Δημιουργία του mailto link
+      const mailtoLink = `mailto:info@forexbot.gr?subject=Contact Form Submission from ${formData.name}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      )}`;
+
+      // Άνοιγμα του προεπιλεγμένου email client
+      window.location.href = mailtoLink;
       
-      // Reset submission status after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
+      // Καθαρισμός της φόρμας
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
+      
+      setStatus('success');
+    } catch (error) {
+      setStatus('error');
+      console.error('Error sending message:', error);
     }
   };
 
@@ -56,13 +44,6 @@ const Contact = () => {
       ...prev,
       [name]: value
     }));
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
   };
 
   return (
@@ -108,13 +89,6 @@ const Contact = () => {
                   Send a Message
                 </h2>
                 
-                {isSubmitted && (
-                  <div className="mb-8 p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    Thank you! I will get back to you soon.
-                  </div>
-                )}
-
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="group">
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -128,14 +102,8 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="Enter your full name"
                       className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 
-                        ${errors.name ? 'border-red-500' : 'border-gray-300 group-hover:border-blue-300'}`}
+                        ${status === 'sending' ? 'border-gray-300 group-hover:border-blue-300' : 'border-gray-300 group-hover:border-blue-300'}`}
                     />
-                    {errors.name && (
-                      <p className="mt-2 text-sm text-red-500 flex items-center gap-1">
-                        <span className="w-1 h-1 bg-red-500 rounded-full"></span>
-                        {errors.name}
-                      </p>
-                    )}
                   </div>
 
                   <div className="group">
@@ -150,14 +118,8 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="Enter your email address"
                       className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 
-                        ${errors.email ? 'border-red-500' : 'border-gray-300 group-hover:border-blue-300'}`}
+                        ${status === 'sending' ? 'border-gray-300 group-hover:border-blue-300' : 'border-gray-300 group-hover:border-blue-300'}`}
                     />
-                    {errors.email && (
-                      <p className="mt-2 text-sm text-red-500 flex items-center gap-1">
-                        <span className="w-1 h-1 bg-red-500 rounded-full"></span>
-                        {errors.email}
-                      </p>
-                    )}
                   </div>
 
                   <div className="group">
@@ -172,26 +134,36 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="Tell me about your trading goals and how I can help you..."
                       className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 
-                        ${errors.message ? 'border-red-500' : 'border-gray-300 group-hover:border-blue-300'}`}
+                        ${status === 'sending' ? 'border-gray-300 group-hover:border-blue-300' : 'border-gray-300 group-hover:border-blue-300'}`}
                     />
-                    {errors.message && (
-                      <p className="mt-2 text-sm text-red-500 flex items-center gap-1">
-                        <span className="w-1 h-1 bg-red-500 rounded-full"></span>
-                        {errors.message}
-                      </p>
-                    )}
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-blue-600 text-white px-6 py-3.5 rounded-xl font-semibold 
+                    disabled={status === 'sending'}
+                    className={`w-full bg-blue-600 text-white px-6 py-3.5 rounded-xl font-semibold 
                              flex items-center justify-center gap-2 hover:bg-blue-700 transition-all duration-200
-                             shadow-lg hover:shadow-xl active:transform active:scale-[0.99]"
+                             shadow-lg hover:shadow-xl active:transform active:scale-[0.99]
+                             ${status === 'sending' ? 'bg-gray-400 cursor-not-allowed' : ''}`}
                   >
-                    Send Message
+                    {status === 'sending' ? 'Sending...' : 'Send Message'}
                     <Send className="w-5 h-5" />
                   </button>
                 </form>
+
+                {/* Status Messages */}
+                {status === 'success' && (
+                  <div className="mt-8 p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    Thank you! I will get back to you soon.
+                  </div>
+                )}
+                {status === 'error' && (
+                  <div className="mt-8 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl flex items-center gap-2">
+                    <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                    There was an error sending your message. Please try again.
+                  </div>
+                )}
               </div>
             </div>
 

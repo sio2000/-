@@ -119,47 +119,58 @@ const Home = () => {
           .feature-section {
             padding: 2rem 1rem;
           }
+
+          video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: -1;
+            object-fit: cover;
+          }
         }
       `}</style>
 
       {/* Hero Section */}
-      <section className="hero-section relative pt-20 pb-32">
-        <div className="scroll-container">
-          {/* Video Background */}
-          <div className="absolute inset-0 z-0">
-            <video
-              className="w-full h-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-            >
-              <source src="/src/assets/video/fvid.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-          </div>
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover"
+            poster={heroBackground}
+          >
+            <source src={forexVideo} type="video/mp4" />
+            {/* Fallback για browsers που δεν υποστηρίζουν video */}
+            Your browser does not support the video tag.
+          </video>
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        </div>
 
-          {/* Content */}
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                Advanced Forex Trading <br />
-                <span className="text-blue-400">Powered by Human Expertise</span>
-              </h1>
-              <div className="button-container flex flex-col sm:flex-row gap-4 justify-center mt-24">
-                <Button
-                  href="https://www.myfxbook.com/members/giannis/funded-instatrader/10605583"
-                  className="gap-2"
-                >
-                  View on MyFXBook <ArrowRight className="w-5 h-5" />
-                </Button>
-                <Button variant="secondary" href="/contact" className="gap-2">
-                  Contact Me <ArrowRight className="w-5 h-5" />
-                </Button>
-              </div>
-            </div>
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
+            AI-Powered Forex Trading
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-8 animate-fade-in-delayed">
+            Consistent returns through automated strategies and advanced risk management
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delayed">
+            <Button href="/business-plan" className="gap-2">
+              View Business Plan <ArrowRight className="w-5 h-5" />
+            </Button>
+            <Button href="/contact" variant="secondary" className="gap-2">
+              Contact Us <ArrowRight className="w-5 h-5" />
+            </Button>
           </div>
         </div>
       </section>
