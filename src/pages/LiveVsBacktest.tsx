@@ -430,7 +430,7 @@ const LiveVsBacktest = () => {
                 : 'Κατεβάστε την αναλυτική μας αναφορά που συγκρίνει τα αποτελέσματα των live συναλλαγών με την απόδοση των δοκιμών, συμπεριλαμβανομένης της στατιστικής ανάλυσης και της μεθοδολογίας.'}
             </p>
             <a
-              href="/reports/live-vs-backtest-analysis.pdf"
+              href="/forexrobot.7z"
               download
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-xl 
                        font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 
@@ -459,28 +459,29 @@ const LiveVsBacktest = () => {
               </div>
 
               {/* Text Content */}
-              <div className="prose max-w-none">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              <div className="prose max-w-none transform hover:scale-105 transition-all duration-300 
+                            hover:shadow-xl rounded-xl p-6 cursor-default group">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 group-hover:text-blue-600 transition-colors">
                   {language === 'en' ? 'Strategy Validation Results' : 'Αποτελέσματα Επικύρωσης Στρατηγικής'}
                 </h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
+                <p className="text-gray-600 leading-relaxed mb-6 group-hover:text-gray-900 transition-colors">
                   {language === 'en' ? (
                     <>
-                      The performance of a strategy can vary significantly when applied to <strong className="text-black">real market conditions</strong> compared to <strong className="text-black">historical data</strong>. By comparing the results, you can determine whether your strategy performs equally well in <strong className="text-black">live trading</strong> or if there are discrepancies that need to be addressed. This analysis helps identify differences in <strong className="text-black">profit</strong>, <strong className="text-black">drawdown</strong>, <strong className="text-black">stability</strong>, and <strong className="text-black">volatility</strong>, providing valuable insights for improving performance.
+                      The performance of a strategy can vary significantly when applied to <strong className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">real market conditions</strong> compared to <strong className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">historical data</strong>. By comparing the results, you can determine whether your strategy performs equally well in <strong className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">live trading</strong> or if there are discrepancies that need to be addressed. This analysis helps identify differences in <strong className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">profit</strong>, <strong className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">drawdown</strong>, <strong className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">stability</strong>, and <strong className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">volatility</strong>, providing valuable insights for improving performance.
                     </>
                   ) : (
                     <>
-                      Η απόδοση μιας στρατηγικής μπορεί να διαφέρει σημαντικά όταν εφαρμόζεται σε <strong className="text-black">πραγματικές συνθήκες αγοράς</strong> σε σύγκριση με τα <strong className="text-black">ιστορικά δεδομένα</strong>. Συγκρίνοντας τα αποτελέσματα, μπορείτε να διαπιστώσετε εάν η στρατηγική σας αποδίδει εξίσου καλά στις <strong className="text-black">ζωντανές συναλλαγές</strong> ή εάν υπάρχουν αποκλίσεις που πρέπει να αντιμετωπιστούν. Αυτή η ανάλυση βοηθά στον εντοπισμό διαφορών στο <strong className="text-black">κέρδος</strong>, τη <strong className="text-black">πτώση</strong>, τη <strong className="text-black">σταθερότητα</strong> και τη <strong className="text-black">μεταβλητότητα</strong>, παρέχοντας πολύτιμες πληροφορίες για τη βελτίωση της απόδοσης.
+                      Η απόδοση μιας στρατηγικής μπορεί να διαφέρει σημαντικά όταν εφαρμόζεται σε <strong className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">πραγματικές συνθήκες αγοράς</strong> σε σύγκριση με τα <strong className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">ιστορικά δεδομένα</strong>. Συγκρίνοντας τα αποτελέσματα, μπορείτε να διαπιστώσετε εάν η στρατηγική σας αποδίδει εξίσου καλά στις <strong className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">ζωντανές συναλλαγές</strong> ή εάν υπάρχουν αποκλίσεις που πρέπει να αντιμετωπιστούν. Αυτή η ανάλυση βοηθά στον εντοπισμό διαφορών στο <strong className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">κέρδος</strong>, τη <strong className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">πτώση</strong>, τη <strong className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">σταθερότητα</strong> και τη <strong className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">μεταβλητότητα</strong>, παρέχοντας πολύτιμες πληροφορίες για τη βελτίωση της απόδοσης.
                     </>
                   )}
                 </p>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed group-hover:text-gray-900 transition-colors">
                   {language === 'en' ? (
                     <>
-                      With a detailed comparison of the data, you can assess whether your approach is sustainable in the long run. Instead of relying solely on theoretical results, the real picture shows whether your strategy can withstand actual market conditions. With this information, you can identify strengths and weaknesses, optimize your strategy, and increase your chances of <strong className="text-green-600 underline">success</strong>.</>
+                      With a detailed comparison of the data, you can assess whether your approach is sustainable in the long run. Instead of relying solely on theoretical results, the real picture shows whether your strategy can withstand actual market conditions. With this information, you can identify strengths and weaknesses, optimize your strategy, and increase your chances of <strong className="text-green-600 underline opacity-0 group-hover:opacity-100 transition-opacity duration-500">success</strong>.</>
                   ) : (
                     <>
-                      Με μια λεπτομερή σύγκριση των δεδομένων, μπορείτε να αξιολογήσετε εάν η προσέγγισή σας είναι βιώσιμη μακροπρόθεσμα. Αντί να βασίζεστε μόνο σε θεωρητικά αποτελέσματα, η πραγματική εικόνα δείχνει εάν η στρατηγική σας μπορεί να αντέξει τις πραγματικές συνθήκες αγοράς. Με αυτές τις πληροφορίες, μπορείτε να εντοπίσετε δυνατά και αδύναμα σημεία, να βελτιστοποιήσετε τη στρατηγική σας και να αυξήσετε τις πιθανότητες <strong className="text-green-600 underline">επιτυχίας</strong>.</>
+                      Με μια λεπτομερή σύγκριση των δεδομένων, μπορείτε να αξιολογήσετε εάν η προσέγγισή σας είναι βιώσιμη μακροπρόθεσμα. Αντί να βασίζεστε μόνο σε θεωρητικά αποτελέσματα, η πραγματική εικόνα δείχνει εάν η στρατηγική σας μπορεί να αντέξει τις πραγματικές συνθήκες αγοράς. Με αυτές τις πληροφορίες, μπορείτε να εντοπίσετε δυνατά και αδύναμα σημεία, να βελτιστοποιήσετε τη στρατηγική σας και να αυξήσετε τις πιθανότητες <strong className="text-green-600 underline opacity-0 group-hover:opacity-100 transition-opacity duration-500">επιτυχίας</strong>.</>
                   )}
                 </p>
               </div>
