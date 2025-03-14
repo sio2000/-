@@ -15,32 +15,35 @@ import TradingPairs from './pages/TradingPairs';
 import Biography from './pages/Biography';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="min-h-screen bg-gray-50 flex flex-col">
-        <Navbar />
-        <main className="flex-grow pt-16">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/backtests" element={<Backtests />} />
-            <Route path="/live-vs-backtest" element={<LiveVsBacktest />} />
-            <Route path="/monthly-performance" element={<MonthlyPerformance />} />
-            <Route path="/annual-performance" element={<AnnualPerformance />} />
-            <Route path="/business-plan" element={<BusinessPlan />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/trading-pairs" element={<TradingPairs />} />
-            <Route path="/biography" element={<Biography />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <LanguageProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="min-h-screen bg-gray-50 flex flex-col">
+          <Navbar />
+          <main className="flex-grow pt-16">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/backtests" element={<Backtests />} />
+              <Route path="/live-vs-backtest" element={<LiveVsBacktest />} />
+              <Route path="/monthly-performance" element={<MonthlyPerformance />} />
+              <Route path="/annual-performance" element={<AnnualPerformance />} />
+              <Route path="/business-plan" element={<BusinessPlan />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/trading-pairs" element={<TradingPairs />} />
+              <Route path="/biography" element={<Biography />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </LanguageProvider>
   );
 }
 

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Mail, MessageSquare, Send, Linkedin, ExternalLink, Facebook, Twitter, Instagram } from 'lucide-react';
+import { Mail, MessageSquare, Send, Linkedin, ExternalLink, Facebook, Twitter, Instagram, Clock } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const contactBackground = new URL('../assets/images/contact.jpg', import.meta.url).href;
 
 const Contact = () => {
+  const { language } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,15 +18,14 @@ const Contact = () => {
     setStatus('sending');
 
     try {
-      // Δημιουργία του mailto link
-      const mailtoLink = `mailto:info@forexbot.gr?subject=Contact Form Submission from ${formData.name}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      const mailtoLink = `mailto:info@forexbot.gr?subject=${encodeURIComponent(
+        language === 'en' ? `Contact Form Submission from ${formData.name}` : `Υποβολή Φόρμας Επικοινωνίας από ${formData.name}`
+      )}&body=${encodeURIComponent(
+        `${language === 'en' ? 'Name' : 'Όνομα'}: ${formData.name}\n${language === 'en' ? 'Email' : 'Email'}: ${formData.email}\n\n${language === 'en' ? 'Message' : 'Μήνυμα'}:\n${formData.message}`
       )}`;
 
-      // Άνοιγμα του προεπιλεγμένου email client
       window.location.href = mailtoLink;
       
-      // Καθαρισμός της φόρμας
       setFormData({
         name: '',
         email: '',
@@ -48,30 +49,31 @@ const Contact = () => {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="relative py-24">
-        {/* Background Image */}
+      {/* Hero Section - Add parallax effect */}
+      <section className="relative py-24 overflow-hidden">
         <div 
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 transform transition-transform duration-1000 hover:scale-110"
           style={{
             backgroundImage: `url(${contactBackground})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'fixed' // Add parallax
           }}
         >
-          {/* Dark Overlay - made lighter by reducing opacity */}
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+          <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
         </div>
 
-        {/* Content */}
+        {/* Content with fade-in animation */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in">
-              Contact Me
+          <div className="text-center animate-fade-in">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-slide-up">
+              {language === 'en' ? 'Contact Me' : 'Επικοινωνήστε Μαζί Μου'}
             </h1>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto animate-fade-in-delayed leading-relaxed">
-              Interested in learning more about our Forex trading partnership? I'm here to answer your questions and provide detailed information.
+              {language === 'en'
+                ? "Interested in learning more about our Forex trading partnership? I'm here to answer your questions and provide detailed information."
+                : 'Ενδιαφέρεστε να μάθετε περισσότερα για τη συνεργασία μας στις συναλλαγές Forex; Είμαι εδώ για να απαντήσω στις ερωτήσεις σας και να παρέχω λεπτομερείς πληροφορίες.'}
             </p>
           </div>
         </div>
@@ -81,18 +83,18 @@ const Contact = () => {
       <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div>
-              <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+            {/* Contact Form with hover effect */}
+            <div className="transform transition-all duration-300 hover:translate-y-[-4px]">
+              <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
                 <h2 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
                   <Send className="w-6 h-6 text-blue-600" />
-                  Send a Message
+                  {language === 'en' ? 'Send a Message' : 'Στείλτε Μήνυμα'}
                 </h2>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="group">
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name
+                      {language === 'en' ? 'Full Name' : 'Ονοματεπώνυμο'}
                     </label>
                     <input
                       type="text"
@@ -100,7 +102,7 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Enter your full name"
+                      placeholder={language === 'en' ? "Enter your full name" : "Εισάγετε το ονοματεπώνυμό σας"}
                       className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 
                         ${status === 'sending' ? 'border-gray-300 group-hover:border-blue-300' : 'border-gray-300 group-hover:border-blue-300'}`}
                     />
@@ -108,7 +110,7 @@ const Contact = () => {
 
                   <div className="group">
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address
+                      {language === 'en' ? 'Email Address' : 'Διεύθυνση Email'}
                     </label>
                     <input
                       type="email"
@@ -116,7 +118,7 @@ const Contact = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="Enter your email address"
+                      placeholder={language === 'en' ? "Enter your email address" : "Εισάγετε τη διεύθυνση email σας"}
                       className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 
                         ${status === 'sending' ? 'border-gray-300 group-hover:border-blue-300' : 'border-gray-300 group-hover:border-blue-300'}`}
                     />
@@ -124,7 +126,7 @@ const Contact = () => {
 
                   <div className="group">
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                      Your Message
+                      {language === 'en' ? 'Your Message' : 'Το Μήνυμά σας'}
                     </label>
                     <textarea
                       id="message"
@@ -132,7 +134,9 @@ const Contact = () => {
                       rows={6}
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Tell me about your trading goals and how I can help you..."
+                      placeholder={language === 'en' 
+                        ? "Tell me about your trading goals and how I can help you..."
+                        : "Πείτε μου για τους στόχους των συναλλαγών σας και πώς μπορώ να σας βοηθήσω..."}
                       className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 
                         ${status === 'sending' ? 'border-gray-300 group-hover:border-blue-300' : 'border-gray-300 group-hover:border-blue-300'}`}
                     />
@@ -146,7 +150,9 @@ const Contact = () => {
                              shadow-lg hover:shadow-xl active:transform active:scale-[0.99]
                              ${status === 'sending' ? 'bg-gray-400 cursor-not-allowed' : ''}`}
                   >
-                    {status === 'sending' ? 'Sending...' : 'Send Message'}
+                    {status === 'sending' 
+                      ? (language === 'en' ? 'Sending...' : 'Αποστολή...')
+                      : (language === 'en' ? 'Send Message' : 'Αποστολή Μηνύματος')}
                     <Send className="w-5 h-5" />
                   </button>
                 </form>
@@ -155,125 +161,100 @@ const Contact = () => {
                 {status === 'success' && (
                   <div className="mt-8 p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    Thank you! I will get back to you soon.
+                    {language === 'en' ? 'Thank you! I will get back to you soon.' : 'Ευχαριστώ! Θα επικοινωνήσω μαζί σας σύντομα.'}
                   </div>
                 )}
                 {status === 'error' && (
                   <div className="mt-8 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl flex items-center gap-2">
                     <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                    There was an error sending your message. Please try again.
+                    {language === 'en' ? 'There was an error sending your message. Please try again.' : 'Υπήρξε ένα σφάλμα κατά την αποστολή του μηνύματός σας. Παρακαλώ δοκιμάστε ξανά.'}
                   </div>
                 )}
               </div>
             </div>
 
-            {/* Contact Information */}
+            {/* Contact Information with staggered animation */}
             <div className="space-y-8">
-              <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-                <h2 className="text-2xl font-bold text-gray-900 mb-8">
-                  Contact Information
+              <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:translate-y-[-4px]">
+                <h2 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+                  <MessageSquare className="w-6 h-6 text-blue-600" />
+                  {language === 'en' ? 'Contact Information' : 'Στοιχεία Επικοινωνίας'}
                 </h2>
                 
-                <div className="space-y-8">
-                  <div className="flex items-start gap-4 hover:transform hover:translate-x-2 transition-transform duration-300">
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
                     <div className="bg-blue-100 p-3 rounded-lg">
                       <Mail className="w-6 h-6 text-blue-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900">Email</h3>
+                      <h3 className="text-lg font-semibold text-gray-900">
+                        {language === 'en' ? 'Email' : 'Email'}
+                      </h3>
                       <a 
                         href="mailto:info@forexbot.gr"
-                        className="text-blue-600 hover:text-blue-700"
+                        className="text-gray-600 hover:text-blue-600 transition-colors"
                       >
                         info@forexbot.gr
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 hover:transform hover:translate-x-2 transition-transform duration-300">
-                    <div className="bg-green-100 p-3 rounded-lg">
-                      <MessageSquare className="w-6 h-6 text-green-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900">Telegram</h3>
-                      <a 
-                        href="https://t.me/forexbot_pro" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-green-600 hover:text-green-700 flex items-center gap-1"
-                      >
-                        @forexbot_pro
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4 hover:transform hover:translate-x-2 transition-transform duration-300">
+                  <div className="flex items-start gap-4">
                     <div className="bg-blue-100 p-3 rounded-lg">
-                      <Linkedin className="w-6 h-6 text-[#0A66C2]" />
+                      <MessageSquare className="w-6 h-6 text-blue-600" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900">LinkedIn</h3>
-                      <a 
-                        href="https://linkedin.com/in/forexbot-pro" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-[#0A66C2] hover:text-blue-700 flex items-center gap-1"
-                      >
-                        View Profile
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
+                      <h3 className="text-lg font-semibold text-gray-900">
+                        {language === 'en' ? 'Social Media' : 'Κοινωνικά Δίκτυα'}
+                      </h3>
+                      <div className="flex gap-6 mt-4">
+                        <a 
+                          href="https://www.facebook.com/forexbot" 
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 hover:text-[#4267B2] transition-colors duration-300"
+                        >
+                          <Facebook className="w-6 h-6" />
+                        </a>
+                        <a 
+                          href="https://twitter.com/forexbot" 
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 hover:text-[#1DA1F2] transition-colors duration-300"
+                        >
+                          <Twitter className="w-6 h-6" />
+                        </a>
+                        <a 
+                          href="https://www.instagram.com/forexbot" 
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 hover:text-[#C13584] transition-colors duration-300"
+                        >
+                          <Instagram className="w-6 h-6" />
+                        </a>
+                        <a 
+                          href="https://www.linkedin.com/company/forexbot" 
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 hover:text-[#0077B5] transition-colors duration-300"
+                        >
+                          <Linkedin className="w-6 h-6" />
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                </div>
-
-                {/* Social Media Links */}
-                <div className="mt-12 pt-8 border-t border-gray-100">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-6">Follow Us</h3>
-                  <div className="flex gap-6">
-                    <a 
-                      href="https://www.facebook.com/forexbotgr" 
-                      className="bg-[#1877F2] p-3 rounded-lg text-white hover:bg-[#1864F2] transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Facebook className="w-6 h-6" />
-                    </a>
-                    <a 
-                      href="https://twitter.com" 
-                      className="bg-[#1DA1F2] p-3 rounded-lg text-white hover:bg-[#1D8FF2] transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Twitter className="w-6 h-6" />
-                    </a>
-                    <a 
-                      href="https://instagram.com" 
-                      className="bg-[#E4405F] p-3 rounded-lg text-white hover:bg-[#D4304F] transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Instagram className="w-6 h-6" />
-                    </a>
-                    <a 
-                      href="https://linkedin.com" 
-                      className="bg-[#0A66C2] p-3 rounded-lg text-white hover:bg-[#0955A2] transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Linkedin className="w-6 h-6" />
-                    </a>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border border-blue-100">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  Response Time
+              <div className="bg-white rounded-2xl shadow-lg p-8 mt-8 hover:shadow-xl transition-all duration-300 transform hover:translate-y-[-4px]">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                  <Clock className="w-6 h-6 text-blue-600" />
+                  {language === 'en' ? 'Response Time' : 'Χρόνος Απόκρισης'}
                 </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  I typically respond to inquiries within 24 hours during business days. 
-                  For urgent matters, please reach out via Telegram for the fastest response.
+                <p className="text-gray-600">
+                  {language === 'en'
+                    ? 'I typically respond to inquiries within 24 hours during business days. For urgent matters, please reach out via Telegram for the fastest response.'
+                    : 'Συνήθως απαντώ στα αιτήματα εντός 24 ωρών κατά τις εργάσιμες ημέρες. Για επείγοντα θέματα, παρακαλώ επικοινωνήστε μέσω Telegram για την ταχύτερη απόκριση.'}
                 </p>
               </div>
             </div>
@@ -281,158 +262,66 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Add mobile-only styles */}
+      {/* Add animations styles */}
       <style jsx>{`
-        /* Mobile-only styles (max-width: 768px) */
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+          from { 
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fade-in {
+          animation: fadeIn 1s ease-out forwards;
+        }
+
+        .animate-fade-in-delayed {
+          opacity: 0;
+          animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        .animate-slide-up {
+          animation: slideUp 0.8s ease-out forwards;
+        }
+
+        /* Improve mobile responsiveness */
         @media (max-width: 768px) {
-          /* Make sections scrollable on mobile */
-          .scroll-container {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            padding: 0 1rem;
-          }
-
-          /* Hide scrollbars but keep functionality */
-          .scroll-container::-webkit-scrollbar {
-            display: none;
-          }
-          
-          .scroll-container {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-
-          /* Adjust padding for mobile */
-          .p-8, .p-12 {
-            padding: 1.5rem;
-          }
-
-          /* Stack grid items on mobile */
           .grid {
-            grid-template-columns: 1fr !important;
-            gap: 1.5rem;
+            gap: 2rem;
           }
 
-          /* Make images responsive */
-          img {
-            max-width: 100%;
-            height: auto;
+          .rounded-2xl {
+            border-radius: 1rem;
           }
 
-          /* Reduce text sizes on mobile */
-          .text-4xl {
-            font-size: 2rem;
-          }
-
-          .text-2xl {
-            font-size: 1.5rem;
-          }
-
-          .text-xl {
-            font-size: 1.125rem;
-          }
-
-          /* Adjust spacing */
-          .mb-6 {
-            margin-bottom: 1rem;
-          }
-
-          .mb-12 {
-            margin-bottom: 2rem;
-          }
-
-          .gap-8 {
-            gap: 1.5rem;
-          }
-
-          /* Contact form specific styles */
-          .form-container {
+          .p-8 {
             padding: 1.5rem;
           }
+        }
 
-          .input-group {
-            margin-bottom: 1rem;
-          }
+        /* Add smooth transitions */
+        .transition-all {
+          transition-property: all;
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-duration: 300ms;
+        }
 
-          input, textarea {
-            font-size: 16px; /* Prevent iOS zoom */
-            padding: 0.75rem;
-          }
+        /* Add hover effects */
+        .hover\:shadow-xl:hover {
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
 
-          /* Make contact info stack on mobile */
-          .contact-info {
-            flex-direction: column;
-            gap: 1.5rem;
-            padding: 1.5rem;
-          }
-
-          .contact-card {
-            width: 100%;
-            padding: 1.25rem;
-          }
-
-          /* Adjust icon sizes and containers */
-          .icon-container {
-            width: 2.5rem;
-            height: 2.5rem;
-            min-width: 2.5rem;
-          }
-
-          /* Improve button touch targets */
-          button {
-            min-height: 44px;
-            width: 100%;
-          }
-
-          /* Adjust hero section padding */
-          .py-24 {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
-          }
-
-          /* Stack social media icons */
-          .social-icons {
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-          }
-
-          /* Make map responsive */
-          .map-container {
-            height: 300px;
-            margin: 1.5rem -1rem;
-          }
-
-          /* Adjust office hours table */
-          .hours-table {
-            font-size: 0.875rem;
-          }
-
-          .hours-table td {
-            padding: 0.5rem;
-          }
-
-          /* Make address cards stack */
-          .address-cards {
-            flex-direction: column;
-          }
-
-          /* Improve form layout */
-          .form-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-          }
-
-          .form-group {
-            margin-bottom: 1rem;
-          }
-
-          /* Adjust success/error messages */
-          .message-container {
-            margin: 1rem 0;
-            padding: 1rem;
-          }
+        .hover\:translate-y-\[-4px\]:hover {
+          transform: translateY(-4px);
         }
       `}</style>
     </div>

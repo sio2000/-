@@ -1,52 +1,55 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, AreaChart, Area } from 'recharts';
 import { AlertCircle, BarChart } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const AnnualPerformance = () => {
+  const { language } = useLanguage();
+
   const annualData = [
-    { year: 2008, return: 32.5, marketEvent: 'Financial Crisis', description: 'Global financial crisis and market crash' },
-    { year: 2009, return: 28.7, marketEvent: 'Recovery', description: 'Post-crisis recovery period' },
-    { year: 2010, return: 35.2, marketEvent: 'European Debt Crisis', description: 'Sovereign debt crisis in Europe' },
-    { year: 2011, return: 31.8, marketEvent: 'US Credit Downgrade', description: 'S&P downgrades US credit rating' },
-    { year: 2012, return: 29.5, marketEvent: 'Eurozone Crisis', description: 'Continued European economic struggles' },
-    { year: 2013, return: 33.6, marketEvent: 'Fed Taper Tantrum', description: 'Market reaction to Fed policy changes' },
-    { year: 2014, return: 30.9, marketEvent: 'Oil Price Crash', description: 'Major decline in oil prices' },
-    { year: 2015, return: 34.7, marketEvent: 'China Slowdown', description: 'Chinese economic growth concerns' },
-    { year: 2016, return: 36.1, marketEvent: 'Brexit', description: 'UK votes to leave the European Union' },
-    { year: 2017, return: 38.4, marketEvent: 'Crypto Boom', description: 'Cryptocurrency market surge' },
-    { year: 2018, return: 32.8, marketEvent: 'Trade War', description: 'US-China trade tensions' },
-    { year: 2019, return: 35.9, marketEvent: 'Fed Rate Cuts', description: 'Federal Reserve policy shift' },
-    { year: 2020, return: 42.3, marketEvent: 'COVID-19', description: 'Global pandemic market impact' },
-    { year: 2021, return: 39.6, marketEvent: 'Recovery Rally', description: 'Post-pandemic market recovery' },
-    { year: 2022, return: 36.7, marketEvent: 'Inflation Crisis', description: 'High inflation and rate hikes' },
-    { year: 2023, return: 37.8, marketEvent: 'Banking Crisis', description: 'Regional banking sector issues' },
-    { year: 2024, return: 34.2, marketEvent: 'Black Monday', description: 'January 2024 market correction' }
+    { year: 2008, return: 32.5, marketEvent: language === 'en' ? 'Financial Crisis' : 'Χρηματοπιστωτική Κρίση', description: language === 'en' ? 'Global financial crisis and market crash' : 'Παγκόσμια χρηματοπιστωτική κρίση και κατάρρευση αγοράς' },
+    { year: 2009, return: 28.7, marketEvent: language === 'en' ? 'Recovery' : 'Ανάκαμψη', description: language === 'en' ? 'Post-crisis recovery period' : 'Περίοδος ανάκαμψης μετά την κρίση' },
+    { year: 2010, return: 35.2, marketEvent: language === 'en' ? 'European Debt Crisis' : 'Ευρωπαϊκή Χρηματοπιστωτική Κρίση', description: language === 'en' ? 'Sovereign debt crisis in Europe' : 'Κρίση χρηματοπιστών στην Ευρώπη' },
+    { year: 2011, return: 31.8, marketEvent: language === 'en' ? 'US Credit Downgrade' : 'Κατάρρευση Καταθετικής Αξίας ΗΠΑ', description: language === 'en' ? 'S&P downgrades US credit rating' : 'Κατάρρευση καταθετικής αξίας ΗΠΑ' },
+    { year: 2012, return: 29.5, marketEvent: language === 'en' ? 'Eurozone Crisis' : 'Ευρωπαϊκή Οικονομική Κρίση', description: language === 'en' ? 'Continued European economic struggles' : 'Συνεχής οικονομικές δυσκολίες στην Ευρώπη' },
+    { year: 2013, return: 33.6, marketEvent: language === 'en' ? 'Fed Taper Tantrum' : 'Κρίση Τραπέζας', description: language === 'en' ? 'Market reaction to Fed policy changes' : 'Αντίδραση αγοράς σε πολιτικές αλλαγές της Τραπέζας' },
+    { year: 2014, return: 30.9, marketEvent: language === 'en' ? 'Oil Price Crash' : 'Κρίση Τιμών Πετρελαίου', description: language === 'en' ? 'Major decline in oil prices' : 'Κατάρρευση τιμών πετρελαίου' },
+    { year: 2015, return: 34.7, marketEvent: language === 'en' ? 'China Slowdown' : 'Κρίση Κίνας', description: language === 'en' ? 'Chinese economic growth concerns' : 'Κρίση οικονομικής ανάπτυξης Κίνας' },
+    { year: 2016, return: 36.1, marketEvent: language === 'en' ? 'Brexit' : 'Έξοδος UK από Ευρωπαϊκή Ένωση', description: language === 'en' ? 'UK votes to leave the European Union' : 'UK ψηφίζει να εξέλθει από Ευρωπαϊκή Ένωση' },
+    { year: 2017, return: 38.4, marketEvent: language === 'en' ? 'Crypto Boom' : 'Κρίση Κρυπτογραφίας', description: language === 'en' ? 'Cryptocurrency market surge' : 'Πυρήνας ανάπτυξης κρυπτογραφίας' },
+    { year: 2018, return: 32.8, marketEvent: language === 'en' ? 'Trade War' : 'Κρίση Εμπορίου', description: language === 'en' ? 'US-China trade tensions' : 'Τάσεις εμπορίου μεταξύ ΗΠΑ και Κίνας' },
+    { year: 2019, return: 35.9, marketEvent: language === 'en' ? 'Fed Rate Cuts' : 'Κρίση Τραπέζας', description: language === 'en' ? 'Federal Reserve policy shift' : 'Πολιτική αλλαγής της Τραπέζας' },
+    { year: 2020, return: 42.3, marketEvent: language === 'en' ? 'COVID-19' : 'Κρίση COVID-19', description: language === 'en' ? 'Global pandemic market impact' : 'Επίδραση της κρίσης COVID-19 στην αγορά' },
+    { year: 2021, return: 39.6, marketEvent: language === 'en' ? 'Recovery Rally' : 'Ανάκαμψη Ρυθμιστή', description: language === 'en' ? 'Post-pandemic market recovery' : 'Ανάκαμψη αγοράς μετά την κρίση' },
+    { year: 2022, return: 36.7, marketEvent: language === 'en' ? 'Inflation Crisis' : 'Κρίση Εμφοδίων', description: language === 'en' ? 'High inflation and rate hikes' : 'Υψηλή εμφοδίων και αύξηση επιτοκίων' },
+    { year: 2023, return: 37.8, marketEvent: language === 'en' ? 'Banking Crisis' : 'Κρίση Τραπέζας', description: language === 'en' ? 'Regional banking sector issues' : 'Προβλήματα στην τραπέζα' },
+    { year: 2024, return: 34.2, marketEvent: language === 'en' ? 'Black Monday' : 'Κρίση Μήνα', description: language === 'en' ? 'January 2024 market correction' : 'Κρίση Μήνα σε Ιανουάριο 2024' }
   ];
 
   const crisisPerformance = [
     {
-      event: '2008 Financial Crisis',
+      event: language === 'en' ? '2008 Financial Crisis' : 'Χρηματοπιστωτική Κρίση 2008',
       return: 32.5,
       marketReturn: -38.5,
-      description: 'Maintained positive returns during global market meltdown'
+      description: language === 'en' ? 'Maintained positive returns during global market meltdown' : 'Διατήρηση θετικών αποδόσεων κατά τη διάρκεια της παγκόσμιας κατάρρευσης της αγοράς'
     },
     {
-      event: 'Brexit (2016)',
+      event: language === 'en' ? 'Brexit (2016)' : 'Έξοδος UK από Ευρωπαϊκή Ένωση (2016)',
       return: 36.1,
       marketReturn: -12.4,
-      description: 'Capitalized on GBP volatility'
+      description: language === 'en' ? 'Capitalized on GBP volatility' : 'Χρησιμοποιήθηκε για να κερδίσει από την ταλαντεύμενη τιμή του GBP'
     },
     {
-      event: 'COVID-19 (2020)',
+      event: language === 'en' ? 'COVID-19 (2020)' : 'Κρίση COVID-19 (2020)',
       return: 42.3,
       marketReturn: -26.7,
-      description: 'Best performing year during extreme volatility'
+      description: language === 'en' ? 'Best performing year during extreme volatility' : 'Πιο απόδοση έτος κατά τη διάρκεια εξαιρετικής ταλαντεύμενης τιμής'
     },
     {
-      event: 'Black Monday (2024)',
+      event: language === 'en' ? 'Black Monday (2024)' : 'Κρίση Μήνα (2024)',
       return: 34.2,
       marketReturn: -15.8,
-      description: 'Consistent performance during market correction'
+      description: language === 'en' ? 'Consistent performance during market correction' : 'Σταθερή απόδοση κατά τη διάρκεια ανοδικής αγοράς'
     }
   ];
 
@@ -72,11 +75,12 @@ const AnnualPerformance = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in">
-              Annual Performance Analysis
+              {language === 'en' ? 'Annual Performance Analysis' : 'Ανάλυση Ετήσιας Απόδοσης'}
             </h1>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto animate-fade-in-delayed">
-              Track record of consistent returns across multiple economic cycles, 
-              demonstrating resilience during major market events.
+              {language === 'en' 
+                ? 'Track record of consistent returns across multiple economic cycles, demonstrating resilience during major market events.'
+                : 'Ιστορικό σταθερών αποδόσεων σε πολλαπλούς οικονομικούς κύκλους, που αποδεικνύει την ανθεκτικότητα κατά τη διάρκεια σημαντικών γεγονότων της αγοράς.'}
             </p>
           </div>
         </div>
@@ -91,7 +95,7 @@ const AnnualPerformance = () => {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="bg-white p-8 rounded-2xl shadow-lg">
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                    Annual Returns (2008-2024)
+                    {language === 'en' ? 'Annual Returns (2008-2024)' : 'Ετήσιες Αποδόσεις (2008-2024)'}
                   </h2>
                   <div className="h-[400px]">
                     <ResponsiveContainer width="100%" height="100%">
@@ -105,7 +109,9 @@ const AnnualPerformance = () => {
                             return (
                               <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200">
                                 <p className="font-bold text-gray-900">{data.year}</p>
-                                <p className="text-blue-600">Return: {data.return}%</p>
+                                <p className="text-blue-600">
+                                  {language === 'en' ? 'Return: ' : 'Απόδοση: '}{data.return}%
+                                </p>
                                 <p className="text-gray-600">{data.marketEvent}</p>
                                 <p className="text-sm text-gray-500">{data.description}</p>
                               </div>
@@ -117,7 +123,7 @@ const AnnualPerformance = () => {
                         <Area
                           type="monotone"
                           dataKey="return"
-                          name="Annual Return %"
+                          name={language === 'en' ? 'Annual Return %' : 'Ετήσια Απόδοση %'}
                           stroke="#0284c7"
                           fill="#bfdbfe"
                           strokeWidth={2}
@@ -134,44 +140,48 @@ const AnnualPerformance = () => {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                    Performance During Major Market Events
+                    {language === 'en' 
+                      ? 'Performance During Major Market Events'
+                      : 'Απόδοση Κατά τη Διάρκεια Σημαντικών Γεγονότων της Αγοράς'}
                   </h2>
                   <p className="text-gray-600 max-w-3xl mx-auto">
-                    Our strategy has consistently delivered positive returns during significant market downturns
+                    {language === 'en'
+                      ? 'Our strategy has consistently delivered positive returns during significant market downturns'
+                      : 'Η στρατηγική μας έχει παραδώσει σταθερά θετικές αποδόσεις κατά τη διάρκεια σημαντικών πτώσεων της αγοράς'}
                   </p>
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                   {[
                     {
-                      event: "2008 Financial Crisis",
+                      event: language === 'en' ? '2008 Financial Crisis' : 'Χρηματοπιστωτική Κρίση 2008',
                       strategyReturn: 32.5,
                       marketReturn: -38.5,
-                      description: "Maintained positive returns during global market meltdown",
+                      description: language === 'en' ? 'Maintained positive returns during global market meltdown' : 'Διατήρηση θετικών αποδόσεων κατά τη διάρκεια της παγκόσμιας κατάρρευσης της αγοράς',
                       icon: "🏦",
                       bgColor: "from-gray-900 via-blue-900 to-blue-800"
                     },
                     {
-                      event: "Brexit (2016)",
+                      event: language === 'en' ? 'Brexit (2016)' : 'Έξοδος UK από Ευρωπαϊκή Ένωση (2016)',
                       strategyReturn: 36.1,
                       marketReturn: -12.4,
-                      description: "Capitalized on GBP volatility",
+                      description: language === 'en' ? 'Capitalized on GBP volatility' : 'Χρησιμοποιήθηκε για να κερδίσει από την ταλαντεύμενη τιμή του GBP',
                       icon: "🇬🇧",
                       bgColor: "from-gray-900 via-blue-900 to-blue-800"
                     },
                     {
-                      event: "COVID-19 (2020)",
+                      event: language === 'en' ? 'COVID-19 (2020)' : 'Κρίση COVID-19 (2020)',
                       strategyReturn: 42.3,
                       marketReturn: -26.7,
-                      description: "Best performing year during extreme volatility",
+                      description: language === 'en' ? 'Best performing year during extreme volatility' : 'Πιο απόδοση έτος κατά τη διάρκεια εξαιρετικής ταλαντεύμενης τιμής',
                       icon: "📈",
                       bgColor: "from-gray-900 via-blue-900 to-blue-800"
                     },
                     {
-                      event: "Black Monday (2024)",
+                      event: language === 'en' ? 'Black Monday (2024)' : 'Κρίση Μήνα (2024)',
                       strategyReturn: 34.2,
                       marketReturn: -15.8,
-                      description: "Consistent performance during market correction",
+                      description: language === 'en' ? 'Consistent performance during market correction' : 'Σταθερή απόδοση κατά τη διάρκεια ανοδικής αγοράς',
                       icon: "📊",
                       bgColor: "from-gray-900 via-blue-900 to-blue-800"
                     }
@@ -264,36 +274,44 @@ const AnnualPerformance = () => {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="bg-gradient-to-br from-gray-900 via-blue-900 to-blue-800 p-8 rounded-2xl shadow-lg">
                   <h2 className="text-3xl font-bold text-white mb-8 text-center">
-                    Key Performance Insights
+                    {language === 'en' ? 'Key Performance Insights' : 'Βασικά Στοιχεία Απόδοσης'}
                   </h2>
                   <div className="grid md:grid-cols-2 gap-6">
                     {[
                       {
-                        title: "Consistent Growth",
-                        description: "Maintained positive returns every year since 2008, with an average annual return of 34.8%",
+                        title: language === 'en' ? "Consistent Growth" : "Σταθερή Ανάπτυξη",
+                        description: language === 'en' 
+                          ? "Maintained positive returns every year since 2008, with an average annual return of 34.8%"
+                          : "Διατήρηση θετικών αποδόσεων κάθε χρόνο από το 2008, με μέση ετήσια απόδοση 34.8%",
                         icon: "📈",
                         color: "emerald"
                       },
                       {
-                        title: "Crisis Resilience",
-                        description: "Demonstrated ability to generate profits during major market downturns and economic crises",
+                        title: language === 'en' ? "Crisis Resilience" : "Ανθεκτικότητα στην Κρίση",
+                        description: language === 'en'
+                          ? "Demonstrated ability to generate profits during major market downturns and economic crises"
+                          : "Αποδεδειγμένη ικανότητα δημιουργίας κερδών κατά τη διάρκεια σημαντικών πτώσεων της αγοράς και οικονομικών κρίσεων",
                         icon: "🛡️",
                         color: "blue"
                       },
                       {
-                        title: "Volatility Management",
-                        description: "Successfully adapted to varying market conditions while maintaining risk parameters",
+                        title: language === 'en' ? "Volatility Management" : "Διαχείριση Μεταβλητότητας",
+                        description: language === 'en'
+                          ? "Successfully adapted to varying market conditions while maintaining risk parameters"
+                          : "Επιτυχής προσαρμογή σε διαφορετικές συνθήκες αγοράς διατηρώντας τις παραμέτρους κινδύνου",
                         icon: "⚡",
                         color: "purple"
                       },
                       {
-                        title: "Market Independence",
-                        description: "Returns show low correlation with traditional market movements, providing true diversification",
+                        title: language === 'en' ? "Market Independence" : "Ανεξαρτησία από την Αγορά",
+                        description: language === 'en'
+                          ? "Returns show low correlation with traditional market movements, providing true diversification"
+                          : "Οι αποδόσεις δείχνουν χαμηλή συσχέτιση με τις παραδοσιακές κινήσεις της αγοράς, παρέχοντας πραγματική διαφοροποίηση",
                         icon: "🎯",
                         color: "indigo"
                       }
                     ].map((insight, index) => (
-                      <div 
+                      <div
                         key={index}
                         className="relative bg-white/10 backdrop-blur-sm rounded-xl p-6 
                           transform hover:-translate-y-1 transition-all duration-300
@@ -345,7 +363,9 @@ const AnnualPerformance = () => {
             <section>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg border border-blue-100">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Strategy Overview</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+                    {language === 'en' ? 'Strategy Overview' : 'Επισκόπηση Στρατηγικής'}
+                  </h2>
                   <div className="grid md:grid-cols-2 gap-8">
                     {/* Annual Performance Card */}
                     <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
@@ -354,17 +374,19 @@ const AnnualPerformance = () => {
                           <LineChart className="w-8 h-8 text-green-600" />
                         </div>
                         <h3 className="text-2xl font-bold text-gray-900">
-                          Annual Performance
+                          {language === 'en' ? 'Annual Performance' : 'Ετήσια Απόδοση'}
                         </h3>
                       </div>
                       <p className="text-gray-600 leading-relaxed text-lg">
-                        The strategy has proven its resilience during economic crises, achieving 
-                        significant gains in periods such as the 2008 global financial crisis 
-                        and the COVID-19 crisis.
+                        {language === 'en'
+                          ? 'The strategy has proven its resilience during economic crises, achieving significant gains in periods such as the 2008 global financial crisis and the COVID-19 crisis.'
+                          : 'Η στρατηγική έχει αποδείξει την ανθεκτικότητά της κατά τη διάρκεια οικονομικών κρίσεων, επιτυγχάνοντας σημαντικά κέρδη σε περιόδους όπως η παγκόσμια χρηματοπιστωτική κρίση του 2008 και η κρίση του COVID-19.'}
                       </p>
                       <div className="mt-8 flex items-center gap-3">
                         <div className="flex-1 h-1.5 bg-gradient-to-r from-green-600 to-green-200 rounded-full"></div>
-                        <span className="text-green-600 font-semibold">Annual</span>
+                        <span className="text-green-600 font-semibold">
+                          {language === 'en' ? 'Annual' : 'Ετήσια'}
+                        </span>
                       </div>
                     </div>
 
@@ -375,17 +397,19 @@ const AnnualPerformance = () => {
                           <BarChart className="w-8 h-8 text-blue-600" />
                         </div>
                         <h3 className="text-2xl font-bold text-gray-900">
-                          Monthly Performance
+                          {language === 'en' ? 'Monthly Performance' : 'Μηνιαία Απόδοση'}
                         </h3>
                       </div>
                       <p className="text-gray-600 leading-relaxed text-lg">
-                        The strategy demonstrates selective market participation, focusing only on 
-                        high-probability opportunities. Small declines before significant uptrends 
-                        are part of the approach, indicating a well-managed risk-reward ratio.
+                        {language === 'en'
+                          ? 'The strategy demonstrates selective market participation, focusing only on high-probability opportunities. Small declines before significant uptrends are part of the approach, indicating a well-managed risk-reward ratio.'
+                          : 'Η στρατηγική επιδεικνύει επιλεκτική συμμετοχή στην αγορά, εστιάζοντας μόνο σε ευκαιρίες υψηλής πιθανότητας. Οι μικρές πτώσεις πριν από σημαντικές ανοδικές τάσεις αποτελούν μέρος της προσέγγισης, υποδεικνύοντας μια καλά διαχειριζόμενη αναλογία κινδύνου-ανταμοιβής.'}
                       </p>
                       <div className="mt-8 flex items-center gap-3">
                         <div className="flex-1 h-1.5 bg-gradient-to-r from-blue-600 to-blue-200 rounded-full"></div>
-                        <span className="text-blue-600 font-semibold">Monthly</span>
+                        <span className="text-blue-600 font-semibold">
+                          {language === 'en' ? 'Monthly' : 'Μηνιαία'}
+                        </span>
                       </div>
                     </div>
                   </div>

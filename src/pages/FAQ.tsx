@@ -1,42 +1,60 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, MessageCircle, ArrowRight, HelpCircle } from 'lucide-react';
 import Button from '../components/Button';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const FAQ = () => {
+  const { language } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqItems = [
     {
-      question: "What is this trading strategy?",
-      answer: "Our trading strategy combines algorithmic analysis with human expertise to identify and execute profitable Forex trades. It uses advanced technical indicators, market sentiment analysis, and risk management protocols."
+      question: language === 'en' ? "What is this trading strategy?" : "Τι είναι αυτή η στρατηγική συναλλαγών;",
+      answer: language === 'en' 
+        ? "Our trading strategy combines algorithmic analysis with human expertise to identify and execute profitable Forex trades. It uses advanced technical indicators, market sentiment analysis, and risk management protocols."
+        : "Η στρατηγική συναλλαγών μας συνδυάζει την αλγοριθμική ανάλυση με την ανθρώπινη εμπειρία για την αναγνώριση και εκτέλεση κερδοφόρων συναλλαγών Forex. Χρησιμοποιεί προηγμένους τεχνικούς δείκτες, ανάλυση συναισθήματος αγοράς και πρωτόκολλα διαχείρισης κινδύνου."
     },
     {
-      question: "Is this strategy profitable?",
-      answer: "Yes, our strategy has demonstrated consistent profitability with an average monthly return of 2-3%. Historical performance and backtesting results are available for review."
+      question: language === 'en' ? "Is this strategy profitable?" : "Είναι κερδοφόρα αυτή η στρατηγική;",
+      answer: language === 'en'
+        ? "Yes, our strategy has demonstrated consistent profitability with an average monthly return of 2-3%. Historical performance and backtesting results are available for review."
+        : "Ναι, η στρατηγική μας έχει επιδείξει σταθερή κερδοφορία με μέση μηνιαία απόδοση 2-3%. Τα ιστορικά αποτελέσματα απόδοσης και backtesting είναι διαθέσιμα προς εξέταση."
     },
     {
-      question: "What is the minimum investment required?",
-      answer: "The minimum investment is €10,000, plus annual operational costs. This ensures sufficient capital for optimal strategy execution and risk management."
+      question: language === 'en' ? "What is the minimum investment required?" : "Ποια είναι η ελάχιστη απαιτούμενη επένδυση;",
+      answer: language === 'en'
+        ? "The minimum investment is €10,000, plus annual operational costs. This ensures sufficient capital for optimal strategy execution and risk management."
+        : "Η ελάχιστη επένδυση είναι €10.000, συν τα ετήσια λειτουργικά κόστη. Αυτό εξασφαλίζει επαρκές κεφάλαιο για βέλτιστη εκτέλεση στρατηγικής και διαχείριση κινδύνου."
     },
     {
-      question: "How are profits distributed?",
-      answer: "Profits are distributed monthly to partners based on their investment percentage. We maintain complete transparency with detailed performance reports."
+      question: language === 'en' ? "How are profits distributed?" : "Πώς διανέμονται τα κέρδη;",
+      answer: language === 'en'
+        ? "Profits are distributed monthly to partners based on their investment percentage. We maintain complete transparency with detailed performance reports."
+        : "Τα κέρδη διανέμονται μηνιαία στους συνεργάτες με βάση το ποσοστό επένδυσής τους. Διατηρούμε πλήρη διαφάνεια με λεπτομερείς αναφορές απόδοσης."
     },
     {
-      question: "What risks are involved?",
-      answer: "Like all trading, Forex involves risks. We mitigate these through strict risk management, limiting per-trade exposure to 0.5-1% of capital, and maintaining a maximum drawdown limit of 25%."
+      question: language === 'en' ? "What risks are involved?" : "Ποιοι κίνδυνοι υπάρχουν;",
+      answer: language === 'en'
+        ? "Like all trading, Forex involves risks. We mitigate these through strict risk management, limiting per-trade exposure to 0.5-1% of capital, and maintaining a maximum drawdown limit of 25%."
+        : "Όπως όλες οι συναλλαγές, το Forex ενέχει κινδύνους. Τους μετριάζουμε μέσω αυστηρής διαχείρισης κινδύνου, περιορίζοντας την έκθεση ανά συναλλαγή στο 0.5-1% του κεφαλαίου και διατηρώντας ένα μέγιστο όριο μείωσης 25%."
     },
     {
-      question: "Why an offshore structure?",
-      answer: "The offshore structure provides tax efficiency, legal protection, and operational flexibility. We ensure full compliance with all relevant regulations."
+      question: language === 'en' ? "Why an offshore structure?" : "Γιατί υπεράκτια δομή;",
+      answer: language === 'en'
+        ? "The offshore structure provides tax efficiency, legal protection, and operational flexibility. We ensure full compliance with all relevant regulations."
+        : "Η υπεράκτια δομή παρέχει φορολογική αποδοτικότητα, νομική προστασία και λειτουργική ευελιξία. Εξασφαλίζουμε πλήρη συμμόρφωση με όλους τους σχετικούς κανονισμούς."
     },
     {
-      question: "Can I withdraw my investment at any time?",
-      answer: "Yes, you can withdraw your investment with 30 days' notice. This period ensures proper position management and orderly account closure."
+      question: language === 'en' ? "Can I withdraw my investment at any time?" : "Μπορώ να αποσύρω την επένδυσή μου οποιαδήποτε στιγμή;",
+      answer: language === 'en'
+        ? "Yes, you can withdraw your investment with 30 days' notice. This period ensures proper position management and orderly account closure."
+        : "Ναι, μπορείτε να αποσύρετε την επένδυσή σας με προειδοποίηση 30 ημερών. Αυτή η περίοδος εξασφαλίζει σωστή διαχείριση θέσεων και ομαλό κλείσιμο λογαριασμού."
     },
     {
-      question: "How can I monitor my investment?",
-      answer: "You'll have access to real-time performance tracking through Myfxbook, plus detailed monthly reports and regular strategy updates."
+      question: language === 'en' ? "How can I monitor my investment?" : "Πώς μπορώ να παρακολουθώ την επένδυσή μου;",
+      answer: language === 'en'
+        ? "You'll have access to real-time performance tracking through Myfxbook, plus detailed monthly reports and regular strategy updates."
+        : "Θα έχετε πρόσβαση σε παρακολούθηση απόδοσης σε πραγματικό χρόνο μέσω του Myfxbook, καθώς και λεπτομερείς μηνιαίες αναφορές και τακτικές ενημερώσεις στρατηγικής."
     }
   ];
 
@@ -64,10 +82,12 @@ const FAQ = () => {
               <HelpCircle className="w-8 h-8 text-blue-400" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Frequently Asked Questions
+              {language === 'en' ? 'Frequently Asked Questions' : 'Συχνές Ερωτήσεις'}
             </h1>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-              Find detailed answers about our Forex trading strategy and partnership opportunities
+              {language === 'en'
+                ? 'Find detailed answers about our Forex trading strategy and partnership opportunities'
+                : 'Βρείτε λεπτομερείς απαντήσεις σχετικά με τη στρατηγική συναλλαγών Forex και τις ευκαιρίες συνεργασίας'}
             </p>
           </div>
         </div>
@@ -256,18 +276,19 @@ const FAQ = () => {
               <MessageCircle className="w-8 h-8 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-white mb-4">
-              Still Have Questions?
+              {language === 'en' ? 'Still Have Questions?' : 'Έχετε ακόμα ερωτήσεις;'}
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              We're here to help! Contact us for detailed information about our 
-              trading partnership opportunity.
+              {language === 'en'
+                ? "We're here to help! Contact us for detailed information about our trading partnership opportunity."
+                : 'Είμαστε εδώ για να βοηθήσουμε! Επικοινωνήστε μαζί μας για λεπτομερείς πληροφορίες σχετικά με την ευκαιρία συνεργασίας μας.'}
             </p>
             <Button 
               href="/contact" 
               variant="secondary"
               className="bg-white text-blue-600 hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              Contact Us <ArrowRight className="w-5 h-5 ml-2" />
+              {language === 'en' ? 'Contact Us' : 'Επικοινωνήστε μαζί μας'} <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </div>
         </div>

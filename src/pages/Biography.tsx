@@ -1,10 +1,40 @@
 import React from 'react';
 import { ArrowRight, Award, Target, Clock, TrendingUp } from 'lucide-react';
 import Button from '../components/Button';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const bioImage = new URL('../assets/images/bio.jpg', import.meta.url).href;
 
 const Biography = () => {
+  const { language } = useLanguage();
+
+  const stats = [
+    { 
+      icon: <Clock className="w-6 h-6 text-blue-600" />, 
+      bg: "blue", 
+      value: "15+ Years", 
+      label: language === 'en' ? "Trading Experience" : "Εμπειρία Συναλλαγών" 
+    },
+    { 
+      icon: <Target className="w-6 h-6 text-green-600" />, 
+      bg: "green", 
+      value: "34.8%", 
+      label: language === 'en' ? "Avg. Annual Return" : "Μέση Ετήσια Απόδοση" 
+    },
+    { 
+      icon: <Award className="w-6 h-6 text-purple-600" />, 
+      bg: "purple", 
+      value: "100%", 
+      label: language === 'en' ? "Automated System" : "Αυτοματοποιημένο Σύστημα" 
+    },
+    { 
+      icon: <TrendingUp className="w-6 h-6 text-orange-600" />, 
+      bg: "orange", 
+      value: "28", 
+      label: language === 'en' ? "Currency Pairs" : "Ζεύγη Νομισμάτων" 
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -27,10 +57,12 @@ const Biography = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in">
-              Our Story
+              {language === 'en' ? 'Our Story' : 'Η Ιστορία μας'}
             </h1>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto animate-fade-in-delayed">
-              A journey of innovation and excellence in automated Forex trading
+              {language === 'en' 
+                ? 'A journey of innovation and excellence in automated Forex trading'
+                : 'Ένα ταξίδι καινοτομίας και αριστείας στις αυτοματοποιημένες συναλλαγές Forex'}
             </p>
           </div>
         </div>
@@ -52,19 +84,16 @@ const Biography = () => {
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/60 via-black/20 to-transparent 
                   opacity-70 group-hover:opacity-40 transition-opacity duration-500"></div>
                 <div className="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-                  <h3 className="text-2xl font-bold mb-2">Giannis Christopoulos</h3>
-                  <p className="text-gray-200">Forex Trading Expert</p>
+                  <h3 className="text-2xl font-bold mb-2">Γιάννης Χριστόπουλος</h3>
+                  <p className="text-gray-200">
+                    {language === 'en' ? 'Forex Trading Expert' : 'Ειδικός Συναλλαγών Forex'}
+                  </p>
                 </div>
               </div>
 
               {/* Stats Grid with hover effects */}
               <div className="grid grid-cols-2 gap-6">
-                {[
-                  { icon: <Clock className="w-6 h-6 text-blue-600" />, bg: "blue", value: "15+ Years", label: "Trading Experience" },
-                  { icon: <Target className="w-6 h-6 text-green-600" />, bg: "green", value: "34.8%", label: "Avg. Annual Return" },
-                  { icon: <Award className="w-6 h-6 text-purple-600" />, bg: "purple", value: "100%", label: "Automated System" },
-                  { icon: <TrendingUp className="w-6 h-6 text-orange-600" />, bg: "orange", value: "28", label: "Currency Pairs" }
-                ].map((stat, index) => (
+                {stats.map((stat, index) => (
                   <div 
                     key={index}
                     className={`bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 
@@ -88,19 +117,51 @@ const Biography = () => {
               transition-all duration-500 animate-fade-in-delayed">
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 leading-relaxed hover:text-gray-900 transition-colors duration-300">
-                  The provided documents describe a <strong>highly sophisticated</strong> and <strong>fully automated Forex trading strategy</strong> developed by <strong>Giannis (John) Christopoulos</strong>, an experienced trader from Kalamata, Greece. This strategy has been meticulously designed and extensively tested through both <strong>historical data (backtesting)</strong> and <strong>real-market conditions (live trading)</strong> for over <strong>15 years</strong>. Its resilience in extreme market conditions, such as economic crises, post-news volatility, and unpredictable price fluctuations, makes it one of the most reliable and profitable trading strategies.
+                  {language === 'en' ? (
+                    <>
+                      The provided documents describe a <strong>highly sophisticated</strong> and <strong>fully automated Forex trading strategy</strong> developed by <strong>Giannis (John) Christopoulos</strong>, an experienced trader from Kalamata, Greece. This strategy has been meticulously designed and extensively tested through both <strong>historical data (backtesting)</strong> and <strong>real-market conditions (live trading)</strong> for over <strong>15 years</strong>. Its resilience in extreme market conditions, such as economic crises, post-news volatility, and unpredictable price fluctuations, makes it one of the most reliable and profitable trading strategies.
+                    </>
+                  ) : (
+                    <>
+                      Τα έγγραφα αυτά παρουσιάζουν μια <strong>εξαιρετικά προηγμένη</strong> και <strong>πλήρως αυτοματοποιημένη στρατηγική συναλλαγών Forex</strong> που αναπτύχθηκε από τον <strong>Γιάννη Χριστόπουλο</strong>, έναν έμπειρο trader από την Καλαμάτα. Η στρατηγική αυτή έχει σχεδιαστεί με ακρίβεια και έχει δοκιμαστεί εκτενώς τόσο σε <strong>ιστορικά δεδομένα (backtesting)</strong> όσο και σε <strong>πραγματικές συνθήκες αγοράς (live trading)</strong> για περισσότερα από <strong>15 χρόνια</strong>. Η ανθεκτικότητά της σε ακραίες συνθήκες αγοράς, όπως οικονομικές κρίσεις, διακυμάνσεις μετά από ειδήσεις και απρόβλεπτες μεταβολές τιμών, την καθιστά μία από τις πιο αξιόπιστες και κερδοφόρες στρατηγικές συναλλαγών.
+                    </>
+                  )}
                 </p>
 
                 <p className="text-gray-600 leading-relaxed mt-6 hover:text-gray-900 transition-colors duration-300">
-                  This strategy is based on a <strong>fully automated multi-currency, multi-timeframe trading system</strong> that leverages a unique combination of the <strong>Railway Track Pattern</strong>, <strong>Price Action</strong> techniques, and the <strong>Fibonacci sequence</strong>. By utilizing these elements, it identifies high-probability trade setups, particularly thriving in periods of high market volatility.
+                  {language === 'en' ? (
+                    <>
+                      This strategy is based on a <strong>fully automated multi-currency, multi-timeframe trading system</strong> that leverages a unique combination of the <strong>Railway Track Pattern</strong>, <strong>Price Action</strong> techniques, and the <strong>Fibonacci sequence</strong>. By utilizing these elements, it identifies high-probability trade setups, particularly thriving in periods of high market volatility.
+                    </>
+                  ) : (
+                    <>
+                      Η στρατηγική βασίζεται σε ένα <strong>πλήρως αυτοματοποιημένο σύστημα συναλλαγών πολλαπλών νομισμάτων και χρονικών πλαισίων</strong> που αξιοποιεί έναν μοναδικό συνδυασμό του <strong>Railway Track Pattern</strong>, τεχνικών <strong>Price Action</strong> και της <strong>ακολουθίας Fibonacci</strong>. Με τη χρήση αυτών των στοιχείων, εντοπίζει ευκαιρίες συναλλαγών υψηλής πιθανότητας επιτυχίας, ιδιαίτερα σε περιόδους υψηλής μεταβλητότητας της αγοράς.
+                    </>
+                  )}
                 </p>
 
                 <p className="text-gray-600 leading-relaxed mt-6 hover:text-gray-900 transition-colors duration-300">
-                  Over the past 15 years, the strategy has undergone <strong>rigorous testing</strong>, consistently delivering outstanding results even during global financial crises. From the <strong>2008 financial meltdown</strong> and the <strong>Eurozone debt crisis</strong> to the <strong>2015 Swiss Franc shock (Francogeddon)</strong>, the <strong>2016 Brexit crash</strong>, the <strong>2020 COVID-19 market turmoil</strong>, and the <strong>2024 "Black Monday"</strong>, this strategy has demonstrated its ability to generate profits even in the most challenging market environments.
+                  {language === 'en' ? (
+                    <>
+                      Over the past 15 years, the strategy has undergone <strong>rigorous testing</strong>, consistently delivering outstanding results even during global financial crises. From the <strong>2008 financial meltdown</strong> and the <strong>Eurozone debt crisis</strong> to the <strong>2015 Swiss Franc shock (Francogeddon)</strong>, the <strong>2016 Brexit crash</strong>, the <strong>2020 COVID-19 market turmoil</strong>, and the <strong>2024 "Black Monday"</strong>, this strategy has demonstrated its ability to generate profits even in the most challenging market environments.
+                    </>
+                  ) : (
+                    <>
+                      Στη διάρκεια των τελευταίων 15 ετών, η στρατηγική έχει υποβληθεί σε <strong>εντατικές δοκιμές</strong>, επιτυγχάνοντας σταθερά εξαιρετικά αποτελέσματα ακόμη και κατά τη διάρκεια παγκόσμιων οικονομικών κρίσεων. Από την <strong>οικονομική κρίση του 2008</strong> και την <strong>κρίση χρέους της Ευρωζώνης</strong> μέχρι το <strong>σοκ του Ελβετικού Φράγκου το 2015 (Francogeddon)</strong>, την <strong>πτώση του Brexit το 2016</strong>, την <strong>αναταραχή της αγοράς λόγω COVID-19 το 2020</strong> και τη <strong>"Μαύρη Δευτέρα" του 2024</strong>, η στρατηγική αυτή έχει αποδείξει την ικανότητά της να παράγει κέρδη ακόμη και στα πιο απαιτητικά περιβάλλοντα αγοράς.
+                    </>
+                  )}
                 </p>
 
                 <p className="text-gray-600 leading-relaxed mt-6 hover:text-gray-900 transition-colors duration-300">
-                  This report provides a detailed analysis of the strategy, focusing on its <strong>performance</strong>, <strong>methodology</strong>, <strong>risk management</strong>, <strong>scalability</strong>, and its potential as a fully automated and highly profitable Forex trading system.
+                  {language === 'en' ? (
+                    <>
+                      This report provides a detailed analysis of the strategy, focusing on its <strong>performance</strong>, <strong>methodology</strong>, <strong>risk management</strong>, <strong>scalability</strong>, and its potential as a fully automated and highly profitable Forex trading system.
+                    </>
+                  ) : (
+                    <>
+                      Η παρούσα αναφορά παρέχει μια λεπτομερή ανάλυση της στρατηγικής, εστιάζοντας στην <strong>απόδοση</strong>, τη <strong>μεθοδολογία</strong>, τη <strong>διαχείριση κινδύνου</strong>, την <strong>κλιμάκωση</strong> και τις δυνατότητές της ως ένα πλήρως αυτοματοποιημένο και ιδιαίτερα κερδοφόρο σύστημα συναλλαγών Forex.
+                    </>
+                  )}
                 </p>
               </div>
 
@@ -110,7 +171,7 @@ const Biography = () => {
                   href="/contact" 
                   className="gap-2 transform hover:scale-105 hover:shadow-lg transition-all duration-300"
                 >
-                  Contact Us 
+                  {language === 'en' ? 'Contact Us' : 'Επικοινωνήστε μαζί μας'}
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
               </div>

@@ -3,8 +3,11 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsToolti
 import { Link } from 'react-router-dom';
 import { ArrowRight, Info } from 'lucide-react';
 import * as TooltipUI from '@radix-ui/react-tooltip';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Backtests = () => {
+  const { language } = useLanguage();
+
   // Sample backtest data (2007-2024)
   const performanceData = [
     { year: '2007', return: 285, drawdown: -45 },
@@ -28,12 +31,30 @@ const Backtests = () => {
   ];
 
   const statistics = [
-    { label: 'CAGR', value: '79.98%' },
-    { label: 'Win Rate', value: '59.5%' },
-    { label: 'Profit Factor', value: '2.40' },
-    { label: 'Max Drawdown', value: '40% (2008 and 2015)' },
-    { label: 'Sharpe Ratio', value: '1.10' },
-    { label: 'Risk/Reward', value: '1/1.6' }
+    { 
+      label: language === 'en' ? 'CAGR' : 'ΣΜΕΡ', 
+      value: '79.98%' 
+    },
+    { 
+      label: language === 'en' ? 'Win Rate' : 'Ποσοστό Επιτυχίας', 
+      value: '59.5%' 
+    },
+    { 
+      label: language === 'en' ? 'Profit Factor' : 'Συντελεστής Κέρδους', 
+      value: '2.40' 
+    },
+    { 
+      label: language === 'en' ? 'Max Drawdown' : 'Μέγιστη Πτώση', 
+      value: language === 'en' ? '40% (2008 and 2015)' : '40% (2008 και 2015)' 
+    },
+    { 
+      label: language === 'en' ? 'Sharpe Ratio' : 'Δείκτης Sharpe', 
+      value: '1.10' 
+    },
+    { 
+      label: language === 'en' ? 'Risk/Reward' : 'Ρίσκο/Ανταμοιβή', 
+      value: '1/1.6' 
+    }
   ];
 
   return (
@@ -58,11 +79,12 @@ const Backtests = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in">
-              Backtest Results (2007-2024)
+              {language === 'en' ? 'Backtest Results (2007-2024)' : 'Αποτελέσματα Δοκιμών (2007-2024)'}
             </h1>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto animate-fade-in-delayed">
-              Comprehensive backtest analysis demonstrating consistent performance through 
-              multiple market cycles and economic conditions.
+              {language === 'en' 
+                ? 'Comprehensive backtest analysis demonstrating consistent performance through multiple market cycles and economic conditions.'
+                : 'Ολοκληρωμένη ανάλυση δοκιμών που αποδεικνύει σταθερή απόδοση σε πολλαπλούς κύκλους αγοράς και οικονομικές συνθήκες.'}
             </p>
           </div>
         </div>
@@ -153,17 +175,17 @@ const Backtests = () => {
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
                 <div className="h-6 w-1 bg-blue-600 rounded-full"></div>
-              Historical Performance
+                {language === 'en' ? 'Historical Performance' : 'Ιστορική Απόδοση'}
             </h2>
               <div className="flex items-center gap-4 text-sm">
                 <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-800">
-                  98% Quality Score
+                  {language === 'en' ? '98% Quality Score' : '98% Βαθμός Ποιότητας'}
                 </span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-800">
-                  1.2M+ Data Points
+                  {language === 'en' ? '1.2M+ Data Points' : '1.2M+ Σημεία Δεδομένων'}
                 </span>
                 <span className="inline-flex items-center px-3 py-1 rounded-full bg-purple-100 text-purple-800">
-                  Multiple Timeframes
+                  {language === 'en' ? 'Multiple Timeframes' : 'Πολλαπλά Χρονικά Πλαίσια'}
                 </span>
               </div>
             </div>
@@ -179,14 +201,14 @@ const Backtests = () => {
                   <Line 
                     type="monotone" 
                     dataKey="return" 
-                    name="Annual Return %" 
+                    name={language === 'en' ? 'Annual Return %' : 'Ετήσια Απόδοση %'} 
                     stroke="#0284c7" 
                     strokeWidth={2} 
                   />
                   <Line 
                     type="monotone" 
                     dataKey="drawdown" 
-                    name="Max Drawdown %" 
+                    name={language === 'en' ? 'Max Drawdown %' : 'Μέγιστη Πτώση %'} 
                     stroke="#ef4444" 
                     strokeWidth={2} 
                   />
@@ -202,50 +224,68 @@ const Backtests = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white p-8 rounded-2xl shadow-lg">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              Detailed Backtest Results
-            </h2>
+              {language === 'en' ? 'Detailed Backtest Results' : 'Αναλυτικά Αποτελέσματα Δοκιμών'}
+          </h2>
             
             {/* Key Metrics Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
               <div className="bg-blue-50 p-6 rounded-xl">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Trading Period</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                  {language === 'en' ? 'Trading Period' : 'Περίοδος Συναλλαγών'}
+                </h3>
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Symbol:</span>
-                    <span className="font-semibold">Major & Minor Forex Pairs</span>
+                    <span className="text-gray-600">{language === 'en' ? 'Symbol:' : 'Σύμβολο:'}</span>
+                    <span className="font-semibold">
+                      {language === 'en' ? 'Major & Minor Forex Pairs' : 'Κύρια & Δευτερεύοντα Ζεύγη Forex'}
+                    </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Period:</span>
+                    <span className="text-gray-600">{language === 'en' ? 'Period:' : 'Περίοδος:'}</span>
                     <span className="font-semibold">M5 (2008.01.01 - 2024.12.31)</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Initial Deposit:</span>
+                    <span className="text-gray-600">
+                      {language === 'en' ? 'Initial Deposit:' : 'Αρχική Κατάθεση:'}
+                    </span>
                     <span className="font-semibold">€10,000.00</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Leverage:</span>
+                    <span className="text-gray-600">
+                      {language === 'en' ? 'Leverage:' : 'Μόχλευση:'}
+                    </span>
                     <span className="font-semibold">1:500</span>
                   </div>
                 </div>
               </div>
 
               <div className="bg-green-50 p-6 rounded-xl">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Performance Metrics</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                  {language === 'en' ? 'Performance Metrics' : 'Μετρήσεις Απόδοσης'}
+                </h3>
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Total Net Profit:</span>
+                    <span className="text-gray-600">
+                      {language === 'en' ? 'Total Net Profit:' : 'Συνολικό Καθαρό Κέρδος:'}
+                    </span>
                     <span className="font-semibold text-green-600">€214,056,308.07</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Gross Profit:</span>
+                    <span className="text-gray-600">
+                      {language === 'en' ? 'Gross Profit:' : 'Μικτό Κέρδος:'}
+                    </span>
                     <span className="font-semibold text-green-600">€365,934,912.36</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Gross Loss:</span>
+                    <span className="text-gray-600">
+                      {language === 'en' ? 'Gross Loss:' : 'Μικτή Ζημία:'}
+                    </span>
                     <span className="font-semibold text-red-600">-€151,878,604.29</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Profit Factor:</span>
+                    <span className="text-gray-600">
+                      {language === 'en' ? 'Profit Factor:' : 'Συντελεστής Κέρδους:'}
+                    </span>
                     <span className="font-semibold">2.41</span>
                   </div>
                 </div>
@@ -431,7 +471,7 @@ const Backtests = () => {
                     d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                   />
                 </svg>
-                Download Backtest Report
+                {language === 'en' ? 'Download Backtest Report' : 'Λήψη Αναφοράς Δοκιμών'}
               </a>
             </div>
           </div>
@@ -448,11 +488,11 @@ const Backtests = () => {
                 className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-blue-50/30"
               >
                 <h3 className="text-lg font-semibold text-gray-600 mb-2 transition-colors duration-200 group-hover:text-gray-900">
-                {stat.label}
-              </h3>
+                  {stat.label}
+                </h3>
                 <p className="text-3xl font-bold text-blue-600 transition-colors duration-200 group-hover:text-blue-700">
-                {stat.value}
-              </p>
+                  {stat.value}
+                </p>
               </div>
             ))}
           </div>
@@ -464,10 +504,14 @@ const Backtests = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 transform hover:scale-105 transition-all duration-300">
             <h2 className="text-3xl font-bold text-gray-900 mb-4 animate-fade-in">
-              Expert Advisor: Backtested for Enduring Performance
+              {language === 'en' 
+                ? 'Expert Advisor: Backtested for Enduring Performance'
+                : 'Expert Advisor: Δοκιμασμένο για Διαχρονική Απόδοση'}
             </h2>
             <p className="text-lg text-gray-600 animate-fade-in-delayed">
-              Watch this video to understand how our AI-powered Forex trading system operates
+              {language === 'en'
+                ? 'Watch this video to understand how our AI-powered Forex trading system operates'
+                : 'Παρακολουθήστε αυτό το βίντεο για να κατανοήσετε πώς λειτουργεί το σύστημα συναλλαγών Forex με τεχνητή νοημοσύνη'}
             </p>
           </div>
           <div className="relative pb-[56.25%] h-0 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105">
@@ -487,13 +531,19 @@ const Backtests = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white p-8 rounded-2xl shadow-lg">
             <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center animate-fade-in">
-              Trading Capabilities
+              {language === 'en' ? 'Trading Capabilities' : 'Δυνατότητες Συναλλαγών'}
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              The bot trades on the following timeframes, supporting 
-              <span className="font-semibold text-blue-600"> 28 currency pairs </span> 
-              and
-              <span className="font-semibold text-green-600"> 16 timeframes</span>.
+              {language === 'en' 
+                ? `The bot trades on the following timeframes, supporting `
+                : `Το bot πραγματοποιεί συναλλαγές στα ακόλουθα χρονικά πλαίσια, υποστηρίζοντας `}
+              <span className="font-semibold text-blue-600"> 
+                {language === 'en' ? '28 currency pairs ' : '28 ζεύγη νομισμάτων '}
+              </span> 
+              {language === 'en' ? 'and' : 'και'}
+              <span className="font-semibold text-green-600">
+                {language === 'en' ? ' 16 timeframes' : ' 16 χρονικά πλαίσια'}
+              </span>.
             </p>
 
             {/* Grid Container */}
@@ -502,7 +552,7 @@ const Backtests = () => {
               <div className="bg-gray-50 p-6 rounded-xl">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
                   <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                  Trading Pairs (28)
+                  {language === 'en' ? 'Trading Pairs (28)' : 'Ζεύγη Συναλλαγών (28)'}
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {[
@@ -527,7 +577,7 @@ const Backtests = () => {
                     className="inline-flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white 
                              font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 gap-2"
                   >
-                    Major & Minor Pairs
+                    {language === 'en' ? 'Major & Minor Pairs' : 'Κύρια & Δευτερεύοντα Ζεύγη'}
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                 </div>
@@ -537,7 +587,7 @@ const Backtests = () => {
               <div className="bg-gray-50 p-6 rounded-xl">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  Timeframes (16)
+                  {language === 'en' ? 'Timeframes (16)' : 'Χρονικά Πλαίσια (16)'}
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {[
@@ -568,7 +618,9 @@ const Backtests = () => {
                   ))}
                 </div>
                 <p className="text-sm text-gray-500 mt-4 italic">
-                  Multi-timeframe analysis from 5 minutes to monthly timeframes
+                  {language === 'en'
+                    ? 'Multi-timeframe analysis from 5 minutes to monthly timeframes'
+                    : 'Ανάλυση πολλαπλών χρονικών πλαισίων από 5 λεπτά έως μηνιαία διαστήματα'}
                 </p>
               </div>
             </div>
@@ -582,11 +634,14 @@ const Backtests = () => {
           <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl shadow-xl p-12">
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-3xl font-bold text-white mb-6">
-                Ready to Experience These Results?
+                {language === 'en' 
+                  ? 'Ready to Experience These Results?'
+                  : 'Έτοιμοι να Βιώσετε Αυτά τα Αποτελέσματα;'}
               </h2>
               <p className="text-lg text-blue-100 mb-8">
-                Join our successful trading venture and gain access to our proven AI-powered 
-                Forex trading strategy. Contact us today to learn more about partnership opportunities.
+                {language === 'en'
+                  ? 'Join our successful trading venture and gain access to our proven AI-powered Forex trading strategy. Contact us today to learn more about partnership opportunities.'
+                  : 'Γίνετε μέρος της επιτυχημένης επιχείρησης συναλλαγών μας και αποκτήστε πρόσβαση στην αποδεδειγμένη στρατηγική συναλλαγών Forex με τεχνητή νοημοσύνη. Επικοινωνήστε μαζί μας σήμερα για να μάθετε περισσότερα για τις ευκαιρίες συνεργασίας.'}
               </p>
               <Link 
                 to="/contact"
@@ -594,7 +649,7 @@ const Backtests = () => {
                          hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl 
                          transform hover:-translate-y-1 gap-2"
               >
-                Contact Us
+                {language === 'en' ? 'Contact Us' : 'Επικοινωνήστε μαζί μας'}
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
@@ -603,15 +658,21 @@ const Backtests = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mt-12 pt-12 border-t border-blue-400">
               <div className="text-center">
                 <p className="text-4xl font-bold text-white mb-2">15+</p>
-                <p className="text-blue-100">Years Experience</p>
+                <p className="text-blue-100">
+                  {language === 'en' ? 'Years Experience' : 'Χρόνια Εμπειρίας'}
+                </p>
               </div>
               <div className="text-center">
                 <p className="text-4xl font-bold text-white mb-2">28</p>
-                <p className="text-blue-100">Currency Pairs</p>
+                <p className="text-blue-100">
+                  {language === 'en' ? 'Currency Pairs' : 'Ζεύγη Νομισμάτων'}
+                </p>
               </div>
               <div className="text-center">
                 <p className="text-4xl font-bold text-white mb-2">34.8%</p>
-                <p className="text-blue-100">Average Annual Return</p>
+                <p className="text-blue-100">
+                  {language === 'en' ? 'Average Annual Return' : 'Μέση Ετήσια Απόδοση'}
+                </p>
               </div>
             </div>
           </div>

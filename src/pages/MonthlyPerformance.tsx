@@ -1,29 +1,50 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart } from 'recharts';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const MonthlyPerformance = () => {
+  const { language } = useLanguage();
+
   const monthlyData = [
-    { month: 'Jan 2024', return: 3.2, trades: 14, winRate: 71.4 },
-    { month: 'Dec 2023', return: 2.9, trades: 12, winRate: 66.7 },
-    { month: 'Nov 2023', return: 3.1, trades: 15, winRate: 73.3 },
-    { month: 'Oct 2023', return: 2.8, trades: 13, winRate: 69.2 },
-    { month: 'Sep 2023', return: 3.0, trades: 16, winRate: 68.8 },
-    { month: 'Aug 2023', return: 2.7, trades: 11, winRate: 63.6 },
-    { month: 'Jul 2023', return: 3.3, trades: 17, winRate: 70.6 },
-    { month: 'Jun 2023', return: 2.9, trades: 14, winRate: 71.4 },
-    { month: 'May 2023', return: 3.1, trades: 15, winRate: 66.7 },
-    { month: 'Apr 2023', return: 2.8, trades: 12, winRate: 75.0 },
-    { month: 'Mar 2023', return: 3.2, trades: 16, winRate: 68.8 },
-    { month: 'Feb 2023', return: 2.9, trades: 13, winRate: 69.2 }
+    { month: language === 'en' ? 'Jan 2024' : 'Ιαν 2024', return: 3.2, trades: 14, winRate: 71.4 },
+    { month: language === 'en' ? 'Dec 2023' : 'Δεκ 2023', return: 2.9, trades: 12, winRate: 66.7 },
+    { month: language === 'en' ? 'Nov 2023' : 'Νοε 2023', return: 3.1, trades: 15, winRate: 73.3 },
+    { month: language === 'en' ? 'Oct 2023' : 'Οκτ 2023', return: 2.8, trades: 13, winRate: 69.2 },
+    { month: language === 'en' ? 'Sep 2023' : 'Σεπ 2023', return: 3.0, trades: 16, winRate: 68.8 },
+    { month: language === 'en' ? 'Aug 2023' : 'Αυγ 2023', return: 2.7, trades: 11, winRate: 63.6 },
+    { month: language === 'en' ? 'Jul 2023' : 'Ιουλ 2023', return: 3.3, trades: 17, winRate: 70.6 },
+    { month: language === 'en' ? 'Jun 2023' : 'Ιουν 2023', return: 2.9, trades: 14, winRate: 71.4 },
+    { month: language === 'en' ? 'May 2023' : 'Μάι 2023', return: 3.1, trades: 15, winRate: 66.7 },
+    { month: language === 'en' ? 'Apr 2023' : 'Απρ 2023', return: 2.8, trades: 12, winRate: 75.0 },
+    { month: language === 'en' ? 'Mar 2023' : 'Μαρ 2023', return: 3.2, trades: 16, winRate: 68.8 },
+    { month: language === 'en' ? 'Feb 2023' : 'Φεβ 2023', return: 2.9, trades: 13, winRate: 69.2 }
   ].reverse();
 
   const statistics = [
-    { label: 'Average Monthly Return', value: '3.0%' },
-    { label: 'Average Trades per Month', value: '14' },
-    { label: 'Average Win Rate', value: '69.6%' },
-    { label: 'Best Month', value: '3.3%' },
-    { label: 'Worst Month', value: '2.7%' },
-    { label: 'Consecutive Winning Months', value: '12' }
+    { 
+      label: language === 'en' ? 'Average Monthly Return' : 'Μέση Μηνιαία Απόδοση', 
+      value: '3.0%' 
+    },
+    { 
+      label: language === 'en' ? 'Average Trades per Month' : 'Μέσος Όρος Συναλλαγών ανά Μήνα', 
+      value: '14' 
+    },
+    { 
+      label: language === 'en' ? 'Average Win Rate' : 'Μέσο Ποσοστό Επιτυχίας', 
+      value: '69.6%' 
+    },
+    { 
+      label: language === 'en' ? 'Best Month' : 'Καλύτερος Μήνας', 
+      value: '3.3%' 
+    },
+    { 
+      label: language === 'en' ? 'Worst Month' : 'Χειρότερος Μήνας', 
+      value: '2.7%' 
+    },
+    { 
+      label: language === 'en' ? 'Consecutive Winning Months' : 'Συνεχόμενοι Κερδοφόροι Μήνες', 
+      value: '12' 
+    }
   ];
 
   return (
@@ -48,11 +69,12 @@ const MonthlyPerformance = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in">
-              Monthly Performance Analysis
+              {language === 'en' ? 'Monthly Performance Analysis' : 'Ανάλυση Μηνιαίας Απόδοσης'}
             </h1>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto animate-fade-in-delayed">
-              Detailed breakdown of our trading performance on a month-by-month basis, 
-              showcasing consistent returns and strategic execution.
+              {language === 'en'
+                ? 'Detailed breakdown of our trading performance on a month-by-month basis, showcasing consistent returns and strategic execution.'
+                : 'Λεπτομερής ανάλυση της απόδοσης των συναλλαγών μας σε μηνιαία βάση, που αναδεικνύει τις σταθερές αποδόσεις και τη στρατηγική εκτέλεση.'}
             </p>
           </div>
         </div>
@@ -67,7 +89,7 @@ const MonthlyPerformance = () => {
         <div className="chart-container">
           <div className="bg-white p-8 rounded-2xl shadow-lg">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              Monthly Returns (Last 12 Months)
+              {language === 'en' ? 'Monthly Returns (Last 12 Months)' : 'Μηνιαίες Αποδόσεις (Τελευταίοι 12 Μήνες)'}
             </h2>
             <div className="h-[400px]">
               <ResponsiveContainer width="100%" height="100%">
@@ -81,13 +103,13 @@ const MonthlyPerformance = () => {
                   <Bar 
                     yAxisId="left"
                     dataKey="return" 
-                    name="Return %" 
+                    name={language === 'en' ? 'Return %' : 'Απόδοση %'} 
                     fill="#0284c7" 
                   />
                   <Bar 
                     yAxisId="right"
                     dataKey="winRate" 
-                    name="Win Rate %" 
+                    name={language === 'en' ? 'Win Rate %' : 'Ποσοστό Επιτυχίας %'} 
                     fill="#6366f1" 
                   />
                 </BarChart>
@@ -105,27 +127,27 @@ const MonthlyPerformance = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
               {[
                 {
-                  label: "Average Monthly Return",
+                  label: language === 'en' ? "Average Monthly Return" : "Μέση Μηνιαία Απόδοση",
                   value: "3.0%",
                   icon: "📈",
-                  description: "Consistent monthly performance",
-                  trend: "Stable",
+                  description: language === 'en' ? "Consistent monthly performance" : "Σταθερή μηνιαία απόδοση",
+                  trend: language === 'en' ? "Stable" : "Σταθερή",
                   trendColor: "text-green-400"
                 },
                 {
-                  label: "Average Trades per Month",
+                  label: language === 'en' ? "Average Trades per Month" : "Μέσος Όρος Συναλλαγών ανά Μήνα",
                   value: "14",
                   icon: "🎯",
-                  description: "Selective trading approach",
-                  trend: "Optimal",
+                  description: language === 'en' ? "Selective trading approach" : "Επιλεκτική προσέγγιση συναλλαγών",
+                  trend: language === 'en' ? "Optimal" : "Βέλτιστη",
                   trendColor: "text-blue-400"
                 },
                 {
-                  label: "Average Win Rate",
+                  label: language === 'en' ? "Average Win Rate" : "Μέσο Ποσοστό Επιτυχίας",
                   value: "69.6%",
                   icon: "🏆",
-                  description: "High probability setups",
-                  trend: "Strong",
+                  description: language === 'en' ? "High probability setups" : "Υψηλής πιθανότητας setups",
+                  trend: language === 'en' ? "Strong" : "Ισχυρή",
                   trendColor: "text-green-400"
                 }
               ].map((stat, index) => (
@@ -173,10 +195,12 @@ const MonthlyPerformance = () => {
             {/* Center text */}
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Performance Statistics
+                {language === 'en' ? 'Performance Statistics' : 'Στατιστικά Απόδοσης'}
               </h2>
               <p className="text-blue-200 max-w-3xl mx-auto">
-                Consistent performance across multiple metrics, demonstrating the reliability of our trading strategy
+                {language === 'en' 
+                  ? 'Consistent performance across multiple metrics, demonstrating the reliability of our trading strategy'
+                  : 'Σταθερή απόδοση σε πολλαπλές μετρήσεις, που αποδεικνύει την αξιοπιστία της στρατηγικής συναλλαγών μας'}
               </p>
             </div>
 
@@ -184,27 +208,27 @@ const MonthlyPerformance = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
-                  label: "Best Month",
+                  label: language === 'en' ? "Best Month" : "Καλύτερος Μήνας",
                   value: "3.3%",
                   icon: "⭐",
-                  description: "Peak performance",
-                  trend: "July 2023",
+                  description: language === 'en' ? "Peak performance" : "Πιο καλή απόδοση",
+                  trend: language === 'en' ? "July 2023" : "Ιούλιος 2023",
                   trendColor: "text-yellow-400"
                 },
                 {
-                  label: "Worst Month",
+                  label: language === 'en' ? "Worst Month" : "Χειρότερος Μήνας",
                   value: "2.7%",
                   icon: "📊",
-                  description: "Risk-managed downside",
-                  trend: "August 2023",
+                  description: language === 'en' ? "Risk-managed downside" : "Μείωση κινδύνου",
+                  trend: language === 'en' ? "August 2023" : "Αύγουστος 2023",
                   trendColor: "text-blue-400"
                 },
                 {
-                  label: "Consecutive Winning Months",
+                  label: language === 'en' ? "Consecutive Winning Months" : "Συνεχόμενοι Κερδοφόροι Μήνες",
                   value: "12",
                   icon: "🔄",
-                  description: "Unbroken success streak",
-                  trend: "Ongoing",
+                  description: language === 'en' ? "Ongoing" : "Συνεχής επιτυχία",
+                  trend: language === 'en' ? "Ongoing" : "Συνεχής",
                   trendColor: "text-green-400"
                 }
               ].map((stat, index) => (
@@ -319,7 +343,9 @@ const MonthlyPerformance = () => {
       <section className="mb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg border border-blue-100">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Strategy Overview</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+              {language === 'en' ? 'Strategy Overview' : 'Επισκόπηση Στρατηγικής'}
+            </h2>
             <div className="grid md:grid-cols-2 gap-8">
               {/* Monthly Performance Card */}
               <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
@@ -328,17 +354,19 @@ const MonthlyPerformance = () => {
                     <BarChart className="w-8 h-8 text-blue-600" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900">
-                    Monthly Performance
+                    {language === 'en' ? 'Monthly Performance' : 'Μηνιαία Απόδοση'}
                   </h3>
                 </div>
                 <p className="text-gray-600 leading-relaxed text-lg">
-                  The strategy demonstrates selective market participation, focusing only on 
-                  high-probability opportunities. Small declines before significant uptrends 
-                  are part of the approach, indicating a well-managed risk-reward ratio.
+                  {language === 'en'
+                    ? 'The strategy demonstrates selective market participation, focusing only on high-probability opportunities. Small declines before significant uptrends are part of the approach, indicating a well-managed risk-reward ratio.'
+                    : 'Η στρατηγική επιδεικνύει επιλεκτική συμμετοχή στην αγορά, εστιάζοντας μόνο σε ευκαιρίες υψηλής πιθανότητας. Οι μικρές πτώσεις πριν από σημαντικές ανοδικές τάσεις αποτελούν μέρος της προσέγγισης, υποδεικνύοντας μια καλά διαχειριζόμενη αναλογία κινδύνου-ανταμοιβής.'}
                 </p>
                 <div className="mt-8 flex items-center gap-3">
                   <div className="flex-1 h-1.5 bg-gradient-to-r from-blue-600 to-blue-200 rounded-full"></div>
-                  <span className="text-blue-600 font-semibold">Monthly</span>
+                  <span className="text-blue-600 font-semibold">
+                    {language === 'en' ? 'Monthly' : 'Μηνιαία'}
+                  </span>
                 </div>
               </div>
 
@@ -349,17 +377,19 @@ const MonthlyPerformance = () => {
                     <LineChart className="w-8 h-8 text-green-600" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900">
-                    Annual Performance
+                    {language === 'en' ? 'Annual Performance' : 'Ετήσια Απόδοση'}
                   </h3>
                 </div>
                 <p className="text-gray-600 leading-relaxed text-lg">
-                  The strategy has proven its resilience during economic crises, achieving 
-                  significant gains in periods such as the 2008 global financial crisis 
-                  and the COVID-19 crisis.
+                  {language === 'en'
+                    ? 'The strategy has proven its resilience during economic crises, achieving significant gains in periods such as the 2008 global financial crisis and the COVID-19 crisis.'
+                    : 'Η στρατηγική έχει αποδείξει την ανθεκτικότητά της κατά τη διάρκεια οικονομικών κρίσεων, επιτυγχάνοντας σημαντικά κέρδη σε περιόδους όπως η παγκόσμια οικονομική κρίση του 2008 και η κρίση του COVID-19.'}
                 </p>
                 <div className="mt-8 flex items-center gap-3">
                   <div className="flex-1 h-1.5 bg-gradient-to-r from-green-600 to-green-200 rounded-full"></div>
-                  <span className="text-green-600 font-semibold">Annual</span>
+                  <span className="text-green-600 font-semibold">
+                    {language === 'en' ? 'Annual' : 'Ετήσια'}
+                  </span>
                 </div>
               </div>
             </div>

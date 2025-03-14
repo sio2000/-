@@ -9,17 +9,24 @@ import {
   Shield, 
   ExternalLink
 } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Footer = () => {
+  const { language } = useLanguage();
+
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-4">About Us</h3>
+            <h3 className="text-white font-bold text-lg mb-4">
+              {language === 'en' ? 'About Us' : 'Σχετικά με εμάς'}
+            </h3>
             <p className="text-sm mb-4">
-              Advanced Forex trading solution delivering consistent returns through automated strategies and risk management.
+              {language === 'en' 
+                ? 'Advanced Forex trading solution delivering consistent returns through automated strategies and risk management.'
+                : 'Προηγμένη λύση συναλλαγών Forex που προσφέρει σταθερές αποδόσεις μέσω αυτοματοποιημένων στρατηγικών και διαχείρισης κινδύνου.'}
             </p>
             <div className="flex gap-4">
               <a 
@@ -59,26 +66,28 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-4">Quick Links</h3>
+            <h3 className="text-white font-bold text-lg mb-4">
+              {language === 'en' ? 'Quick Links' : 'Γρήγοροι Σύνδεσμοι'}
+            </h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/backtests" className="hover:text-blue-400 transition-colors">
-                  Backtest Results
+                  {language === 'en' ? 'Backtest Results' : 'Αποτελέσματα Δοκιμών'}
                 </Link>
               </li>
               <li>
                 <Link to="/live-vs-backtest" className="hover:text-blue-400 transition-colors">
-                  Live vs Backtest
+                  {language === 'en' ? 'Live vs Backtest' : 'Live vs Δοκιμές'}
                 </Link>
               </li>
               <li>
                 <Link to="/monthly-performance" className="hover:text-blue-400 transition-colors">
-                  Monthly Performance
+                  {language === 'en' ? 'Monthly Performance' : 'Μηνιαία Απόδοση'}
                 </Link>
               </li>
               <li>
                 <Link to="/business-plan" className="hover:text-blue-400 transition-colors">
-                  Business Plan
+                  {language === 'en' ? 'Business Plan' : 'Επιχειρηματικό Πλάνο'}
                 </Link>
               </li>
               <li>
@@ -88,7 +97,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/contact" className="hover:text-blue-400 transition-colors">
-                  Contact
+                  {language === 'en' ? 'Contact' : 'Επικοινωνία'}
                 </Link>
               </li>
             </ul>
@@ -96,16 +105,18 @@ const Footer = () => {
 
           {/* Legal */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-4">Legal</h3>
+            <h3 className="text-white font-bold text-lg mb-4">
+              {language === 'en' ? 'Legal' : 'Νομικά'}
+            </h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/privacy-policy" className="hover:text-blue-400 transition-colors">
-                  Privacy Policy
+                  {language === 'en' ? 'Privacy Policy' : 'Πολιτική Απορρήτου'}
                 </Link>
               </li>
               <li>
                 <Link to="/terms-of-service" className="hover:text-blue-400 transition-colors">
-                  Terms of Service
+                  {language === 'en' ? 'Terms of Service' : 'Όροι Χρήσης'}
                 </Link>
               </li>
             </ul>
@@ -113,7 +124,9 @@ const Footer = () => {
 
           {/* Contact & Verification */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-4">Contact & Verification</h3>
+            <h3 className="text-white font-bold text-lg mb-4">
+              {language === 'en' ? 'Contact & Verification' : 'Επικοινωνία & Επαλήθευση'}
+            </h3>
             <ul className="space-y-2">
               <li>
                 <a 
@@ -123,7 +136,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                 >
                   <ExternalLink className="w-4 h-4" />
-                  Verified by MyFXBook
+                  {language === 'en' ? 'Verified by MyFXBook' : 'Επαληθευμένο από το MyFXBook'}
                 </a>
               </li>
               <li>
@@ -142,7 +155,11 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8 text-sm">
           <div className="text-center">
-            <p>© AI Forex Trading Bot. All rights reserved.</p>
+            <p>
+              {language === 'en' 
+                ? '© AI Forex Trading Bot. All rights reserved.'
+                : '© AI Forex Trading Bot. Με επιφύλαξη παντός δικαιώματος.'}
+            </p>
           </div>
         </div>
       </div>
