@@ -32,33 +32,45 @@ const Home = () => {
   const features = [
     {
       icon: <Brain className="w-8 h-8 text-blue-600" />,
-      title: 'Based on Human Observation',
-      description: 'Advanced algorithms process market data in real-time, identifying optimal trading opportunities across multiple currency pairs.'
+      title: language === 'en' ? 'Based on Human Observation' : 'Βασισμένο σε Ανθρώπινη Παρατήρηση',
+      description: language === 'en' 
+        ? 'Advanced algorithms process market data in real-time, identifying optimal trading opportunities across multiple currency pairs.'
+        : 'Προηγμένοι αλγόριθμοι επεξεργάζονται δεδομένα αγοράς σε πραγματικό χρόνο, εντοπίζοντας βέλτιστες ευκαιρίες συναλλαγών σε πολλαπλά ζεύγη νομισμάτων.'
     },
     {
       icon: <ShieldCheck className="w-8 h-8 text-blue-600" />,
-      title: 'Risk Management',
-      description: 'Sophisticated risk management protocols protect capital through position sizing and stop-loss mechanisms.'
+      title: language === 'en' ? 'Risk Management' : 'Διαχείριση Κινδύνου',
+      description: language === 'en'
+        ? 'Sophisticated risk management protocols protect capital through position sizing and stop-loss mechanisms.'
+        : 'Εξελιγμένα πρωτόκολλα διαχείρισης κινδύνου προστατεύουν το κεφάλαιο μέσω μεγέθους θέσης και μηχανισμών stop-loss.'
     },
     {
       icon: <TrendingUp className="w-8 h-8 text-blue-600" />,
-      title: 'Market Adaptation',
-      description: 'Dynamic strategy adjustment based on market volatility and economic conditions.'
+      title: language === 'en' ? 'Market Adaptation' : 'Προσαρμογή στην Αγορά',
+      description: language === 'en'
+        ? 'Dynamic strategy adjustment based on market volatility and economic conditions.'
+        : 'Δυναμική προσαρμογή στρατηγικής βάσει της μεταβλητότητας της αγοράς και των οικονομικών συνθηκών.'
     },
     {
       icon: <Zap className="w-8 h-8 text-blue-600" />,
-      title: 'Automated Execution',
-      description: 'Lightning-fast trade execution with zero emotional bias, operating 24/7 across all market conditions.'
+      title: language === 'en' ? 'Automated Execution' : 'Αυτοματοποιημένη Εκτέλεση',
+      description: language === 'en'
+        ? 'Lightning-fast trade execution with zero emotional bias, operating 24/7 across all market conditions.'
+        : 'Αστραπιαία εκτέλεση συναλλαγών χωρίς συναισθηματική προκατάληψη, λειτουργώντας 24/7 σε όλες τις συνθήκες αγοράς.'
     },
     {
       icon: <BarChart className="w-8 h-8 text-blue-600" />,
-      title: 'Performance Tracking',
-      description: 'Real-time monitoring and detailed performance analytics for complete transparency.'
+      title: language === 'en' ? 'Performance Tracking' : 'Παρακολούθηση Απόδοσης',
+      description: language === 'en'
+        ? 'Real-time monitoring and detailed performance analytics for complete transparency.'
+        : 'Παρακολούθηση σε πραγματικό χρόνο και λεπτομερής ανάλυση απόδοσης για πλήρη διαφάνεια.'
     },
     {
       icon: <Scale className="w-8 h-8 text-blue-600" />,
-      title: 'Scalability',
-      description: 'Proven ability to scale across multiple accounts while maintaining consistent performance.'
+      title: language === 'en' ? 'Scalability' : 'Επεκτασιμότητα',
+      description: language === 'en'
+        ? 'Proven ability to scale across multiple accounts while maintaining consistent performance.'
+        : 'Αποδεδειγμένη ικανότητα κλιμάκωσης σε πολλαπλούς λογαριασμούς διατηρώντας σταθερή απόδοση.'
     }
   ];
 
@@ -175,8 +187,17 @@ const Home = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Advanced Forex Trading <br />
-              <span className="text-blue-400">Powered by Human Expertise</span>
+              {language === 'en' ? (
+                <>
+                  Advanced Forex Trading <br />
+                  <span className="text-blue-400">Powered by Human Expertise</span>
+                </>
+              ) : (
+                <>
+                  Προηγμένες Συναλλαγές Forex <br />
+                  <span className="text-blue-400">Με την Δύναμη της Ανθρώπινης Εμπειρίας</span>
+                </>
+              )}
             </h1>
             <div className="button-container flex flex-col sm:flex-row gap-4 justify-center mt-24">
               <Button
@@ -193,111 +214,170 @@ const Home = () => {
         </div>
       </section>
 
-      {/* MyFXBook Live Performance Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
+      {/* Live Trading Performance Section */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6 animate-fade-in flex items-center justify-center gap-3">
+          <div className="text-center">
+            <h2 className="text-4xl font-bold text-gray-900 mb-12 flex items-center justify-center gap-2">
               <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
               </span>
               {language === 'en' ? 'Live Trading Performance' : 'Απόδοση Live Συναλλαγών'}
             </h2>
-            
-            {/* Strategy Performance Description */}
-            <div className="max-w-4xl mx-auto bg-gradient-to-br from-white to-blue-50 p-8 rounded-2xl shadow-xl border border-blue-100/50 backdrop-blur-sm mb-12">
-              <p className="text-gray-700 text-lg leading-relaxed mb-8">
-                Since the strategy has proven profitable trades vs losing trades at a ratio of 
-                <span className="font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-md mx-1 shadow-sm"> 
-                  60% winners 
-                </span> 
-                vs 
-                <span className="font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded-md mx-1 shadow-sm">
-                  40% losers
-                </span>, 
-                and a risk-to-reward ratio of 
-                <span className="font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md mx-1 shadow-sm">
-                  $1 risked / $1.61 gained
-                </span>, 
-                the expected return per 100 trades is calculated as follows on a 
-                <span className="font-bold text-gray-900">$10,000</span> account with 
-                <span className="font-bold text-gray-900">0.20 Lot</span> size per trade:
+
+            {/* Main Content Card */}
+            <div className="bg-white rounded-2xl shadow-lg p-8">
+              {/* Description Text */}
+              <p className="text-gray-600 mb-8">
+                {language === 'en' ? (
+                  <>
+                    Since the strategy has proven profitable trades vs losing trades at a ratio of{' '}
+                    <span className="text-green-500 font-semibold">60% winners</span> vs{' '}
+                    <span className="text-red-500 font-semibold">40% losers</span>, and a risk-to-reward ratio of{' '}
+                    <span className="text-blue-500 font-semibold">$1 risked / $1.61 gained</span>, the expected 
+                    return per 100 trades is calculated as follows on a
+                    <span className="font-semibold"> $10,000</span> account with
+                    <span className="font-semibold"> 0.20 Lot</span> size per trade:
+                  </>
+                ) : (
+                  <>
+                    Καθώς η στρατηγική έχει αποδείξει κερδοφόρες συναλλαγές έναντι ζημιογόνων σε αναλογία{' '}
+                    <span className="text-green-500 font-semibold">60% επιτυχημένες</span> έναντι{' '}
+                    <span className="text-red-500 font-semibold">40% αποτυχημένες</span>, και αναλογία ρίσκου-κέρδους{' '}
+                    <span className="text-blue-500 font-semibold">$1 ρίσκο / $1.61 κέρδος</span>, η αναμενόμενη 
+                    απόδοση ανά 100 συναλλαγές υπολογίζεται ως εξής σε λογαριασμό
+                    <span className="font-semibold"> $10,000</span> με μέγεθος
+                    <span className="font-semibold"> 0.20 Lot</span> ανά συναλλαγή:
+                  </>
+                )}
               </p>
-              
-              <div className="grid md:grid-cols-3 gap-6 my-8">
-                <div className="bg-gradient-to-br from-green-50 to-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-green-100">
-                  <h4 className="text-green-800 font-semibold mb-3 flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    Profitable trades
-                  </h4>
-                  <p className="text-green-700">
-                    <span className="text-lg">60 trades × $322</span>
-                    <br />
-                    <span className="text-2xl font-bold">= $19,320</span>
-                  </p>
+
+              {/* Cards Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                {/* Profitable Trades Card */}
+                <div className="bg-green-50 p-6 rounded-xl">
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                    <h3 className="text-green-700 font-semibold">
+                      {language === 'en' ? 'Profitable trades' : 'Κερδοφόρες συναλλαγές'}
+                    </h3>
+                  </div>
+                  <div className="text-green-700">
+                    <p>{language === 'en' ? '60 trades × $322' : '60 συναλλαγές × $322'}</p>
+                    <p className="text-xl font-bold">= $19,320</p>
+                  </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-red-50 to-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-red-100">
-                  <h4 className="text-red-800 font-semibold mb-3 flex items-center gap-2">
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    Losing trades
-                  </h4>
-                  <p className="text-red-700">
-                    <span className="text-lg">40 trades × $200</span>
-                    <br />
-                    <span className="text-2xl font-bold">= $8,000</span>
-                  </p>
+                {/* Losing Trades Card */}
+                <div className="bg-red-50 p-6 rounded-xl">
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                    <h3 className="text-red-700 font-semibold">
+                      {language === 'en' ? 'Losing trades' : 'Ζημιογόνες συναλλαγές'}
+                    </h3>
+                  </div>
+                  <div className="text-red-700">
+                    <p>{language === 'en' ? '40 trades × $200' : '40 συναλλαγές × $200'}</p>
+                    <p className="text-xl font-bold">= $8,000</p>
+                  </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-blue-100">
-                  <h4 className="text-blue-800 font-semibold mb-3 flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    Net expected profit
-                  </h4>
-                  <p className="text-blue-700">
-                    <span className="text-lg">$19,320 – $8,000</span>
-                    <br />
-                    <span className="text-2xl font-bold">= $11,320</span>
-                  </p>
+                {/* Net Expected Profit Card */}
+                <div className="bg-blue-50 p-6 rounded-xl">
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                    <h3 className="text-blue-700 font-semibold">
+                      {language === 'en' ? 'Net expected profit' : 'Καθαρό αναμενόμενο κέρδος'}
+                    </h3>
+                  </div>
+                  <div className="text-blue-700">
+                    <p>$19,320 – $8,000</p>
+                    <p className="text-xl font-bold">= $11,320</p>
+                  </div>
                 </div>
               </div>
-              
-              <p className="text-gray-600 italic text-center bg-blue-50/50 p-4 rounded-xl shadow-inner">
-                This clearly demonstrates that the strategy has a consistently positive expected return of 
-                <span className="font-bold text-blue-600 bg-white px-2 py-0.5 rounded-md mx-1 shadow-sm">
-                  $11,320 per 100 trades
-                </span>, 
-                confirming its profitability and sustainability over the long term.
+
+              {/* Bottom Text */}
+              <p className="text-gray-600 italic bg-gray-50 p-4 rounded-xl mb-12">
+                {language === 'en' ? (
+                  <>
+                    This clearly demonstrates that the strategy has a consistently positive expected return of{' '}
+                    <span className="text-blue-600 font-semibold">$11,320 per 100 trades</span>, confirming its 
+                    profitability and sustainability over the long term.
+                  </>
+                ) : (
+                  <>
+                    Αυτό αποδεικνύει ξεκάθαρα ότι η στρατηγική έχει σταθερά θετική αναμενόμενη απόδοση{' '}
+                    <span className="text-blue-600 font-semibold">$11,320 ανά 100 συναλλαγές</span>, επιβεβαιώνοντας 
+                    την κερδοφορία και τη βιωσιμότητά της μακροπρόθεσμα.
+                  </>
+                )}
               </p>
+
+              {/* Stats Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                {/* Total Gain Card */}
+                <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-gradient-to-br from-white to-blue-50 group">
+                  <h3 className="text-gray-600 font-medium mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                    {language === 'en' ? 'Total Gain' : 'Συνολικό Κέρδος'}
+                  </h3>
+                  <p className="text-[2.5rem] leading-none font-bold text-blue-500 mb-2 group-hover:scale-110 transition-transform duration-300">+116.71%</p>
+                  <p className="text-gray-500 text-sm group-hover:text-gray-600 transition-colors duration-300">
+                    {language === 'en' ? 'Since inception' : 'Από την έναρξη'}
+                  </p>
+                  <div className="mt-4 h-1 w-0 group-hover:w-1/3 bg-blue-500 transition-all duration-300"></div>
+                </div>
+
+                {/* Monthly Average Card */}
+                <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-gradient-to-br from-white to-blue-50 group">
+                  <h3 className="text-gray-600 font-medium mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                    {language === 'en' ? 'Monthly Average' : 'Μηνιαίος Μέσος Όρος'}
+                  </h3>
+                  <p className="text-[2.5rem] leading-none font-bold text-blue-500 mb-2 group-hover:scale-110 transition-transform duration-300">+5.80%</p>
+                  <p className="text-gray-500 text-sm group-hover:text-gray-600 transition-colors duration-300">
+                    {language === 'en' ? 'Consistent monthly returns' : 'Σταθερές μηνιαίες αποδόσεις'}
+                  </p>
+                  <div className="mt-4 h-1 w-0 group-hover:w-1/3 bg-blue-500 transition-all duration-300"></div>
+                </div>
+
+                {/* Win Rate Card */}
+                <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-gradient-to-br from-white to-blue-50 group">
+                  <h3 className="text-gray-600 font-medium mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                    {language === 'en' ? 'Win Rate' : 'Ποσοστό Επιτυχίας'}
+                  </h3>
+                  <p className="text-[2.5rem] leading-none font-bold text-blue-500 mb-2 group-hover:scale-110 transition-transform duration-300">62%</p>
+                  <p className="text-gray-500 text-sm group-hover:text-gray-600 transition-colors duration-300">
+                    {language === 'en' ? 'Long positions success rate' : 'Ποσοστό επιτυχίας θέσεων long'}
+                  </p>
+                  <div className="mt-4 h-1 w-0 group-hover:w-1/3 bg-blue-500 transition-all duration-300"></div>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
-                <h3 className="text-lg font-semibold text-gray-600 mb-2">Total Gain</h3>
-                <p className="text-4xl font-bold text-blue-600">+116.71%</p>
-                <p className="text-sm text-gray-500 mt-2">Since inception</p>
-              </div>
-
-              <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
-                <h3 className="text-lg font-semibold text-gray-600 mb-2">Monthly Average</h3>
-                <p className="text-4xl font-bold text-blue-600">+5.80%</p>
-                <p className="text-sm text-gray-500 mt-2">Consistent monthly returns</p>
-              </div>
-
-              <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
-                <h3 className="text-lg font-semibold text-gray-600 mb-2">Win Rate</h3>
-                <p className="text-4xl font-bold text-blue-600">62%</p>
-                <p className="text-sm text-gray-500 mt-2">Long positions success rate</p>
-              </div>
-            </div>
+      {/* MyFXBook Performance Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              {language === 'en' ? 'Verified Trading Results' : 'Επαληθευμένα Αποτελέσματα Συναλλαγών'}
+            </h2>
+            <p className="text-gray-600 mb-12 max-w-3xl mx-auto">
+              {language === 'en' 
+                ? 'Real-time verified trading results from MyFXBook, showcasing consistent growth and performance metrics.'
+                : 'Επαληθευμένα αποτελέσματα συναλλαγών σε πραγματικό χρόνο από το MyFXBook, που παρουσιάζουν σταθερή ανάπτυξη και μετρήσεις απόδοσης.'}
+            </p>
 
             {/* MyFXBook Widgets */}
             <div className="grid md:grid-cols-2 gap-12 mb-16">
               {/* Growth Widget */}
               <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border border-blue-100">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Growth Performance</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+                  {language === 'en' ? 'Growth Performance' : 'Ανάπτυξη Κεφαλαίου'}
+                </h3>
                 <div className="relative">
                   <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
                   <a 
@@ -316,7 +396,9 @@ const Home = () => {
 
               {/* Monthly Performance Widget */}
               <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border border-blue-100">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Monthly Performance</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+                  {language === 'en' ? 'Monthly Performance' : 'Μηνιαία Απόδοση'}
+                </h3>
                 <div className="relative">
                   <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
                   <a 
@@ -337,7 +419,9 @@ const Home = () => {
               <div className="md:col-span-2 text-center mt-4">
                 <p className="text-gray-600 italic flex items-center justify-center gap-2">
                   <ExternalLink className="w-4 h-4" />
-                  Select above on the chart to view the corresponding page on MyFXBook.com
+                  {language === 'en' 
+                    ? 'Select above on the chart to view the corresponding page on MyFXBook.com'
+                    : 'Επιλέξτε παραπάνω στο γράφημα για να δείτε την αντίστοιχη σελίδα στο MyFXBook.com'}
                 </p>
               </div>
             </div>
@@ -347,7 +431,8 @@ const Home = () => {
                 href="https://www.myfxbook.com/members/giannis/funded-instatrader/10605583"
                 className="gap-2 text-lg px-8 py-4 shadow-lg hover:shadow-xl"
               >
-                View Complete Track Record <ArrowRight className="w-6 h-6" />
+                {language === 'en' ? 'View Complete Track Record' : 'Προβολή Πλήρους Ιστορικού'} 
+                <ArrowRight className="w-6 h-6" />
               </Button>
             </div>
           </div>
@@ -359,7 +444,7 @@ const Home = () => {
         <div className="scroll-container">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h3 className="text-3xl font-bold text-gray-900 mb-12 text-center animate-fade-in">
-              Key Features
+              {language === 'en' ? 'Key Features' : 'Βασικά Χαρακτηριστικά'}
             </h3>
             <div className="features-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
