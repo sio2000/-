@@ -96,7 +96,9 @@ const Home = () => {
               className="w-full h-full object-cover"
             >
               <source src={forexVideo} type="video/mp4" />
-              Your browser does not support the video tag.
+              {language === 'en' 
+                ? 'Your browser does not support the video tag.'
+                : 'Ο περιηγητής σας δεν υποστηρίζει την ετικέτα βίντεο.'}
             </video>
           )}
           {/* Dark Overlay */}
@@ -107,18 +109,33 @@ const Home = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Advanced Forex Trading <br />
-              <span className="text-blue-400">Powered by Human Expertise</span>
+              {language === 'en' ? (
+                <>
+                  Advanced Forex Trading <br />
+                  <span className="text-blue-400">Powered by Human Expertise</span>
+                </>
+              ) : (
+                <>
+                  Προηγμένες Συναλλαγές Forex <br />
+                  <span className="text-blue-400">Με την Δύναμη της Ανθρώπινης Εμπειρίας</span>
+                </>
+              )}
             </h1>
             <div className="button-container flex flex-col sm:flex-row gap-4 justify-center mt-24">
               <Button
                 href="https://www.myfxbook.com/members/giannis/funded-instatrader/10605583"
                 className="gap-2"
               >
-                View on MyFXBook <ArrowRight className="w-5 h-5" />
+                {language === 'en' ? 'View on MyFXBook' : 'Προβολή στο MyFXBook'} 
+                <ArrowRight className="w-5 h-5" />
               </Button>
-              <Button variant="secondary" href="/contact" className="gap-2">
-                Contact Me <ArrowRight className="w-5 h-5" />
+              <Button 
+                variant="secondary" 
+                href="/contact" 
+                className="gap-2"
+              >
+                {language === 'en' ? 'Contact Me' : 'Επικοινωνία'} 
+                <ArrowRight className="w-5 h-5" />
               </Button>
             </div>
           </div>
@@ -231,10 +248,12 @@ const Home = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Explore Our Journey
+                {language === 'en' ? 'Explore Our Journey' : 'Εξερευνήστε την Πορεία μας'}
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Discover our comprehensive business plan and learn more about our story
+                {language === 'en' 
+                  ? 'Discover our comprehensive business plan and learn more about our story'
+                  : 'Ανακαλύψτε το επιχειρηματικό μας πλάνο και μάθετε περισσότερα για την ιστορία μας'}
               </p>
             </div>
 
@@ -242,7 +261,7 @@ const Home = () => {
               {/* Business Plan Card */}
               <div className="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="absolute top-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-bl-xl rounded-tr-xl">
-                  Featured
+                  {language === 'en' ? 'Featured' : 'Προτεινόμενο'}
                 </div>
                 <div className="flex flex-col h-full">
                   <div className="mb-6">
@@ -250,14 +269,17 @@ const Home = () => {
                       <Building2 className="w-8 h-8 text-blue-600" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      Business Plan
+                      {language === 'en' ? 'Business Plan' : 'Επιχειρηματικό Πλάνο'}
                     </h3>
                     <p className="text-gray-600">
-                      Explore our comprehensive investment structure, projected returns, and partnership opportunities.
+                      {language === 'en'
+                        ? 'Explore our comprehensive investment structure, projected returns, and partnership opportunities.'
+                        : 'Εξερευνήστε την επενδυτική μας δομή, τις προβλεπόμενες αποδόσεις και τις ευκαιρίες συνεργασίας.'}
                     </p>
                   </div>
                   <Button href="/business-plan" className="mt-auto gap-2 w-full justify-center">
-                    View Business Plan <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    {language === 'en' ? 'View Business Plan' : 'Δείτε το Επιχειρηματικό Πλάνο'} 
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </div>
               </div>
@@ -270,10 +292,12 @@ const Home = () => {
                       <BookOpen className="w-8 h-8 text-green-600" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      Our Biography
+                      {language === 'en' ? 'Our Biography' : 'Η Βιογραφία μας'}
                     </h3>
                     <p className="text-gray-600">
-                      Learn about our journey, expertise, and proven track record in Forex trading.
+                      {language === 'en'
+                        ? 'Learn about our journey, expertise, and proven track record in Forex trading.'
+                        : 'Μάθετε για την πορεία μας, την εξειδίκευσή μας και το αποδεδειγμένο ιστορικό μας στις συναλλαγές Forex.'}
                     </p>
                   </div>
                   <Button 
@@ -281,7 +305,8 @@ const Home = () => {
                     variant="secondary"
                     className="mt-auto gap-2 w-full justify-center bg-white text-green-600 border-green-200 hover:bg-green-50"
                   >
-                    Read Our Story <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    {language === 'en' ? 'Read Our Story' : 'Διαβάστε την Ιστορία μας'} 
+                    <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </div>
               </div>
