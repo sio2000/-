@@ -5,7 +5,6 @@ import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import Backtests from './pages/Backtests';
 import LiveVsBacktest from './pages/LiveVsBacktest';
-import MonthlyPerformance from './pages/MonthlyPerformance';
 import AnnualPerformance from './pages/AnnualPerformance';
 import BusinessPlan from './pages/BusinessPlan';
 import FAQ from './pages/FAQ';
@@ -29,7 +28,6 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/backtests" element={<Backtests />} />
               <Route path="/live-vs-backtest" element={<LiveVsBacktest />} />
-              <Route path="/monthly-performance" element={<MonthlyPerformance />} />
               <Route path="/annual-performance" element={<AnnualPerformance />} />
               <Route path="/business-plan" element={<BusinessPlan />} />
               <Route path="/faq" element={<FAQ />} />
