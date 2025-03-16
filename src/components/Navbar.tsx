@@ -123,47 +123,57 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            {mainNavItems.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                onClick={() => setIsMenuOpen(false)}
-                className={({ isActive }) =>
-                  `block px-3 py-2 rounded-md text-base font-medium ${
-                    isActive
-                      ? 'text-blue-600 bg-blue-50'
-                      : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
-                  }`
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
-
-            <div className="px-3 py-2">
-              <div className="font-medium text-gray-600 mb-2">
-                {language === 'en' ? 'Backtest' : 'Backtest'}
-              </div>
-              <div className="pl-4 space-y-1">
-                {backtestItems.map((item) => (
-                  <NavLink
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={({ isActive }) =>
-                      `block px-3 py-2 rounded-md text-base ${
-                        isActive
-                          ? 'text-blue-600 bg-blue-50'
-                          : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
-                      }`
-                    }
+            {mainNavItems.map((item) => 
+              item.type === 'backtest' ? (
+                // Backtest with dropdown for mobile
+                <div key="backtest" className="space-y-1">
+                  <div 
+                    className="flex items-center justify-between px-3 py-2 rounded-md text-base font-medium text-gray-600"
+                    onClick={() => setIsBacktestOpen(!isBacktestOpen)}
                   >
                     {item.label}
-                  </NavLink>
-                ))}
-              </div>
-            </div>
+                    <ChevronDown className={`w-4 h-4 transition-transform ${isBacktestOpen ? 'rotate-180' : ''}`} />
+                  </div>
+                  
+                  {/* Dropdown items */}
+                  <div className={`pl-4 space-y-1 ${isBacktestOpen ? 'block' : 'hidden'}`}>
+                    {backtestItems.map((subItem) => (
+                      <NavLink
+                        key={subItem.path}
+                        to={subItem.path}
+                        onClick={() => setIsMenuOpen(false)}
+                        className={({ isActive }) =>
+                          `block px-3 py-2 rounded-md text-base ${
+                            isActive
+                              ? 'text-blue-600 bg-blue-50'
+                              : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
+                          }`
+                        }
+                      >
+                        {subItem.label}
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `block px-3 py-2 rounded-md text-base font-medium ${
+                      isActive
+                        ? 'text-blue-600 bg-blue-50'
+                        : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              )
+            )}
 
+            {/* Language Toggle */}
             <button
               onClick={() => {
                 toggleLanguage();
